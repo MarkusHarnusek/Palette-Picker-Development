@@ -1,0 +1,251 @@
+﻿using System.Windows;
+using System.Windows.Media;
+
+namespace PalletePicker
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        #region CurrentColors
+
+        public static string? Primary1;
+        public static string? Primary2;
+        public static string? Secondary1;
+        public static string? Secondary2;
+        public static string? Text;
+
+        #endregion
+
+        #region CurrentEditingConfig
+
+        private bool readOnly = false;
+        private bool homeVisible = false;
+        private bool pinned = false;
+
+        #endregion
+
+        private string currentEditingName = string.Empty;
+
+        public static bool[] alreadyEditing = new bool[5];
+
+        public static string editingFilePath = string.Empty;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            SetRandomColors();
+        }
+
+        private void SetRandomColors()
+        {
+
+            for (int i = 0; i < 5; i++)
+            {
+                string color = GetRandomColor();
+                switch (i)
+                {
+                    case 0:
+                        Grd_Primary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
+                        Txt_Primary1.Text = color;
+                        Primary1 = color;
+                        break;
+
+                    case 1:
+                        Grd_Primary2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
+                        Txt_Primary2.Text = color;
+                        Primary2 = color;
+                        break;
+
+                    case 2:
+                        Grd_Secondary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
+                        Txt_Secondary1.Text = color;
+                        Secondary1 = color;
+                        break;
+
+                    case 3:
+                        Grd_Secondary2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
+                        Txt_Secondary2.Text = color;
+                        Secondary2 = color;
+                        break;
+
+                    case 4: 
+                        Grd_Text.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
+                        Txt_Text.Text = color;
+                        Text = color;
+                        break;
+                }
+            }
+        }
+
+        public static void UpdateGridInfos(MainWindow instance)
+        {
+            instance.Grd_Primary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Primary1));
+            instance.Grd_Primary2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Primary2));
+            instance.Grd_Secondary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Secondary1));
+            instance.Grd_Secondary2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Secondary2));
+            instance.Grd_Text.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Text));
+
+            instance.Txt_Primary1.Text = Primary1;
+            instance.Txt_Primary2.Text = Primary2;
+            instance.Txt_Secondary1.Text = Secondary1;
+            instance.Txt_Secondary2.Text = Secondary2;
+            instance.Txt_Text.Text = Text;
+        }
+
+        private string GetRandomColor()
+        {
+            Random random = new Random();
+
+            string r = random.Next(0, 256).ToString("X2");
+            string g = random.Next(0, 256).ToString("X2");
+            string b = random.Next(0, 256).ToString("X2");
+
+            return "#" + r + g + b;
+        }
+
+        private void InitColorPick(string currentColor, int editing)
+        {
+            ColorPickerWindow colorPickerWindow = new ColorPickerWindow();
+            colorPickerWindow.ColorPickInit(currentColor, editing);
+            colorPickerWindow.Show();
+        }
+
+        #region HeadBarControls
+
+        private void Btn_Create_Click(object sender, RoutedEventArgs e)
+        {
+            SetRandomColors();
+        }
+
+        private void Btn_Save_Click(object sender, RoutedEventArgs e)
+        {
+            string savePath = Save.GetSavePath();
+
+            if (!string.IsNullOrEmpty(savePath))
+            {
+                Save.SaveFile(savePath, currentEditingName, Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
+            }
+        }
+
+        private void Btn_Select_Click(object sender, RoutedEventArgs e)
+        {
+            Save.SelectFile();
+            if (!string.IsNullOrEmpty(editingFilePath))
+            {
+                currentEditingName = Save.GetSaveInfo(editingFilePath).name;
+                Primary1 = Save.GetSaveInfo(editingFilePath).primary1;
+                Primary2 = Save.GetSaveInfo(editingFilePath).primary2;
+                Secondary1 = Save.GetSaveInfo(editingFilePath).secondary1;
+                Secondary2 = Save.GetSaveInfo(editingFilePath).secondary2;
+                Text = Save.GetSaveInfo(editingFilePath).text;
+                readOnly = Save.GetSaveInfo(editingFilePath).readOnly;
+                homeVisible = Save.GetSaveInfo(editingFilePath).homeVisible;
+                pinned = Save.GetSaveInfo(editingFilePath).pinned;
+                UpdateGridInfos(this);
+            }
+        }
+
+        #endregion
+
+        #region ColorGrids
+
+        [STAThread]
+        private void Btn_Primary1_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Primary1);
+        }
+
+        [STAThread]
+        private void Btn_Primary2_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Primary2);
+        }
+
+        [STAThread]
+        private void Btn_Secondary1_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Secondary1);
+        }
+
+        [STAThread]
+        private void Btn_Secondary2_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Secondary2);
+        }
+
+        [STAThread]
+        private void Btn_Text_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Text);
+        }
+
+        private void Btn_Primary1_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (alreadyEditing[0])
+            {
+                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            alreadyEditing[0] = true;
+            InitColorPick(Primary1 ?? string.Empty, 0);
+        }
+
+        private void Btn_Primary2_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (alreadyEditing[1])
+            {
+                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            alreadyEditing[1] = true;
+
+            InitColorPick(Primary2 ?? string.Empty, 1);
+        }
+
+        private void Btn_Secondary1_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (alreadyEditing[2])
+            {
+                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            alreadyEditing[2] = true;
+            InitColorPick(Secondary1 ?? string.Empty, 2);
+        }
+
+        private void Btn_Secondary2_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (alreadyEditing[3])
+            {
+                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            alreadyEditing[3] = true;
+            InitColorPick(Secondary2 ?? string.Empty, 3);
+        }
+
+        private void Btn_Text_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (alreadyEditing[4])
+            {
+                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            alreadyEditing[4] = true;
+            InitColorPick(Text ?? string.Empty, 4);
+        }
+
+        #endregion
+    }
+}
