@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace PalletePicker
@@ -40,6 +41,8 @@ namespace PalletePicker
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             SetRandomColors();
+            Txb_PalleteName.Text = GetRandomPalleteName();
+            currentEditingName = Txb_PalleteName.Text;
         }
 
         private void SetRandomColors()
@@ -74,7 +77,7 @@ namespace PalletePicker
                         Secondary2 = color;
                         break;
 
-                    case 4: 
+                    case 4:
                         Grd_Text.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
                         Txt_Text.Text = color;
                         Text = color;
@@ -121,16 +124,12 @@ namespace PalletePicker
         private void Btn_Create_Click(object sender, RoutedEventArgs e)
         {
             SetRandomColors();
+            Txb_PalleteName.Text = GetRandomPalleteName();
         }
 
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            string savePath = Save.GetSavePath();
-
-            if (!string.IsNullOrEmpty(savePath))
-            {
-                Save.SaveFile(savePath, currentEditingName, Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
-            }
+            Save.SaveFile(currentEditingName, Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
         }
 
         private void Btn_Select_Click(object sender, RoutedEventArgs e)
@@ -247,5 +246,33 @@ namespace PalletePicker
         }
 
         #endregion
+
+        #region PalleteNameControls
+
+        private void Txb_PalleteName_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Keyboard.ClearFocus();
+            }
+        }
+
+        private string GetRandomPalleteName()
+        {
+            Random random = new Random();
+
+            string[] prefixes = { "Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega", "Mega", "Giga", "Tera", "Peta", "Exa", "Zetta", "Yotta", "Eco", "Neo", "Retro", "Urban", "Quantum", "Cosmic", "Solar", "Lunar", "Astro", "Electro", "Hydro", "Geo", "Cyber", "Nano", "Bio", "Techno", "Ultra", "Hyper", "Infra", "Inter", "Intra", "Sub", "Super", "Semi", "Pseudo", "Trans", "Over", "Under", "Iso", "Anti", "Turbo", "Velo", "Rocket", "Sonic", "Cipher", "Vector", "Primal", "Aero", "Mystique", "Crystal", "Stellar", "Astra", "Solaris", "Celestio", "Cyclonic", "Temporal", "Galactic", "Seraphic", "Phantom", "Spectral", "Virtual", "Digital", "Analog", "Magnetic", "Radiant", "Glacial", "Voltaic", "Harmonic", "Dynamic", "Infinite", "Eternal", "Arcane", "Mystery", "Futuristic", "Prismatic", "Optic", "Chromatic", "Vital", "Raw" };
+            string[] names = { "Aurora", "Borealis", "Celestial", "Dusk", "Eclipse", "Frost", "Glimmer", "Harmony", "Illusion", "Jubilant", "Kaleidoscope", "Luminous", "Mirage", "Nebula", "Oasis", "Paradigm", "Quartz", "Radiance", "Serenity", "Tranquil", "Utopia", "Vivid", "Whisper", "Xanadu", "Zenith", "Abyss", "Brilliance", "Cascade", "Drift", "Euphoria", "Flare", "Gossamer", "Halo", "Iridescence", "Jade", "Kismet", "Lucid", "Mystic", "Nimbus", "Opal", "Pulse", "Quiver", "Rhapsody", "Saffron", "Tidal", "Unity", "Vortex", "Wonder", "Xenial", "Yonder", "Zephyr", "Amber", "Bliss", "Celeste", "Dawn", "Ember", "Flora", "Gleam", "Harbor", "Infusion", "Jubilee", "Kiara", "Luxe", "Melody", "Nova", "Orchid", "Phoenix", "Quasar", "Reverie", "Solstice", "Tangerine", "Umbra", "Velvet", "Wisp", "Xenon", "Zest", "Aerial", "Brisk", "Chroma", "Dapple", "Elegance", "Fable", "Gusto", "Haven", "Ivory", "Jolt", "Keen", "Lush", "Majestic", "Noir", "Opus", "Prism", "Quintessence", "Ripple", "Sparrow", "Tonic", "Ultraviolet", "Vantage", "Wanderlust", "Ethereal" };
+            string[] suffixes = { "Mist", "Shade", "Tint", "Bloom", "Rush", "Wave", "Dream", "Spark", "Drift", "Gleam", "Glint", "Glow", "Pulse", "Surge", "Breeze", "Whisper", "Echo", "Fusion", "Sparkle", "Frost", "Blaze", "Shimmer", "Burst", "Stream", "Aurora", "Cascade", "Dusk", "Dawn", "Haze", "Flux", "Vibe", "Bolt", "Drizzle", "Murmur", "Ripple", "Glaze", "Crush", "Sizzle", "Twist", "Spiral", "Glide", "Sweep", "Slide", "Crackle", "Flicker", "Shine", "Luster", "Glisten", "Beam", "Roar", "Sway", "Swirl", "Flurry", "Quiver", "Lilt", "Zephyr", "Flutter", "Scintilla", "Fleck", "Patter", "Tingle", "Dapple", "Vortex", "Swell", "Curl", "Drape", "Veil", "Hush", "Gush", "Spill", "Drop", "Crest", "Clash", "Slick", "Fume", "Trace", "Twinge", "Quake", "Wisp", "Flick", "Blush", "Smolder", "Hollow", "Drum", "Ember", "Fervor", "Glimmer", "Cadence", "Undertone", "Overtone", "Undercurrent", "Afterglow", "Nightfall", "Daybreak", "Moonrise", "Twilight", "Sunset", "Sunrise", "Nocturne", "Reverie" };
+
+            return $"{prefixes[random.Next(prefixes.Length)]}-{names[random.Next(names.Length)]}-{suffixes[random.Next(suffixes.Length)]}";
+
+            #endregion
+        }
+
+        private void StackPanel_LostFocus(object sender, RoutedEventArgs e)
+        {
+            currentEditingName = Txb_PalleteName.Text;
+        }
     }
 }

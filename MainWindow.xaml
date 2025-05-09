@@ -8,7 +8,7 @@
         ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
         Title="Palltete Picker" 
-        Height="455"
+        Height="470"
         Width="800"
         Background="#0B0F0F">
 
@@ -70,7 +70,7 @@
             Margin="0,10,0,10"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Orientation="Horizontal">
+            Orientation="Horizontal" LostFocus="StackPanel_LostFocus">
 
             <TextBlock
                 Text="Pallete Name:"
@@ -83,6 +83,7 @@
 
             <TextBox
                 x:Name="Txb_PalleteName"
+                KeyDown="Txb_PalleteName_KeyDown" 
                 Margin="5,0,0,0"
                 Height="20"
                 Width="250"
@@ -92,7 +93,7 @@
                 BorderThickness="2"
                 Foreground="{StaticResource Text}"
                 FontFamily="Montserrat"
-                FontSize="18"/>
+                FontSize="14"/>
 
         </StackPanel>
         
