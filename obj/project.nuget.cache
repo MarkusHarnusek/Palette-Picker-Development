@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uomiXyZLajY=",
+  "dgSpecHash": "OroF4yLsbRc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MarkusHTL\\source\\repos\\PalletePicker\\PalletePicker.csproj",
+  "projectFilePath": "C:\\Users\\MarkusHTL\\source\\repos\\PalettePicker\\PalettePicker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MarkusHTL\\.nuget\\packages\\windowsapicodepack-core\\1.1.2\\windowsapicodepack-core.1.1.2.nupkg.sha512"
   ],

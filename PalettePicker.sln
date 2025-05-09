@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalletePicker", "PalletePicker.csproj", "{41793443-48A9-4D98-BF87-17C3AF87D9CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalettePicker", "PalettePicker.csproj", "{41793443-48A9-4D98-BF87-17C3AF87D9CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
