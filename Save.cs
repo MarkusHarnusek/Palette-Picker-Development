@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
 
-namespace PalletePicker
+namespace PalettePicker
 {
     internal class Save
     {
@@ -12,7 +12,7 @@ namespace PalletePicker
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
             {
                 Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
-                Title = "Select the color pallete",
+                Title = "Select the color palette",
                 CheckFileExists = true,
                 Multiselect = false,
                 CheckPathExists = true
@@ -31,7 +31,7 @@ namespace PalletePicker
 
             if (!ValidatePallleteJsonFile(filePath, out string errMsg))
             {
-                System.Windows.MessageBox.Show($"The selected file is not a valid pallete JSON file. {errMsg}", "Select Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show($"The selected file is not a valid palette JSON file. {errMsg}", "Select Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
                 return;
             }
 
@@ -41,7 +41,7 @@ namespace PalletePicker
         public static string GetSavePath()
         {
             Microsoft.Win32.OpenFolderDialog dialog = new();
-            dialog.Title = "Select the folder to save the pallete";
+            dialog.Title = "Select the folder to save the palette";
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dialog.Multiselect = false;
 
@@ -58,7 +58,7 @@ namespace PalletePicker
             }
         }
 
-        public static void SaveFile(string palleteName, string primary1, string primary2, string seconadary1, string secondary2, string text, bool readOnly, bool homeVisible, bool pinned)
+        public static void SaveFile(string paletteName, string primary1, string primary2, string seconadary1, string secondary2, string text, bool readOnly, bool homeVisible, bool pinned)
         {
             // Fixed values > Implemt logic with later update
 
@@ -70,11 +70,11 @@ namespace PalletePicker
                 homeVisible = true;
                 pinned = true;
 
-                Pallete pallete = new Pallete
+                Palette palette = new Palette
                 {
                     valid = true,
                     filePath = path,
-                    palleteName = palleteName,
+                    paletteName = paletteName,
                     primary1 = primary1,
                     primary2 = primary2,
                     secondary1 = seconadary1,
@@ -85,9 +85,8 @@ namespace PalletePicker
                     pinned = pinned
                 };
 
-                string jsonString = JsonSerializer.Serialize(pallete);
-                //File.WriteAllText(Path.Combine(pallete.filePath, pallete.palleteName), $"{pallete.palleteName}.json");
-                File.WriteAllText(Path.Combine(pallete.filePath, $"{pallete.palleteName}.json"), jsonString);
+                string jsonString = JsonSerializer.Serialize(palette);
+                File.WriteAllText(Path.Combine(palette.filePath, $"{palette.paletteName}.json"), jsonString);
             }
             else
             {
@@ -110,7 +109,7 @@ namespace PalletePicker
                 return (string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, false, false, false);
             }
 
-            string name = jsonData["palleteName"];
+            string name = jsonData["paletteName"];
             string primary1 = jsonData["primary1"];
             string primary2 = jsonData["primary2"];
             string secondary1 = jsonData["secondary1"];
@@ -188,7 +187,7 @@ namespace PalletePicker
                     return false;
                 }
 
-                string[] requiredKeys = { "valid", "filePath", "palleteName", "primary1", "primary2", "secondary1", "secondary2", "text", "readOnly", "homeVisible", "pinned" };
+                string[] requiredKeys = { "valid", "filePath", "paletteName", "primary1", "primary2", "secondary1", "secondary2", "text", "readOnly", "homeVisible", "pinned" };
                 foreach (string key in requiredKeys)
                 {
                     if (!jsonData.ContainsKey(key))
@@ -200,96 +199,6 @@ namespace PalletePicker
 
                 errorMessage = string.Empty;
                 return true;
-
-                //for (int i = 0; i < jsonData.Count; i++)
-                //{
-                //    switch (i)
-                //    {
-                //        case 0:
-                //            if (jsonData.Keys.ToArray()[i] != "name")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 1:
-                //            if (jsonData.Keys.ToArray()[i] != "filePath")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 2:
-                //            if (jsonData.Keys.ToArray()[i] != "palleteName")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 3:
-                //            if (jsonData.Keys.ToArray()[i] != "primary1")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 4:
-                //            if (jsonData.Keys.ToArray()[i] != "primary2")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 5:
-                //            if (jsonData.Keys.ToArray()[i] != "secondary1")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 6:
-                //            if (jsonData.Keys.ToArray()[i] != "secondary2")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 7:
-                //            if (jsonData.Keys.ToArray()[i] != "text")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 8:
-
-                //            if (jsonData.Keys.ToArray()[i] != "readOnly")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 9:
-
-                //            if (jsonData.Keys.ToArray()[i] != "homeVisible")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}."; return false;
-                //            }
-                //            break;
-
-                //        case 10:
-
-                //            if (jsonData.Keys.ToArray()[i] != "pinned")
-                //            {
-                //                errorMessage = $"Wrong element at index {i}"; return false;
-                //            }
-                //            break;
-                //    }
-                //}
-
-                //errorMessage = string.Empty;
-                //return true;
-
             }
             catch (Exception ex)
             {

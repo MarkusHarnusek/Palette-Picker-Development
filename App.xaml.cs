@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace PalletePicker
+namespace PalettePicker
 {
     /// <summary>
     /// Interaction logic for App.xaml

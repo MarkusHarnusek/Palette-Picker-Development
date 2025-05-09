@@ -1,13 +1,13 @@
-﻿<Window x:Class="PalletePicker.MainWindow"
+﻿<Window x:Class="PalettePicker.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PalletePicker"
+        xmlns:local="clr-namespace:PalettePicker"
         mc:Ignorable="d"
         ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
-        Title="Palltete Picker" 
+        Title="Paltette Picker" 
         Height="470"
         Width="800"
         Background="#0B0F0F">
@@ -58,7 +58,7 @@
                 Foreground="{StaticResource Text}"
                 BorderThickness="0"
                 Height="20"  
-                Margin="2,0,0,0"
+                Margin="2.5,0,0,0"
                 Content="Save"  
                 FontFamily="Montserrat"  
                 FontWeight="DemiBold"  
@@ -73,7 +73,7 @@
             Orientation="Horizontal" LostFocus="StackPanel_LostFocus">
 
             <TextBlock
-                Text="Pallete Name:"
+                Text="Palette Name:"
                 Foreground="{StaticResource Text}"
                 Background="Transparent"
                 FontFamily="Montserrat"

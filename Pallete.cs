@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PalletePicker
+namespace PalettePicker
 {
-    internal class Pallete
+    internal class Palette
     {
         public bool valid { get; set; }
         public string? filePath { get; set; }
-        public string? palleteName { get; set; }
+        public string? paletteName { get; set; }
         public string? primary1 { get; set; }
         public string? primary2 { get; set; }
         public string? secondary1 { get; set; }
