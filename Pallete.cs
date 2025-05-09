@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PalettePicker
 {
-    internal class Palette
+    internal class Pallete
     {
         public bool valid { get; set; }
         public string? filePath { get; set; }

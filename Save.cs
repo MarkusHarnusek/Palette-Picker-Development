@@ -70,7 +70,7 @@ namespace PalettePicker
                 homeVisible = true;
                 pinned = true;
 
-                Palette palette = new Palette
+                Pallete palette = new Pallete
                 {
                     valid = true,
                     filePath = path,

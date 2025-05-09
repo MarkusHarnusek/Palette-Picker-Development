@@ -266,9 +266,7 @@ namespace PalettePicker
             }
 
             return true;
-        }
-
-        
+        } 
 
         #endregion
 
