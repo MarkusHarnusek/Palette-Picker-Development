@@ -138,6 +138,7 @@ namespace PalletePicker
             if (!string.IsNullOrEmpty(editingFilePath))
             {
                 currentEditingName = Save.GetSaveInfo(editingFilePath).name;
+                Txb_PalleteName.Text = currentEditingName;
                 Primary1 = Save.GetSaveInfo(editingFilePath).primary1;
                 Primary2 = Save.GetSaveInfo(editingFilePath).primary2;
                 Secondary1 = Save.GetSaveInfo(editingFilePath).secondary1;
@@ -266,9 +267,9 @@ namespace PalletePicker
             string[] suffixes = { "Mist", "Shade", "Tint", "Bloom", "Rush", "Wave", "Dream", "Spark", "Drift", "Gleam", "Glint", "Glow", "Pulse", "Surge", "Breeze", "Whisper", "Echo", "Fusion", "Sparkle", "Frost", "Blaze", "Shimmer", "Burst", "Stream", "Aurora", "Cascade", "Dusk", "Dawn", "Haze", "Flux", "Vibe", "Bolt", "Drizzle", "Murmur", "Ripple", "Glaze", "Crush", "Sizzle", "Twist", "Spiral", "Glide", "Sweep", "Slide", "Crackle", "Flicker", "Shine", "Luster", "Glisten", "Beam", "Roar", "Sway", "Swirl", "Flurry", "Quiver", "Lilt", "Zephyr", "Flutter", "Scintilla", "Fleck", "Patter", "Tingle", "Dapple", "Vortex", "Swell", "Curl", "Drape", "Veil", "Hush", "Gush", "Spill", "Drop", "Crest", "Clash", "Slick", "Fume", "Trace", "Twinge", "Quake", "Wisp", "Flick", "Blush", "Smolder", "Hollow", "Drum", "Ember", "Fervor", "Glimmer", "Cadence", "Undertone", "Overtone", "Undercurrent", "Afterglow", "Nightfall", "Daybreak", "Moonrise", "Twilight", "Sunset", "Sunrise", "Nocturne", "Reverie" };
 
             return $"{prefixes[random.Next(prefixes.Length)]}-{names[random.Next(names.Length)]}-{suffixes[random.Next(suffixes.Length)]}";
-
-            #endregion
         }
+
+        #endregion
 
         private void StackPanel_LostFocus(object sender, RoutedEventArgs e)
         {
