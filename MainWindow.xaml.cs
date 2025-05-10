@@ -151,6 +151,11 @@ namespace PalettePicker
             }
         }
 
+        private void Btn_Options_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         #endregion
 
         #region ColorGrids

@@ -63,6 +63,18 @@
                 FontFamily="Montserrat"  
                 FontWeight="DemiBold"  
                 Width="75"/>
+
+            <Button  
+                x:Name="Btn_Options"
+                Background="{StaticResource Primary}"
+                Foreground="{StaticResource Text}"
+                BorderThickness="0"
+                Height="20"  
+                Margin="2.5,0,0,0"
+                Content="Options"  
+                FontFamily="Montserrat"  
+                FontWeight="DemiBold"  
+                Width="75" Click="Btn_Options_Click"/>
         </StackPanel>
 
         <StackPanel
