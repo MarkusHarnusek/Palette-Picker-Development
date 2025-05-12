@@ -257,6 +257,25 @@ namespace PalettePicker
         {
             Microsoft.Win32.OpenFolderDialog dialog = new();
             dialog.Title = "Select the folder to save the palette";
+
+            switch (MainWindow.currentLanguage)
+            {
+                case 0: dialog.Title = "Select the folder to save the palette"; break;
+
+                case 1: dialog.Title = "Wählen Sie den Ordner aus, in dem Sie die Palette speichern möchten"; break;
+
+                case 2: dialog.Title = "Seleccione la carpeta para guardar la paleta"; break;
+
+                case 3: dialog.Title = "Sélectionnez le dossier dans lequel enregistrer la palette"; break;
+
+                case 4: dialog.Title = "选择保存调色板的文件夹"; break;
+
+                case 5: dialog.Title = "Selecione a pasta para salvar a paleta"; break;
+
+                case 6: dialog.Title = "Выберите папку для сохранения палитры"; break;
+
+            }
+
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dialog.Multiselect = false;
 

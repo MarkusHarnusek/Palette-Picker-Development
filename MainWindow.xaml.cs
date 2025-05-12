@@ -68,7 +68,7 @@ namespace PalettePicker
                     instance.Btn_Create.Content = "Erstellen";
                     instance.Btn_Save.Content = "Speichern";
                     instance.Btn_Select.Content = "Auswählen";
-                    instance.Btn_Options.Content = "Einstellung";
+                    instance.Btn_Options.Content = "Einstellungen";
                     instance.Txt_PaletteNameTitle.Text = "Palettenname:";
                     instance.Txt_Primary1Title.Text = "Primär 1";
                     instance.Txt_Primary2Title.Text = "Primär 2";

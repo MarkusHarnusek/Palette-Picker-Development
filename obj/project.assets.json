@@ -1,37 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net9.0-windows7.0": {
-      "WindowsAPICodePack-Core/1.1.2": {
-        "type": "package",
-        "compile": {
-          "lib/Microsoft.WindowsAPICodePack.dll": {}
-        },
-        "runtime": {
-          "lib/Microsoft.WindowsAPICodePack.dll": {}
-        }
-      }
-    }
+    "net9.0-windows7.0": {}
   },
-  "libraries": {
-    "WindowsAPICodePack-Core/1.1.2": {
-      "sha512": "tGEkicg61OvHHuFyD4Vu8H4R0q5H1dlpN6fqjdYG+MGIp16znEVo/I+LhMTx3nKpM46reCcE6oC8fJqVJix2Bg==",
-      "type": "package",
-      "path": "windowsapicodepack-core/1.1.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/Microsoft.WindowsAPICodePack.dll",
-        "lib/Microsoft.WindowsAPICodePack.xml",
-        "windowsapicodepack-core.1.1.2.nupkg.sha512",
-        "windowsapicodepack-core.nuspec"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0-windows7.0": [
-      "WindowsAPICodePack-Core >= 1.1.2"
-    ]
+    "net9.0-windows7.0": []
   },
   "packageFolders": {
     "C:\\Users\\MarkusHTL\\.nuget\\packages\\": {},
@@ -83,12 +57,6 @@
     "frameworks": {
       "net9.0-windows7.0": {
         "targetAlias": "net9.0-windows",
-        "dependencies": {
-          "WindowsAPICodePack-Core": {
-            "target": "Package",
-            "version": "[1.1.2, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",
@@ -111,17 +79,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'WindowsAPICodePack-Core 1.1.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "WindowsAPICodePack-Core",
-      "targetGraphs": [
-        "net9.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }
