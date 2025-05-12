@@ -12,6 +12,7 @@ namespace PalettePicker
         public OptionsWindow()
         {
             InitializeComponent();
+            SetLanguage(MainWindow.currentLanguage);
         }
 
         private void SetLanguage(int languageID)
