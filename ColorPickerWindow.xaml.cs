@@ -30,9 +30,51 @@ namespace PalettePicker
 
         private void InfoUpdate()
         {
-            Txt_Hue_Info.Text = $"Color Hue: {Math.Round(hue).ToString()}";
-            Txt_Saturation_Info.Text = $"Color Saturation: {Math.Round(saturation).ToString()}";
-            Txt_Luminance_Info.Text = $"Color Luminance: {Math.Round(luminance).ToString()}";
+            switch (MainWindow.currentLanguage)
+            {
+                case 0:
+                    Txt_Hue_Info.Text = $"Color Hue: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"Color Saturation: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"Color Luminance: {Math.Round(luminance).ToString()}";
+                    break;
+
+                case 1:
+                    Txt_Hue_Info.Text = $"Farbton: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"Farbintensität: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"Farbhelligkeit: {Math.Round(luminance).ToString()}";
+                    break;
+
+                case 2:
+                    Txt_Hue_Info.Text = $"Tono de color: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"Saturación de color: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"Luminosidad del color: {Math.Round(luminance).ToString()}";
+                    break;
+
+                case 3:
+                    Txt_Hue_Info.Text = $"Teinte de couleur: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"Saturation de couleur: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"Luminosité de la couleur: {Math.Round(luminance).ToString()}";
+                    break;
+
+                case 4:
+                    Txt_Hue_Info.Text = $"颜色色调: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"颜色饱和度: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"颜色亮度: {Math.Round(luminance).ToString()}";
+                    break;
+
+                case 5:
+                    Txt_Hue_Info.Text = $"Cor Hue: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"Cor Saturação: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"Cor Luminosidade: {Math.Round(luminance).ToString()}";
+                    break;
+
+                case 6:
+                    Txt_Hue_Info.Text = $"Цветовой оттенок: {Math.Round(hue).ToString()}";
+                    Txt_Saturation_Info.Text = $"Цветовая насыщенность: {Math.Round(saturation).ToString()}";
+                    Txt_Luminance_Info.Text = $"Цветовая яркость: {Math.Round(luminance).ToString()}";
+                    break;
+
+            }
 
             Rct_ColorPreview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, luminance)));
             Rct_Hue_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, 100, 50)));
@@ -46,16 +88,136 @@ namespace PalettePicker
             Txb_HexColor.Text = GetHexColor(hue, saturation, luminance);
         }
 
+        public void SetLanguage(int languageId, ColorPickerWindow instance)
+        {
+            InfoUpdate();
+
+            switch (languageId)
+            {
+                case 0:
+                    instance.Title = "Color Picker";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "Currently editing: Primary 1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "Currently editing: Primary 2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "Currently editing: Secondary 1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "Currently editing: Secondary 2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "Currently editing: Text"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "Pick your desired color";
+                    instance.Btn_OK.Content = "OK";
+
+                    break;
+
+                case 1:
+                    instance.Title = "Farbwähler";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Primär 1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Primär 2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Sekundär 1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Sekundär 2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Text"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "Wähle die gewünschte Farbe";
+                    instance.Btn_OK.Content = "OK";
+
+                    break;
+
+                case 2:
+                    instance.Title = "Selector de color";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Primario 1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Primario 2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Secundario 1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Secundario 2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Texto"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "Seleccione su color deseado";
+                    instance.Btn_OK.Content = "OK";
+
+                    break;
+
+                case 3:
+                    instance.Title = "Sélecteur de couleur";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Primaire 1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Primaire 2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Secondaire 1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Secondaire 2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Texte"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "Sélectionnez la couleur souhaitée";
+                    instance.Btn_OK.Content = "OK";
+
+                    break;
+
+                case 4:
+                    instance.Title = "颜色选择器";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "当前编辑：主色1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "当前编辑：主色2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "当前编辑：辅助色1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "当前编辑：辅助色2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "当前编辑：文本"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "选择您想要的颜色";
+                    instance.Btn_OK.Content = "确定";
+
+                    break;
+
+                case 5:
+                    instance.Title = "Seletor de cores";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Primário 1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Primário 2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Secundário 1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Secundário 2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Texto"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "Selecione a cor desejada";
+                    instance.Btn_OK.Content = "OK";
+
+                    break;
+
+                case 6:
+                    instance.Title = "Выбор цвета";
+
+                    switch (editingNum)
+                    {
+                        case 0: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Основной 1"; break;
+                        case 1: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Основной 2"; break;
+                        case 2: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Вторичный 1"; break;
+                        case 3: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Вторичный 2"; break;
+                        case 4: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Текст"; break;
+                    }
+
+                    instance.Txt_ColorPickerTitle.Text = "Выберите желаемый цвет";
+                    instance.Btn_OK.Content = "ОК";
+
+                    break;
+            }
+        }
+
         public void ColorPickInit(string hex, int editing)
         {
-            switch (editing)
-            {
-                case 0: Txt_CurrentEditingColor.Text = "Primary 1"; break;
-                case 1: Txt_CurrentEditingColor.Text = "Primary 2"; break;
-                case 2: Txt_CurrentEditingColor.Text = "Secondary 1"; break;
-                case 3: Txt_CurrentEditingColor.Text = "Secondary 2"; break;
-                case 4: Txt_CurrentEditingColor.Text = "Text"; break;
-            }
+            editingNum = editing;
 
             Txb_HexColor.Text = hex;
             originalHex = hex;
@@ -234,6 +396,38 @@ namespace PalettePicker
             if (!ValidateHex(currentUserHexInput))
             {
                 MessageBox.Show("The inputed hex was not in the right format. Reverting to the original color.", "Input Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                switch (MainWindow.currentLanguage)
+                {
+                    case 0:
+                        MessageBox.Show("The inputed hex was not in the right format. Reverting to the original color.", "Input Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+
+                    case 1:
+                        MessageBox.Show("Der eingegebene Hex-Code war nicht im richtigen Format. Rückkehr zur Originalfarbe.", "Eingabewarnung", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+
+                    case 2:
+                        MessageBox.Show("El hex ingresado no estaba en el formato correcto. Volviendo al color original.", "Advertencia de entrada", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+
+                    case 3:
+                        MessageBox.Show("Le code hexadécimal saisi n'était pas au bon format. Retour à la couleur d'origine.", "Avertissement d'entrée", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+
+                    case 4:
+                        MessageBox.Show("输入的十六进制格式不正确。恢复到原始颜色。", "输入警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+
+                    case 5:
+                        MessageBox.Show("O hex inserido não estava no formato correto. Revertendo para a cor original.", "Aviso de entrada", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+
+                    case 6:
+                        MessageBox.Show("Введенный hex-код был неверного формата. Возврат к оригинальному цвету.", "Предупреждение о вводе", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+                }
+
                 Txb_HexColor.Text = originalHex;
                 currentUserHexInput = originalHex;
             }
@@ -266,7 +460,7 @@ namespace PalettePicker
             }
 
             return true;
-        } 
+        }
 
         #endregion
 

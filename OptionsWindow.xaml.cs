@@ -24,6 +24,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "Preferences";
                     Txt_Preferences_Language_Title.Text = "Language";
                     Btn_Apply.Content = "Apply";
+                    this.Title = "Options";
 
                     break;
 
@@ -33,6 +34,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "Präferenzen";
                     Txt_Preferences_Language_Title.Text = "Sprache";
                     Btn_Apply.Content = "Anwenden";
+                    this.Title = "Einstellungen";
 
                     break;
 
@@ -42,6 +44,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "Ajustes";
                     Txt_Preferences_Language_Title.Text = "Idioma";
                     Btn_Apply.Content = "Aplicar";
+                    this.Title = "Ajustes";
 
                     break;
 
@@ -51,6 +54,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "Préférences";
                     Txt_Preferences_Language_Title.Text = "Langue";
                     Btn_Apply.Content = "Appliquer";
+                    this.Title = "Paramètres";
 
                     break;
 
@@ -60,6 +64,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "首选项";
                     Txt_Preferences_Language_Title.Text = "语言";
                     Btn_Apply.Content = "应用";
+                    this.Title = "设置";
 
                     break;
 
@@ -69,6 +74,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "Preferências";
                     Txt_Preferences_Language_Title.Text = "Idioma";
                     Btn_Apply.Content = "Aplicar";
+                    this.Title = "Configurações";
 
                     break;
 
@@ -78,6 +84,7 @@ namespace PalettePicker
                     Txt_Preferences_Title.Text = "Предпочтения";
                     Txt_Preferences_Language_Title.Text = "Язык";
                     Btn_Apply.Content = "Применить";
+                    this.Title = "Настройки";
 
                     break;
             }
@@ -144,6 +151,19 @@ namespace PalettePicker
             {
                 MainWindow.currentLanguage = Lst_Language.SelectedIndex;
                 SetLanguage(MainWindow.currentLanguage);
+
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window is ColorPickerWindow colorPickerWindow)
+                    {
+                        colorPickerWindow.SetLanguage(MainWindow.currentLanguage, colorPickerWindow);
+                    }
+                    else if (window is MainWindow mainWindow)
+                    {
+                        MainWindow.SetLanguage(MainWindow.currentLanguage, mainWindow);
+                    }
+                }
+
             }
         }
     }

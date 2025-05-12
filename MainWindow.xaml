@@ -85,6 +85,7 @@
             Orientation="Horizontal" LostFocus="StackPanel_LostFocus">
 
             <TextBlock
+                x:Name="Txt_PaletteNameTitle"
                 Text="Palette Name:"
                 Foreground="{StaticResource Text}"
                 Background="Transparent"
@@ -136,6 +137,7 @@
                     Background="{StaticResource Background}">
 
                     <TextBlock
+                        x:Name="Txt_Primary1Title"
                         Text="Primary 1"
                         HorizontalAlignment="Center"
                         Foreground="{StaticResource Text}"
@@ -185,6 +187,7 @@
                     Background="{StaticResource Background}">
 
                     <TextBlock
+                        x:Name="Txt_Primary2Title"
                         Text="Primary 2"
                         HorizontalAlignment="Center"
                         Foreground="{StaticResource Text}"
@@ -234,6 +237,7 @@
                     Background="{StaticResource Background}">
 
                     <TextBlock
+                        x:Name="Txt_Secondary1Title"
                         Text="Secondary 1"
                         HorizontalAlignment="Center"
                         Foreground="{StaticResource Text}"
@@ -283,6 +287,7 @@
                     Background="{StaticResource Background}">
 
                     <TextBlock
+                        x:Name="Txt_Secondary2Title"
                         Text="Secondary 2"
                         HorizontalAlignment="Center"
                         Foreground="{StaticResource Text}"
@@ -332,6 +337,7 @@
                     Background="{StaticResource Background}">
 
                     <TextBlock
+                        x:Name="Txt_TextTitle"
                         Text="Text"
                         HorizontalAlignment="Center"
                         Foreground="{StaticResource Text}"

@@ -50,3 +50,5 @@ C:\Users\MarkusHTL\source\repos\PalettePicker\obj\Debug\net9.0-windows\refint\Pa
 C:\Users\MarkusHTL\source\repos\PalettePicker\obj\Debug\net9.0-windows\PalettePicker.pdb
 C:\Users\MarkusHTL\source\repos\PalettePicker\obj\Debug\net9.0-windows\PalettePicker.genruntimeconfig.cache
 C:\Users\MarkusHTL\source\repos\PalettePicker\obj\Debug\net9.0-windows\ref\PalettePicker.dll
+C:\Users\MarkusHTL\source\repos\PalettePicker\obj\Debug\net9.0-windows\OptionsWindow.g.cs
+C:\Users\MarkusHTL\source\repos\PalettePicker\obj\Debug\net9.0-windows\OptionsWindow.baml

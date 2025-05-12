@@ -33,9 +33,150 @@ namespace PalettePicker
 
         public static string editingFilePath = string.Empty;
 
+        public static int currentLanguage = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public static void SetLanguage(int languageID, MainWindow instance)
+        {
+            switch (languageID)
+            {
+                case 0:
+                    instance.Title = "Palette Picker";
+                    instance.Btn_Create.Content = "Create";
+                    instance.Btn_Save.Content = "Save";
+                    instance.Btn_Select.Content = "Select";
+                    instance.Btn_Options.Content = "Options";
+                    instance.Txt_PaletteNameTitle.Text = "Palette Name:";
+                    instance.Txt_Primary1Title.Text = "Primary 1";
+                    instance.Txt_Primary2Title.Text = "Primary 2";
+                    instance.Txt_Secondary1Title.Text = "Secondary 1";
+                    instance.Txt_Secondary2Title.Text = "Secondary 2";
+                    instance.Txt_TextTitle.Text = "Text";
+                    instance.Btn_Primary1_Edit.Content = "Edit";
+                    instance.Btn_Primary2_Edit.Content = "Edit";
+                    instance.Btn_Secondary1_Edit.Content = "Edit";
+                    instance.Btn_Secondary2_Edit.Content = "Edit";
+                    instance.Btn_Text_Edit.Content = "Edit";
+                    break;
+
+                case 1:
+                    instance.Title = "Palettenauswahl";
+                    instance.Btn_Create.Content = "Erstellen";
+                    instance.Btn_Save.Content = "Speichern";
+                    instance.Btn_Select.Content = "Auswählen";
+                    instance.Btn_Options.Content = "Einstellung";
+                    instance.Txt_PaletteNameTitle.Text = "Palettenname:";
+                    instance.Txt_Primary1Title.Text = "Primär 1";
+                    instance.Txt_Primary2Title.Text = "Primär 2";
+                    instance.Txt_Secondary1Title.Text = "Sekundär 1";
+                    instance.Txt_Secondary2Title.Text = "Sekundär 2";
+                    instance.Txt_TextTitle.Text = "Text";
+                    instance.Btn_Primary1_Edit.Content = "Bearbeiten";
+                    instance.Btn_Primary2_Edit.Content = "Bearbeiten";
+                    instance.Btn_Secondary1_Edit.Content = "Bearbeiten";
+                    instance.Btn_Secondary2_Edit.Content = "Bearbeiten";
+                    instance.Btn_Text_Edit.Content = "Bearbeiten";
+                    break;
+
+                case 2:
+                    instance.Title = "Selector de paleta";
+                    instance.Btn_Create.Content = "Crear";
+                    instance.Btn_Save.Content = "Ahorrar";
+                    instance.Btn_Select.Content = "Seleccionar";
+                    instance.Btn_Options.Content = "Opciones";
+                    instance.Txt_PaletteNameTitle.Text = "Nombre de la paleta:";
+                    instance.Txt_Primary1Title.Text = "Primario 1";
+                    instance.Txt_Primary2Title.Text = "Primario 2";
+                    instance.Txt_Secondary1Title.Text = "Secundario 1";
+                    instance.Txt_Secondary2Title.Text = "Secundario 2";
+                    instance.Txt_TextTitle.Text = "Texto";
+                    instance.Btn_Primary1_Edit.Content = "Editar";
+                    instance.Btn_Primary2_Edit.Content = "Editar";
+                    instance.Btn_Secondary1_Edit.Content = "Editar";
+                    instance.Btn_Secondary2_Edit.Content = "Editar";
+                    instance.Btn_Text_Edit.Content = "Editar";
+                    break;
+
+                case 3:
+                    instance.Title = "Sélecteur de palette";
+                    instance.Btn_Create.Content = "Créer";
+                    instance.Btn_Save.Content = "Sauvegarder";
+                    instance.Btn_Select.Content = "Sélectionner";
+                    instance.Btn_Options.Content = "Options";
+                    instance.Txt_PaletteNameTitle.Text = "Nom de la palette:";
+                    instance.Txt_Primary1Title.Text = "Primaire 1";
+                    instance.Txt_Primary2Title.Text = "Primaire 2";
+                    instance.Txt_Secondary1Title.Text = "Secondaire 1";
+                    instance.Txt_Secondary2Title.Text = "Secondaire 2";
+                    instance.Txt_TextTitle.Text = "Texte";
+                    instance.Btn_Primary1_Edit.Content = "Éditer";
+                    instance.Btn_Primary2_Edit.Content = "Éditer";
+                    instance.Btn_Secondary1_Edit.Content = "Éditer";
+                    instance.Btn_Secondary2_Edit.Content = "Éditer";
+                    instance.Btn_Text_Edit.Content = "Éditer";
+                    break;
+
+                case 4:
+                    instance.Title = "调色板选择器";
+                    instance.Btn_Create.Content = "创建";
+                    instance.Btn_Save.Content = "保存";
+                    instance.Btn_Select.Content = "选择";
+                    instance.Btn_Options.Content = "选项";
+                    instance.Txt_PaletteNameTitle.Text = "调色板名称:";
+                    instance.Txt_Primary1Title.Text = "主要 1";
+                    instance.Txt_Primary2Title.Text = "主要 2";
+                    instance.Txt_Secondary1Title.Text = "次要 1";
+                    instance.Txt_Secondary2Title.Text = "次要 2";
+                    instance.Txt_TextTitle.Text = "文本";
+                    instance.Btn_Primary1_Edit.Content = "编辑";
+                    instance.Btn_Primary2_Edit.Content = "编辑";
+                    instance.Btn_Secondary1_Edit.Content = "编辑";
+                    instance.Btn_Secondary2_Edit.Content = "编辑";
+                    instance.Btn_Text_Edit.Content = "编辑";
+                    break;
+
+                case 5:
+                    instance.Title = "Seletor de paleta";
+                    instance.Btn_Create.Content = "Criar";
+                    instance.Btn_Save.Content = "Salvar";
+                    instance.Btn_Select.Content = "Selecionar";
+                    instance.Btn_Options.Content = "Opções";
+                    instance.Txt_PaletteNameTitle.Text = "Nome da paleta:";
+                    instance.Txt_Primary1Title.Text = "Primário 1";
+                    instance.Txt_Primary2Title.Text = "Primário 2";
+                    instance.Txt_Secondary1Title.Text = "Secundário 1";
+                    instance.Txt_Secondary2Title.Text = "Secundário 2";
+                    instance.Txt_TextTitle.Text = "Texto";
+                    instance.Btn_Primary1_Edit.Content = "Editar";
+                    instance.Btn_Primary2_Edit.Content = "Editar";
+                    instance.Btn_Secondary1_Edit.Content = "Editar";
+                    instance.Btn_Secondary2_Edit.Content = "Editar";
+                    instance.Btn_Text_Edit.Content = "Editar";
+                    break;
+
+                case 6:
+                    instance.Title = "Выбор палитры";
+                    instance.Btn_Create.Content = "Создать";
+                    instance.Btn_Save.Content = "Сохранить";
+                    instance.Btn_Select.Content = "Выбрать";
+                    instance.Btn_Options.Content = "Настройки";
+                    instance.Txt_PaletteNameTitle.Text = "Имя палитры:";
+                    instance.Txt_Primary1Title.Text = "Основной 1";
+                    instance.Txt_Primary2Title.Text = "Основной 2";
+                    instance.Txt_Secondary1Title.Text = "Вторичный 1";
+                    instance.Txt_Secondary2Title.Text = "Вторичный 2";
+                    instance.Txt_TextTitle.Text = "Текст";
+                    instance.Btn_Primary1_Edit.Content = "Редактировать";
+                    instance.Btn_Primary2_Edit.Content = "Редактировать";
+                    instance.Btn_Secondary1_Edit.Content = "Редактировать";
+                    instance.Btn_Secondary2_Edit.Content = "Редактировать";
+                    instance.Btn_Text_Edit.Content = "Редактировать";
+                    break;
+            }
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -116,6 +257,7 @@ namespace PalettePicker
         {
             ColorPickerWindow colorPickerWindow = new ColorPickerWindow();
             colorPickerWindow.ColorPickInit(currentColor, editing);
+            colorPickerWindow.SetLanguage(currentLanguage, colorPickerWindow);
             colorPickerWindow.Show();
         }
 
@@ -153,7 +295,8 @@ namespace PalettePicker
 
         private void Btn_Options_Click(object sender, RoutedEventArgs e)
         {
-            
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Show();
         }
 
         #endregion
