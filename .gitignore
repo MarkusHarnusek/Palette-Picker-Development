@@ -1,1 +1,7 @@
 ﻿.vs/
+bin
+obj
+CommitMessage.txt
+PalettePicker.csproj.user
+PalettePicker.sln
+README.md
