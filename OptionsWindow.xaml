@@ -9,15 +9,7 @@
         ResizeMode="NoResize"
         Height="500" 
         Width="650"
-        Background="#0B0F0F">
-
-    <Window.Resources>
-
-        <SolidColorBrush x:Key="Background" Color="#0B0F0F"/>
-        <SolidColorBrush x:Key="Primary" Color="#2C6FBB"/>
-        <SolidColorBrush x:Key="Text" Color="#FAF9FE"/>
-    </Window.Resources>
-
+        Background="{DynamicResource P1}">
 
     <Grid>
 
@@ -26,7 +18,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Text="Options"
-            Foreground="{StaticResource Text}"
+            Foreground="{DynamicResource T}"
             FontFamily="Montserrat"
             FontSize="25"
             FontWeight="DemiBold"
@@ -42,9 +34,9 @@
                 x:Name="Btn_Preferences"
                 Margin="5,5,5,0"
                 Height="30"
-                Background="{StaticResource Primary}"
+                Background="{DynamicResource S1}"
                 BorderBrush="Transparent"
-                Foreground="{StaticResource Text}"
+                Foreground="{DynamicResource T}"
                 Content="Preferences"
                 FontFamily="Montserrat"
                 FontSize="20"/>
@@ -64,7 +56,7 @@
                 <TextBlock
                     x:Name="Txt_Preferences_Title"
                     Text="Preferences"
-                    Foreground="{StaticResource Text}"
+                    Foreground="{DynamicResource T}"
                     FontFamily="Montserrat"
                     FontSize="20"
                     VerticalAlignment="Top"
@@ -86,7 +78,7 @@
                         <TextBlock
                             x:Name="Txt_Preferences_Language_Title"
                             Text="Language:"
-                            Foreground="{StaticResource Text}"
+                            Foreground="{DynamicResource T}"
                             FontFamily="Montserrat"
                             FontSize="18"
                             VerticalAlignment="Center"
@@ -99,7 +91,7 @@
                             Width="200"
                             Height="25"
                             Margin="30,0,0,0"
-                            Foreground="{StaticResource Background}"
+                            Foreground="{StaticResource P1}"
                             FontFamily="Montserrat"
                             FontSize="14">
 
@@ -136,10 +128,10 @@
             Height="35"
             VerticalAlignment="Bottom"
             Margin="0,0,0,45"
-            Foreground="{StaticResource Text}"
-            Background="{StaticResource Background}"
+            Foreground="{DynamicResource T}"
+            Background="{DynamicResource P1}"
             BorderThickness="2"
-            BorderBrush="{StaticResource Primary}"
+            BorderBrush="{DynamicResource S1}"
             FontFamily="Montserrat"
             FontSize="20"
             FontWeight="Bold"

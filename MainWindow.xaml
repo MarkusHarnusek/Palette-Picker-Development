@@ -5,19 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PalettePicker"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow, IsDesignTimeCreatable=True}"
         ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
         Title="Paltette Picker" 
         Height="470"
         Width="800"
-        Background="#0B0F0F">
-
-    <Window.Resources>
-        
-        <SolidColorBrush x:Key="Background" Color="#0B0F0F"/>
-        <SolidColorBrush x:Key="Primary" Color="#2C6FBB"/>
-        <SolidColorBrush x:Key="Text" Color="#FAF9FE"/>
-    </Window.Resources>
+        Background="{DynamicResource P1}">
 
     <StackPanel>
         <StackPanel  
@@ -28,8 +22,8 @@
             <Button  
                x:Name="Btn_Select"
                Click="Btn_Select_Click"
-               Background="{StaticResource Primary}"
-               Foreground="{StaticResource Text}"
+               Background="{DynamicResource S1}"
+               Foreground="{DynamicResource T}"
                BorderThickness="0"
                Height="20"  
                Margin="2.5,0,0,0"
@@ -41,8 +35,8 @@
             <Button  
                 x:Name="Btn_Create"
                 Click="Btn_Create_Click"
-                Background="{StaticResource Primary}"
-                Foreground="{StaticResource Text}"
+                Background="{DynamicResource S1}"
+                Foreground="{DynamicResource T}"
                 BorderThickness="0"
                 Height="20"  
                 Margin="2.5,0,0,0"
@@ -54,8 +48,8 @@
             <Button  
                 x:Name="Btn_Save"
                 Click="Btn_Save_Click"
-                Background="{StaticResource Primary}"
-                Foreground="{StaticResource Text}"
+                Background="{DynamicResource S1}"
+                Foreground="{DynamicResource T}"
                 BorderThickness="0"
                 Height="20"  
                 Margin="2.5,0,0,0"
@@ -67,8 +61,8 @@
             <Button  
                 x:Name="Btn_Options"
                 Click="Btn_Options_Click"
-                Background="{StaticResource Primary}"
-                Foreground="{StaticResource Text}"
+                Background="{DynamicResource S1}"
+                Foreground="{DynamicResource T}"
                 BorderThickness="0"
                 Height="20"  
                 Margin="2.5,0,0,0"
@@ -88,7 +82,7 @@
             <TextBlock
                 x:Name="Txt_PaletteNameTitle"
                 Text="Palette Name:"
-                Foreground="{StaticResource Text}"
+                Foreground="{DynamicResource T}"
                 Background="Transparent"
                 FontFamily="Montserrat"
                 FontSize="18"
@@ -102,10 +96,10 @@
                 Height="20"
                 Width="250"
                 TextAlignment="Center"
-                Background="{StaticResource Background}"
-                BorderBrush="{StaticResource Primary}"
+                Background="{DynamicResource P1}"
+                BorderBrush="{DynamicResource S1}"
                 BorderThickness="2"
-                Foreground="{StaticResource Text}"
+                Foreground="{DynamicResource T}"
                 FontFamily="Montserrat"
                 FontSize="14"/>
 
@@ -135,13 +129,13 @@
                     Width="110"
                     Height="57"
                     Margin="0,208,0,0"
-                    Background="{StaticResource Background}">
+                    Background="{DynamicResource P1}">
 
                     <TextBlock
                         x:Name="Txt_Primary1Title"
                         Text="Primary 1"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontSize="14"/>
 
@@ -150,7 +144,7 @@
                         x:Name="Txt_Primary1"
                         Text="HEX"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontWeight="Light"
                         FontSize="13"/>
@@ -162,8 +156,8 @@
                         Height="20"
                         FontSize="12"
                         FontFamily="Montserrat"
-                        Foreground="{StaticResource Text}"
-                        Background="{StaticResource Primary}"
+                        Foreground="{DynamicResource T}"
+                        Background="{DynamicResource S1}"
                         BorderThickness="0"
                         Margin="2"/>
                 </StackPanel>
@@ -185,13 +179,13 @@
                     Width="110"
                     Height="57"
                     Margin="0,208,0,0"
-                    Background="{StaticResource Background}">
+                    Background="{DynamicResource P1}">
 
                     <TextBlock
                         x:Name="Txt_Primary2Title"
                         Text="Primary 2"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontSize="14"/>
 
@@ -200,7 +194,7 @@
                         x:Name="Txt_Primary2"
                         Text="HEX"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontWeight="Light"
                         FontSize="13"/>
@@ -212,8 +206,8 @@
                         Height="20"
                         FontSize="12"
                         FontFamily="Montserrat"
-                        Foreground="{StaticResource Text}"
-                        Background="{StaticResource Primary}"
+                        Foreground="{DynamicResource T}"
+                        Background="{DynamicResource S1}"
                         BorderThickness="0"
                         Margin="2"/>
                 </StackPanel>
@@ -235,13 +229,13 @@
                     Width="110"
                     Height="57"
                     Margin="0,208,0,0"
-                    Background="{StaticResource Background}">
+                    Background="{DynamicResource P1}">
 
                     <TextBlock
                         x:Name="Txt_Secondary1Title"
                         Text="Secondary 1"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontSize="14"/>
 
@@ -250,7 +244,7 @@
                         x:Name="Txt_Secondary1"
                         Text="HEX"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontWeight="Light"
                         FontSize="13"/>
@@ -262,8 +256,8 @@
                         Height="20"
                         FontSize="12"
                         FontFamily="Montserrat"
-                        Foreground="{StaticResource Text}"
-                        Background="{StaticResource Primary}"
+                        Foreground="{DynamicResource T}"
+                        Background="{DynamicResource S1}"
                         BorderThickness="0"
                         Margin="2"/>
                 </StackPanel>
@@ -285,13 +279,13 @@
                     Width="110"
                     Height="57"
                     Margin="0,208,0,0"
-                    Background="{StaticResource Background}">
+                    Background="{DynamicResource P1}">
 
                     <TextBlock
                         x:Name="Txt_Secondary2Title"
                         Text="Secondary 2"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontSize="14"/>
 
@@ -300,7 +294,7 @@
                         x:Name="Txt_Secondary2"
                         Text="HEX"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontWeight="Light"
                         FontSize="13"/>
@@ -312,8 +306,8 @@
                         Height="20"
                         FontSize="12"
                         FontFamily="Montserrat"
-                        Foreground="{StaticResource Text}"
-                        Background="{StaticResource Primary}"
+                        Foreground="{DynamicResource T}"
+                        Background="{DynamicResource S1}"
                         BorderThickness="0"
                         Margin="2"/>
                 </StackPanel>
@@ -335,13 +329,13 @@
                     Width="110"
                     Height="57"
                     Margin="0,208,0,0"
-                    Background="{StaticResource Background}">
+                    Background="{DynamicResource P1}">
 
                     <TextBlock
                         x:Name="Txt_TextTitle"
                         Text="Text"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontSize="14"/>
 
@@ -350,7 +344,7 @@
                         x:Name="Txt_Text"
                         Text="HEX"
                         HorizontalAlignment="Center"
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         FontFamily="Montserrat"
                         FontWeight="Light"
                         FontSize="13"/>
@@ -362,8 +356,8 @@
                         Height="20"
                         FontSize="12"
                         FontFamily="Montserrat"
-                        Foreground="{StaticResource Text}"
-                        Background="{StaticResource Primary}"
+                        Foreground="{DynamicResource T}"
+                        Background="{DynamicResource S1}"
                         BorderThickness="0"
                         Margin="2"/>
                 </StackPanel>

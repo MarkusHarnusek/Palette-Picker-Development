@@ -5,19 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PalettePicker"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow, IsDesignTimeCreatable=True}"
         Closed="Window_Closed"
         Title="Pick Color" 
         ResizeMode="NoResize"
-        Background="#0B0F0F"
+        Background="{DynamicResource P1}"
         Height="330" 
         Width="370">
-
-    <Window.Resources>
-
-        <SolidColorBrush x:Key="Background" Color="#0B0F0F"/>
-        <SolidColorBrush x:Key="Primary" Color="#2C6FBB"/>
-        <SolidColorBrush x:Key="Text" Color="#FAF9FE"/>
-    </Window.Resources>
 
     <Grid>
         
@@ -33,7 +27,7 @@
             Text="Currently editing: colorName"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Foreground="{StaticResource Text}"
+            Foreground="{DynamicResource T}"
             FontSize="12"
             FontFamily="Montserrat"
             FontWeight="Light"
@@ -43,7 +37,7 @@
             x:Name="Txt_ColorPickerTitle"
             Grid.Row="0"
             Text="Pick your desired color"
-            Foreground="{StaticResource Text}"
+            Foreground="{DynamicResource T}"
             HorizontalAlignment="Center"
             Height="15"
             FontFamily="Montserrat"
@@ -72,7 +66,7 @@
                 x:Name="Txt_Hue_Info"
                 HorizontalAlignment="Center"  
                 Text="Color Hue: "
-                Foreground="{StaticResource Text}"
+                Foreground="{DynamicResource T}"
                 FontFamily="Montserrat"
                 FontWeight="Light"
                 FontSize="10"/>
@@ -95,12 +89,12 @@
                     Width="25"
                     Height="25"
                     VerticalAlignment="Center"
-                    Foreground="{StaticResource Text}"
-                    Background="{StaticResource Primary}"
+                    Foreground="{DynamicResource T}"
+                    Background="{DynamicResource S1}"
                     BorderThickness="0">
 
                     <TextBlock
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         Background="Transparent"
                         TextAlignment="Center"
                         VerticalAlignment="Center"
@@ -135,12 +129,12 @@
                     Width="25"
                     Height="25"
                     VerticalAlignment="Center"
-                    Foreground="{StaticResource Text}"
-                    Background="{StaticResource Primary}"
+                    Foreground="{DynamicResource T}"
+                    Background="{DynamicResource S1}"
                     BorderThickness="0">
 
                     <TextBlock
-                        Foreground="{StaticResource Text}"
+                        Foreground="{StaticResource T}"
                         Background="Transparent"
                         TextAlignment="Center"
                         VerticalAlignment="Center"
@@ -157,7 +151,7 @@
                 Margin="0,2,0,2"
                 HorizontalAlignment="Center"  
                 Text="Color Saturation: "
-                Foreground="{StaticResource Text}"
+                Foreground="{DynamicResource T}"
                 FontFamily="Montserrat"
                 FontWeight="Light"
                 FontSize="10"/>
@@ -180,12 +174,12 @@
                     Width="25"
                     Height="25"
                     VerticalAlignment="Center"
-                    Foreground="{StaticResource Text}"
-                    Background="{StaticResource Primary}"
+                    Foreground="{DynamicResource T}"
+                    Background="{DynamicResource S1}"
                     BorderThickness="0">
 
                     <TextBlock
-                        Foreground="{StaticResource Text}"
+                        Foreground="{StaticResource T}"
                         Background="Transparent"
                         TextAlignment="Center"
                         VerticalAlignment="Center"
@@ -224,12 +218,12 @@
                     Width="25"
                     Height="25"
                     VerticalAlignment="Center"
-                    Foreground="{StaticResource Text}"
-                    Background="{StaticResource Primary}"
+                    Foreground="{DynamicResource T}"
+                    Background="{DynamicResource S1}"
                     BorderThickness="0">
 
                     <TextBlock
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         Background="Transparent"
                         TextAlignment="Center"
                         VerticalAlignment="Center"
@@ -246,7 +240,7 @@
                 Margin="0,2,0,2"
                 HorizontalAlignment="Center"  
                 Text="Color Luminance: "
-                Foreground="{StaticResource Text}"
+                Foreground="{DynamicResource T}"
                 FontFamily="Montserrat"
                 FontWeight="Light"
                 FontSize="10"/>
@@ -269,12 +263,12 @@
                     Width="25"
                     Height="25"
                     VerticalAlignment="Center"
-                    Foreground="{StaticResource Text}"
-                    Background="{StaticResource Primary}"
+                    Foreground="{DynamicResource T}"
+                    Background="{DynamicResource S1}"
                     BorderThickness="0">
 
                     <TextBlock
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         Background="Transparent"
                         TextAlignment="Center"
                         VerticalAlignment="Center"
@@ -316,12 +310,12 @@
                     Width="25"
                     Height="25"
                     VerticalAlignment="Center"
-                    Foreground="{StaticResource Text}"
-                    Background="{StaticResource Primary}"
+                    Foreground="{DynamicResource T}"
+                    Background="{DynamicResource S1}"
                     BorderThickness="0">
 
                     <TextBlock
-                        Foreground="{StaticResource Text}"
+                        Foreground="{DynamicResource T}"
                         Background="Transparent"
                         TextAlignment="Center"
                         VerticalAlignment="Center"
@@ -348,9 +342,9 @@
             Margin="0,0,0,65"
             Width="110"
             Height="20"
-            BorderBrush="{StaticResource Primary}"
-            Background="{StaticResource Background}"
-            Foreground="{StaticResource Text}"
+            BorderBrush="{DynamicResource S1}"
+            Background="{DynamicResource P1}"
+            Foreground="{DynamicResource T}"
             FontFamily="Montserrat"
             FontWeight="Normal"
             FontSize="12"/>
@@ -362,8 +356,8 @@
             Grid.Row="1"
             Content="OK"
             FontFamily="Montserrat"
-            Foreground="{StaticResource Text}"
-            Background="{StaticResource Primary}"
+            Foreground="{DynamicResource T}"
+            Background="{DynamicResource S1}"
             BorderThickness="0"
             Width="50"
             Height="20"
