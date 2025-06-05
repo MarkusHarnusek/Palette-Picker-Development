@@ -14,63 +14,168 @@
         Background="{DynamicResource P1}">
 
     <StackPanel>
-        <StackPanel  
-           Height="25"  
-           VerticalAlignment="Top"  
-           Orientation="Horizontal">
+        
+        <Border
+            Margin="2.5,2.5,0,0"
+            Height="30"
+            Width="377.5"
+            HorizontalAlignment="Left"
+            BorderBrush="{DynamicResource S1}"
+            BorderThickness="2.5"
+            CornerRadius="7.5">
+            
+            <StackPanel
+                Height="25"
+                Width="370"
+                VerticalAlignment="Center"  
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
 
-            <Button  
-               x:Name="Btn_Select"
-               Click="Btn_Select_Click"
-               Background="{DynamicResource S1}"
-               Foreground="{DynamicResource T}"
-               BorderThickness="0"
-               Height="20"  
-               Margin="2.5,0,0,0"
-               Content="Select"  
-               FontFamily="Montserrat"  
-               FontWeight="DemiBold"  
-               Width="90" />
 
-            <Button  
-                x:Name="Btn_Create"
-                Click="Btn_Create_Click"
-                Background="{DynamicResource S1}"
-                Foreground="{DynamicResource T}"
-                BorderThickness="0"
-                Height="20"  
-                Margin="2.5,0,0,0"
-                Content="Create"  
-                FontFamily="Montserrat"  
-                FontWeight="DemiBold"  
-                Width="90"/>
+                <Border
+                    Margin="2.5,0,0,0"
+                    Width="90"
+                    Height="20"
+                    CornerRadius="5"
+                    Background="{DynamicResource S1}">
 
-            <Button  
-                x:Name="Btn_Save"
-                Click="Btn_Save_Click"
-                Background="{DynamicResource S1}"
-                Foreground="{DynamicResource T}"
-                BorderThickness="0"
-                Height="20"  
-                Margin="2.5,0,0,0"
-                Content="Save"  
-                FontFamily="Montserrat"  
-                FontWeight="DemiBold"  
-                Width="90"/>
+                    <Button  
+                       x:Name="Btn_Select"
+                       Click="Btn_Select_Click"
+                       MouseEnter="Btn_Select_MouseEnter" 
+                       MouseLeave="Btn_Select_MouseLeave"
+                       Background="Transparent"
+                       Foreground="{DynamicResource T}"
+                       BorderThickness="0"
+                       Content="Select"  
+                       FontFamily="Montserrat"  
+                       FontWeight="DemiBold">
 
-            <Button  
-                x:Name="Btn_Options"
-                Click="Btn_Options_Click"
-                Background="{DynamicResource S1}"
-                Foreground="{DynamicResource T}"
-                BorderThickness="0"
-                Height="20"  
-                Margin="2.5,0,0,0"
-                Content="Options"  
-                FontFamily="Montserrat"  
-                FontWeight="DemiBold"  
-                Width="90"/>
-        </StackPanel>
+                        <Button.Template>
+
+                            <ControlTemplate 
+                                TargetType="Button">
+
+                                <Border
+                                    Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+                <Border
+                    Margin="2.5,0,0,0"
+                    Width="90"
+                    Height="20"
+                    CornerRadius="5"
+                    Background="{DynamicResource S1}">
+
+                    <Button  
+                        x:Name="Btn_Create"
+                        MouseEnter="Btn_Create_MouseEnter"
+                        MouseLeave="Btn_Create_MouseLeave"
+                        Click="Btn_Create_Click"
+                        Background="Transparent"
+                        Foreground="{DynamicResource T}"
+                        BorderThickness="0"
+                        Content="Create"  
+                        FontFamily="Montserrat"  
+                        FontWeight="DemiBold">
+
+                        <Button.Template>
+
+                            <ControlTemplate 
+                                TargetType="Button">
+
+                                <Border
+                                    Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+                <Border
+                    Margin="2.5,0,0,0"
+                    Width="90"
+                    Height="20"
+                    CornerRadius="5"
+                    Background="{DynamicResource S1}">
+
+                    <Button  
+                        x:Name="Btn_Save"
+                        Click="Btn_Save_Click"
+                        MouseEnter="Btn_Save_MouseEnter"
+                        MouseLeave="Btn_Save_MouseLeave"
+                        Background="Transparent"
+                        Foreground="{DynamicResource T}"
+                        BorderThickness="0"
+                        Content="Save"  
+                        FontFamily="Montserrat"  
+                        FontWeight="DemiBold">
+
+                        <Button.Template>
+
+                            <ControlTemplate 
+                                TargetType="Button">
+
+                                <Border
+                                    Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+                <Border
+                    Margin="2.5,0,0,0"
+                    Width="90"
+                    Height="20"
+                    CornerRadius="5"
+                    Background="{DynamicResource S1}">
+
+                    <Button  
+                        x:Name="Btn_Options"
+                        Click="Btn_Options_Click"
+                        Background="Transparent"
+                        Foreground="{DynamicResource T}"
+                        BorderThickness="0"
+                        Content="Options"  
+                        FontFamily="Montserrat"  
+                        FontWeight="DemiBold" MouseEnter="Btn_Options_MouseEnter" MouseLeave="Btn_Options_MouseLeave">
+
+                        <Button.Template>
+
+                            <ControlTemplate 
+                                TargetType="Button">
+
+                                <Border
+                                    Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+            </StackPanel>
+        </Border>
+        
 
         <StackPanel
             Height="24"

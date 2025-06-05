@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -264,16 +265,92 @@ namespace PalettePicker
 
         #region HeadBarControls
 
+        #region BtnCreate
+
         private void Btn_Create_Click(object sender, RoutedEventArgs e)
         {
             SetRandomColors();
             Txb_PalleteName.Text = GetRandomPalleteName();
         }
 
+        private void Btn_Select_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Tag is not double)
+                    button.Tag = button.FontSize;
+
+                double originalFontSize = (double)button.Tag;
+
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize + 1.5,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        private void Btn_Select_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button && button.Tag is double originalFontSize)
+            {
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        #endregion
+
+        #region BtnSave
+
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
             Save.SaveFile(currentEditingName, Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
         }
+
+        private void Btn_Create_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Tag is not double)
+                    button.Tag = button.FontSize;
+
+                double originalFontSize = (double)button.Tag;
+
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize + 1.5,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        private void Btn_Create_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button && button.Tag is double originalFontSize)
+            {
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        #endregion
+
+        #region BtnSelect
 
         private void Btn_Select_Click(object sender, RoutedEventArgs e)
         {
@@ -294,11 +371,83 @@ namespace PalettePicker
             }
         }
 
+        private void Btn_Save_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Tag is not double)
+                    button.Tag = button.FontSize;
+
+                double originalFontSize = (double)button.Tag;
+
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize + 1.5,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        private void Btn_Save_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button && button.Tag is double originalFontSize)
+            {
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        #endregion
+
+        #region BtnOptions  
+
         private void Btn_Options_Click(object sender, RoutedEventArgs e)
         {
             OptionsWindow optionsWindow = new OptionsWindow();
             optionsWindow.Show();
         }
+
+        private void Btn_Options_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Tag is not double)
+                    button.Tag = button.FontSize;
+
+                double originalFontSize = (double)button.Tag;
+
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize + 1.5,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        private void Btn_Options_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button && button.Tag is double originalFontSize)
+            {
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalFontSize,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                button.BeginAnimation(Button.FontSizeProperty, animation);
+            }
+        }
+
+        #endregion
 
         #endregion
 
