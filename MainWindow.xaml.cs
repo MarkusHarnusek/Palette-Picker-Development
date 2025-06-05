@@ -268,7 +268,9 @@ namespace PalettePicker
             if (sender is Button button)
             {
                 if (button.Tag is not double)
+                {
                     button.Tag = button.FontSize;
+                }
 
                 double originalFontSize = (double)button.Tag;
 
@@ -310,7 +312,9 @@ namespace PalettePicker
             if (sender is Button button)
             {
                 if (button.Tag is not double)
+                {
                     button.Tag = button.FontSize;
+                }
 
                 double originalFontSize = (double)button.Tag;
 
@@ -365,7 +369,9 @@ namespace PalettePicker
             if (sender is Button button)
             {
                 if (button.Tag is not double)
+                {
                     button.Tag = button.FontSize;
+                }
 
                 double originalFontSize = (double)button.Tag;
 
@@ -408,7 +414,9 @@ namespace PalettePicker
             if (sender is Button button)
             {
                 if (button.Tag is not double)
+                {
                     button.Tag = button.FontSize;
+                }
 
                 double originalFontSize = (double)button.Tag;
 
