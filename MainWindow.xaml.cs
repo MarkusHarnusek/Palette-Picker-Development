@@ -48,7 +48,7 @@ namespace PalettePicker
             {
                 case 0:
                     instance.Title = "Palette Picker";
-                    instance.Btn_Create.Content = "Create";
+                    instance.Btn_Generate.Content = "Generate";
                     instance.Btn_Save.Content = "Save";
                     instance.Btn_Select.Content = "Select";
                     instance.Btn_Options.Content = "Options";
@@ -67,7 +67,7 @@ namespace PalettePicker
 
                 case 1:
                     instance.Title = "Palettenauswahl";
-                    instance.Btn_Create.Content = "Erstellen";
+                    instance.Btn_Generate.Content = "Generieren";
                     instance.Btn_Save.Content = "Speichern";
                     instance.Btn_Select.Content = "Auswählen";
                     instance.Btn_Options.Content = "Einstellungen";
@@ -86,7 +86,7 @@ namespace PalettePicker
 
                 case 2:
                     instance.Title = "Selector de paleta";
-                    instance.Btn_Create.Content = "Crear";
+                    instance.Btn_Generate.Content = "Genera";
                     instance.Btn_Save.Content = "Ahorrar";
                     instance.Btn_Select.Content = "Seleccionar";
                     instance.Btn_Options.Content = "Opciones";
@@ -105,7 +105,7 @@ namespace PalettePicker
 
                 case 3:
                     instance.Title = "Sélecteur de palette";
-                    instance.Btn_Create.Content = "Créer";
+                    instance.Btn_Generate.Content = "Générer";
                     instance.Btn_Save.Content = "Sauvegarder";
                     instance.Btn_Select.Content = "Sélectionner";
                     instance.Btn_Options.Content = "Options";
@@ -124,7 +124,7 @@ namespace PalettePicker
 
                 case 4:
                     instance.Title = "调色板选择器";
-                    instance.Btn_Create.Content = "创建";
+                    instance.Btn_Generate.Content = "Générer";
                     instance.Btn_Save.Content = "保存";
                     instance.Btn_Select.Content = "选择";
                     instance.Btn_Options.Content = "选项";
@@ -143,7 +143,7 @@ namespace PalettePicker
 
                 case 5:
                     instance.Title = "Seletor de paleta";
-                    instance.Btn_Create.Content = "Criar";
+                    instance.Btn_Generate.Content = "Gerar";
                     instance.Btn_Save.Content = "Salvar";
                     instance.Btn_Select.Content = "Selecionar";
                     instance.Btn_Options.Content = "Opções";
@@ -162,7 +162,7 @@ namespace PalettePicker
 
                 case 6:
                     instance.Title = "Выбор палитры";
-                    instance.Btn_Create.Content = "Создать";
+                    instance.Btn_Generate.Content = "Сгенерировать";
                     instance.Btn_Save.Content = "Сохранить";
                     instance.Btn_Select.Content = "Выбрать";
                     instance.Btn_Options.Content = "Настройки";
@@ -265,15 +265,15 @@ namespace PalettePicker
 
         #region HeadBarControls
 
-        #region BtnCreate
+        #region BtnGenerate
 
-        private void Btn_Create_Click(object sender, RoutedEventArgs e)
+        private void Btn_Generate_Click(object sender, RoutedEventArgs e)
         {
             SetRandomColors();
             Txb_PalleteName.Text = GetRandomPalleteName();
         }
 
-        private void Btn_Select_MouseEnter(object sender, MouseEventArgs e)
+        private void Btn_Generate_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is Button button)
             {
@@ -292,7 +292,7 @@ namespace PalettePicker
             }
         }
 
-        private void Btn_Select_MouseLeave(object sender, MouseEventArgs e)
+        private void Btn_Generate_MouseLeave(object sender, MouseEventArgs e)
         {
             if (sender is Button button && button.Tag is double originalFontSize)
             {
@@ -315,7 +315,7 @@ namespace PalettePicker
             Save.SaveFile(currentEditingName, Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
         }
 
-        private void Btn_Create_MouseEnter(object sender, MouseEventArgs e)
+        private void Btn_Save_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is Button button)
             {
@@ -334,7 +334,7 @@ namespace PalettePicker
             }
         }
 
-        private void Btn_Create_MouseLeave(object sender, MouseEventArgs e)
+        private void Btn_Save_MouseLeave(object sender, MouseEventArgs e)
         {
             if (sender is Button button && button.Tag is double originalFontSize)
             {
@@ -371,7 +371,7 @@ namespace PalettePicker
             }
         }
 
-        private void Btn_Save_MouseEnter(object sender, MouseEventArgs e)
+        private void Btn_Select_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is Button button)
             {
@@ -390,7 +390,7 @@ namespace PalettePicker
             }
         }
 
-        private void Btn_Save_MouseLeave(object sender, MouseEventArgs e)
+        private void Btn_Select_MouseLeave(object sender, MouseEventArgs e)
         {
             if (sender is Button button && button.Tag is double originalFontSize)
             {
