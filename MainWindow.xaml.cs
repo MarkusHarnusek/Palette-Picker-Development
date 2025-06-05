@@ -52,7 +52,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "Save";
                     instance.Btn_Select.Content = "Select";
                     instance.Btn_Options.Content = "Options";
-                    instance.Txt_PaletteNameTitle.Text = "Palette Name:";
                     instance.Txt_Primary1Title.Text = "Primary 1";
                     instance.Txt_Primary2Title.Text = "Primary 2";
                     instance.Txt_Secondary1Title.Text = "Secondary 1";
@@ -71,7 +70,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "Speichern";
                     instance.Btn_Select.Content = "Auswählen";
                     instance.Btn_Options.Content = "Einstellungen";
-                    instance.Txt_PaletteNameTitle.Text = "Palettenname:";
                     instance.Txt_Primary1Title.Text = "Primär 1";
                     instance.Txt_Primary2Title.Text = "Primär 2";
                     instance.Txt_Secondary1Title.Text = "Sekundär 1";
@@ -90,7 +88,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "Ahorrar";
                     instance.Btn_Select.Content = "Seleccionar";
                     instance.Btn_Options.Content = "Opciones";
-                    instance.Txt_PaletteNameTitle.Text = "Nombre de la paleta:";
                     instance.Txt_Primary1Title.Text = "Primario 1";
                     instance.Txt_Primary2Title.Text = "Primario 2";
                     instance.Txt_Secondary1Title.Text = "Secundario 1";
@@ -109,7 +106,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "Sauvegarder";
                     instance.Btn_Select.Content = "Sélectionner";
                     instance.Btn_Options.Content = "Options";
-                    instance.Txt_PaletteNameTitle.Text = "Nom de la palette:";
                     instance.Txt_Primary1Title.Text = "Primaire 1";
                     instance.Txt_Primary2Title.Text = "Primaire 2";
                     instance.Txt_Secondary1Title.Text = "Secondaire 1";
@@ -128,7 +124,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "保存";
                     instance.Btn_Select.Content = "选择";
                     instance.Btn_Options.Content = "选项";
-                    instance.Txt_PaletteNameTitle.Text = "调色板名称:";
                     instance.Txt_Primary1Title.Text = "主要 1";
                     instance.Txt_Primary2Title.Text = "主要 2";
                     instance.Txt_Secondary1Title.Text = "次要 1";
@@ -147,7 +142,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "Salvar";
                     instance.Btn_Select.Content = "Selecionar";
                     instance.Btn_Options.Content = "Opções";
-                    instance.Txt_PaletteNameTitle.Text = "Nome da paleta:";
                     instance.Txt_Primary1Title.Text = "Primário 1";
                     instance.Txt_Primary2Title.Text = "Primário 2";
                     instance.Txt_Secondary1Title.Text = "Secundário 1";
@@ -166,7 +160,6 @@ namespace PalettePicker
                     instance.Btn_Save.Content = "Сохранить";
                     instance.Btn_Select.Content = "Выбрать";
                     instance.Btn_Options.Content = "Настройки";
-                    instance.Txt_PaletteNameTitle.Text = "Имя палитры:";
                     instance.Txt_Primary1Title.Text = "Основной 1";
                     instance.Txt_Primary2Title.Text = "Основной 2";
                     instance.Txt_Secondary1Title.Text = "Вторичный 1";
@@ -184,8 +177,6 @@ namespace PalettePicker
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             SetRandomColors();
-            Txb_PalleteName.Text = GetRandomPalleteName();
-            currentEditingName = Txb_PalleteName.Text;
         }
 
         private void SetRandomColors()
@@ -270,7 +261,6 @@ namespace PalettePicker
         private void Btn_Generate_Click(object sender, RoutedEventArgs e)
         {
             SetRandomColors();
-            Txb_PalleteName.Text = GetRandomPalleteName();
         }
 
         private void Btn_Generate_MouseEnter(object sender, MouseEventArgs e)
@@ -358,7 +348,6 @@ namespace PalettePicker
             if (!string.IsNullOrEmpty(editingFilePath))
             {
                 currentEditingName = Save.GetSaveInfo(editingFilePath).name;
-                Txb_PalleteName.Text = currentEditingName;
                 Primary1 = Save.GetSaveInfo(editingFilePath).primary1;
                 Primary2 = Save.GetSaveInfo(editingFilePath).primary2;
                 Secondary1 = Save.GetSaveInfo(editingFilePath).secondary1;
@@ -568,10 +557,5 @@ namespace PalettePicker
         }
 
         #endregion
-
-        private void StackPanel_LostFocus(object sender, RoutedEventArgs e)
-        {
-            currentEditingName = Txb_PalleteName.Text;
-        }
     }
 }
