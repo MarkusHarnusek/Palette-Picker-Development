@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace PalettePicker
 {
@@ -7,6 +8,8 @@ namespace PalettePicker
     /// </summary>
     public partial class OptionsWindow : Window
     {
+        //TODO fix language title textbox from preferences to language
+
         int language = 0;
 
         public OptionsWindow()
@@ -21,9 +24,9 @@ namespace PalettePicker
             {
                 case 0:
                     Txt_WindowTitle.Text = "Options";
-                    Btn_Preferences.Content = "Preferences";
-                    Txt_Preferences_Title.Text = "Preferences";
-                    Txt_Preferences_Language_Title.Text = "Language";
+                    Btn_Language.Content = "Language";
+                    Txt_Language_Title.Text = "Preferences";
+                    Txt_Language_Language_Title.Text = "Language";
                     Btn_Apply.Content = "Apply";
                     this.Title = "Options";
 
@@ -31,9 +34,9 @@ namespace PalettePicker
 
                 case 1:
                     Txt_WindowTitle.Text = "Einstellungen";
-                    Btn_Preferences.Content = "Präferenzen";
-                    Txt_Preferences_Title.Text = "Präferenzen";
-                    Txt_Preferences_Language_Title.Text = "Sprache";
+                    Btn_Language.Content = "Sprache";
+                    Txt_Language_Title.Text = "Präferenzen";
+                    Txt_Language_Language_Title.Text = "Sprache";
                     Btn_Apply.Content = "Anwenden";
                     this.Title = "Einstellungen";
 
@@ -41,9 +44,9 @@ namespace PalettePicker
 
                 case 2:
                     Txt_WindowTitle.Text = "Ajustes";
-                    Btn_Preferences.Content = "Ajustes";
-                    Txt_Preferences_Title.Text = "Ajustes";
-                    Txt_Preferences_Language_Title.Text = "Idioma";
+                    Btn_Language.Content = "Idioma";
+                    Txt_Language_Title.Text = "Ajustes";
+                    Txt_Language_Language_Title.Text = "Idioma";
                     Btn_Apply.Content = "Aplicar";
                     this.Title = "Ajustes";
 
@@ -51,9 +54,9 @@ namespace PalettePicker
 
                 case 3:
                     Txt_WindowTitle.Text = "Paramètres";
-                    Btn_Preferences.Content = "Preferencias";
-                    Txt_Preferences_Title.Text = "Préférences";
-                    Txt_Preferences_Language_Title.Text = "Langue";
+                    Btn_Language.Content = "Langue";
+                    Txt_Language_Title.Text = "Préférences";
+                    Txt_Language_Language_Title.Text = "Langue";
                     Btn_Apply.Content = "Appliquer";
                     this.Title = "Paramètres";
 
@@ -61,9 +64,9 @@ namespace PalettePicker
 
                 case 4:
                     Txt_WindowTitle.Text = "设置";
-                    Btn_Preferences.Content = "首选项";
-                    Txt_Preferences_Title.Text = "首选项";
-                    Txt_Preferences_Language_Title.Text = "语言";
+                    Btn_Language.Content = "语言";
+                    Txt_Language_Title.Text = "首选项";
+                    Txt_Language_Language_Title.Text = "语言";
                     Btn_Apply.Content = "应用";
                     this.Title = "设置";
 
@@ -71,9 +74,9 @@ namespace PalettePicker
 
                 case 5:
                     Txt_WindowTitle.Text = "Configurações";
-                    Btn_Preferences.Content = "Preferências";
-                    Txt_Preferences_Title.Text = "Preferências";
-                    Txt_Preferences_Language_Title.Text = "Idioma";
+                    Btn_Language.Content = "Idioma";
+                    Txt_Language_Title.Text = "Preferências";
+                    Txt_Language_Language_Title.Text = "Idioma";
                     Btn_Apply.Content = "Aplicar";
                     this.Title = "Configurações";
 
@@ -81,9 +84,9 @@ namespace PalettePicker
 
                 case 6:
                     Txt_WindowTitle.Text = "Настройки";
-                    Btn_Preferences.Content = "Предпочтения";
-                    Txt_Preferences_Title.Text = "Предпочтения";
-                    Txt_Preferences_Language_Title.Text = "Язык";
+                    Btn_Language.Content = "Язык";
+                    Txt_Language_Title.Text = "Предпочтения";
+                    Txt_Language_Language_Title.Text = "Язык";
                     Btn_Apply.Content = "Применить";
                     this.Title = "Настройки";
 
@@ -166,6 +169,80 @@ namespace PalettePicker
                 }
 
             }
+        }
+
+        private void Btn_Preferences_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            //TODO fix animation
+
+            //var border = Brd_Btn_Preferences;
+            //if (border != null)
+            //{
+            //    if (border.Tag is not double)
+            //    {
+            //        border.Tag = border.Height;
+            //    }
+
+            //    double originalHeigthValue = (double)border.Tag;
+
+            //    var animation = new System.Windows.Media.Animation.DoubleAnimation
+            //    {
+            //        To = originalHeigthValue + 3, 
+            //        Duration = new Duration(TimeSpan.FromMilliseconds(200)),
+            //        EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+            //    };
+            //    border.BeginAnimation(HeightProperty, animation);
+            //}
+
+            if (sender is Border border)
+            {
+                if (border.Tag is not double)
+                {
+                    border.Tag = border.Height;
+                }
+
+                double originalHeigth = (double)border.Tag;
+
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalHeigth + 3,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                border.BeginAnimation(HeightProperty, animation);
+            }
+        }
+
+        private void Btn_Preferences_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            //TODO fix animation            
+
+            //if (sender is Border border && border.Tag is double originalFontSize)
+            //{
+            //    var animation = new System.Windows.Media.Animation.DoubleAnimation
+            //    {
+            //        To = originalFontSize,
+            //        Duration = new Duration(TimeSpan.FromMilliseconds(200)),
+            //        EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+            //    };
+            //    border.BeginAnimation(HeightProperty, animation);
+            //}
+
+            if (sender is Border border && border.Tag is double originalHeigth)
+            {
+                var animation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    To = originalHeigth,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
+                };
+                border.BeginAnimation(HeightProperty, animation);
+            }
+        }
+
+        private void Btn_Preferences_Click(object sender, RoutedEventArgs e)
+        {
+            // Implement logic if needed by more options tabs
         }
     }
 }
