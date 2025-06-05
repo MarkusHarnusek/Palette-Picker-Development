@@ -255,50 +255,58 @@ namespace PalettePicker
 
         public static string GetSavePath()
         {
-            Microsoft.Win32.OpenFolderDialog dialog = new();
-            dialog.Title = "Select the folder to save the palette";
+            string title = "Select the folder to save the palette";
 
             switch (MainWindow.currentLanguage)
             {
-                case 0: dialog.Title = "Select the folder to save the palette"; break;
+                case 0: title = "Select where to save the palette"; break;
 
-                case 1: dialog.Title = "Wählen Sie den Ordner aus, in dem Sie die Palette speichern möchten"; break;
+                case 1: title = "Wählen Sie aus, wo Sie die Palette speichern möchten"; break;
 
-                case 2: dialog.Title = "Seleccione la carpeta para guardar la paleta"; break;
+                case 2: title = "Seleziona dove salvare la palette"; break;
 
-                case 3: dialog.Title = "Sélectionnez le dossier dans lequel enregistrer la palette"; break;
+                case 3: title = "Sélectionnez où enregistrer la palette  "; break;
 
-                case 4: dialog.Title = "选择保存调色板的文件夹"; break;
+                case 4: title = "选择保存调色板的位置"; break;
 
-                case 5: dialog.Title = "Selecione a pasta para salvar a paleta"; break;
+                case 5: title = "Selecione onde salvar a paleta"; break;
 
-                case 6: dialog.Title = "Выберите папку для сохранения палитры"; break;
+                case 6: title = "Выберите место для сохранения палитры"; break;
 
             }
 
-            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dialog.Multiselect = false;
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Title = title,
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                DefaultExt = ".json",
+                AddExtension = true,
+                OverwritePrompt = true
+            };
 
-            bool? result = dialog.ShowDialog();
+            bool? result = saveFileDialog.ShowDialog();
 
             if (result == true)
             {
-                return dialog.FolderName;
+                return saveFileDialog.FileName;
             }
             else
             {
-                System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(2, MainWindow.currentLanguage).msg, GetTranslatedInvalidErrMsg(2, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(
+                    GetTranslatedInvalidErrMsg(2, MainWindow.currentLanguage).msg,
+                    GetTranslatedInvalidErrMsg(2, MainWindow.currentLanguage).title,
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Warning);
                 return string.Empty;
             }
         }
 
         public static void SaveFile(string paletteName, string primary1, string primary2, string seconadary1, string secondary2, string text, bool readOnly, bool homeVisible, bool pinned)
         {
-            // Fixed values > Implemt logic with later update
-
             string path = GetSavePath();
 
-            if (!string.IsNullOrEmpty(path) && Directory.Exists(path))
+            if (!string.IsNullOrEmpty(path) && Directory.Exists(Path.GetDirectoryName(path)))
             {
                 readOnly = false;
                 homeVisible = true;
@@ -307,7 +315,7 @@ namespace PalettePicker
                 Pallete palette = new Pallete
                 {
                     valid = true,
-                    filePath = path,
+                    filePath = Path.GetDirectoryName(path),
                     paletteName = paletteName,
                     primary1 = primary1,
                     primary2 = primary2,
@@ -320,7 +328,7 @@ namespace PalettePicker
                 };
 
                 string jsonString = JsonSerializer.Serialize(palette);
-                File.WriteAllText(Path.Combine(palette.filePath, $"{palette.paletteName}.json"), jsonString);
+                File.WriteAllText(path, jsonString);
             }
             else
             {
