@@ -42,6 +42,8 @@
 
                 <Border
                     x:Name="Brd_Btn_Preferences"
+                    MouseEnter="Brd_Btn_Preferences_MouseEnter"
+                    MouseLeave="Brd_Btn_Preferences_MouseLeave"
                     Background="{DynamicResource S1}"
                     Height="30"
                     Margin="5,5,5,0"
@@ -50,8 +52,6 @@
                     <Button
                         x:Name="Btn_Language"
                         Click="Btn_Preferences_Click" 
-                        MouseEnter="Btn_Preferences_MouseEnter"
-                        MouseLeave="Btn_Preferences_MouseLeave"
                         Background="Transparent"
                         BorderBrush="Transparent"
                         Foreground="{DynamicResource T}"

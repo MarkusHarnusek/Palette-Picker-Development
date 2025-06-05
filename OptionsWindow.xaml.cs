@@ -8,8 +8,6 @@ namespace PalettePicker
     /// </summary>
     public partial class OptionsWindow : Window
     {
-        //TODO fix language title textbox from preferences to language
-
         int language = 0;
 
         public OptionsWindow()
@@ -25,7 +23,7 @@ namespace PalettePicker
                 case 0:
                     Txt_WindowTitle.Text = "Options";
                     Btn_Language.Content = "Language";
-                    Txt_Language_Title.Text = "Preferences";
+                    Txt_Language_Title.Text = "Language";
                     Txt_Language_Language_Title.Text = "Language";
                     Btn_Apply.Content = "Apply";
                     this.Title = "Options";
@@ -35,7 +33,7 @@ namespace PalettePicker
                 case 1:
                     Txt_WindowTitle.Text = "Einstellungen";
                     Btn_Language.Content = "Sprache";
-                    Txt_Language_Title.Text = "Präferenzen";
+                    Txt_Language_Title.Text = "Sprache";
                     Txt_Language_Language_Title.Text = "Sprache";
                     Btn_Apply.Content = "Anwenden";
                     this.Title = "Einstellungen";
@@ -45,7 +43,7 @@ namespace PalettePicker
                 case 2:
                     Txt_WindowTitle.Text = "Ajustes";
                     Btn_Language.Content = "Idioma";
-                    Txt_Language_Title.Text = "Ajustes";
+                    Txt_Language_Title.Text = "Idioma";
                     Txt_Language_Language_Title.Text = "Idioma";
                     Btn_Apply.Content = "Aplicar";
                     this.Title = "Ajustes";
@@ -55,7 +53,7 @@ namespace PalettePicker
                 case 3:
                     Txt_WindowTitle.Text = "Paramètres";
                     Btn_Language.Content = "Langue";
-                    Txt_Language_Title.Text = "Préférences";
+                    Txt_Language_Title.Text = "Langue";
                     Txt_Language_Language_Title.Text = "Langue";
                     Btn_Apply.Content = "Appliquer";
                     this.Title = "Paramètres";
@@ -65,7 +63,7 @@ namespace PalettePicker
                 case 4:
                     Txt_WindowTitle.Text = "设置";
                     Btn_Language.Content = "语言";
-                    Txt_Language_Title.Text = "首选项";
+                    Txt_Language_Title.Text = "语言";
                     Txt_Language_Language_Title.Text = "语言";
                     Btn_Apply.Content = "应用";
                     this.Title = "设置";
@@ -75,7 +73,7 @@ namespace PalettePicker
                 case 5:
                     Txt_WindowTitle.Text = "Configurações";
                     Btn_Language.Content = "Idioma";
-                    Txt_Language_Title.Text = "Preferências";
+                    Txt_Language_Title.Text = "Idioma";
                     Txt_Language_Language_Title.Text = "Idioma";
                     Btn_Apply.Content = "Aplicar";
                     this.Title = "Configurações";
@@ -85,7 +83,7 @@ namespace PalettePicker
                 case 6:
                     Txt_WindowTitle.Text = "Настройки";
                     Btn_Language.Content = "Язык";
-                    Txt_Language_Title.Text = "Предпочтения";
+                    Txt_Language_Title.Text = "Язык";
                     Txt_Language_Language_Title.Text = "Язык";
                     Btn_Apply.Content = "Применить";
                     this.Title = "Настройки";
@@ -171,72 +169,46 @@ namespace PalettePicker
             }
         }
 
-        private void Btn_Preferences_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Brd_Btn_Preferences_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             //TODO fix animation
 
-            //var border = Brd_Btn_Preferences;
-            //if (border != null)
-            //{
-            //    if (border.Tag is not double)
-            //    {
-            //        border.Tag = border.Height;
-            //    }
-
-            //    double originalHeigthValue = (double)border.Tag;
-
-            //    var animation = new System.Windows.Media.Animation.DoubleAnimation
-            //    {
-            //        To = originalHeigthValue + 3, 
-            //        Duration = new Duration(TimeSpan.FromMilliseconds(200)),
-            //        EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
-            //    };
-            //    border.BeginAnimation(HeightProperty, animation);
-            //}
-
             if (sender is Border border)
             {
+                // Store the original height only once
                 if (border.Tag is not double)
                 {
                     border.Tag = border.Height;
                 }
 
-                double originalHeigth = (double)border.Tag;
+                double originalHeight = (double)border.Tag;
+                double targetHeight = originalHeight + 3;
 
                 var animation = new System.Windows.Media.Animation.DoubleAnimation
                 {
-                    To = originalHeigth + 3,
-                    Duration = TimeSpan.FromSeconds(0.2),
+                    From = border.ActualHeight,
+                    To = targetHeight,
+                    Duration = new Duration(TimeSpan.FromMilliseconds(200)),
                     EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
                 };
-                border.BeginAnimation(HeightProperty, animation);
+                border.BeginAnimation(HeightProperty, animation, System.Windows.Media.Animation.HandoffBehavior.SnapshotAndReplace);
             }
         }
 
-        private void Btn_Preferences_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Brd_Btn_Preferences_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             //TODO fix animation            
 
-            //if (sender is Border border && border.Tag is double originalFontSize)
-            //{
-            //    var animation = new System.Windows.Media.Animation.DoubleAnimation
-            //    {
-            //        To = originalFontSize,
-            //        Duration = new Duration(TimeSpan.FromMilliseconds(200)),
-            //        EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
-            //    };
-            //    border.BeginAnimation(HeightProperty, animation);
-            //}
-
-            if (sender is Border border && border.Tag is double originalHeigth)
+            if (sender is Border border && border.Tag is double originalHeight)
             {
                 var animation = new System.Windows.Media.Animation.DoubleAnimation
                 {
-                    To = originalHeigth,
-                    Duration = TimeSpan.FromSeconds(0.2),
+                    From = border.ActualHeight,
+                    To = originalHeight,
+                    Duration = new Duration(TimeSpan.FromMilliseconds(200)),
                     EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut }
                 };
-                border.BeginAnimation(HeightProperty, animation);
+                border.BeginAnimation(HeightProperty, animation, System.Windows.Media.Animation.HandoffBehavior.SnapshotAndReplace);
             }
         }
 
