@@ -82,95 +82,31 @@
         <Grid
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
-            Margin="0,60,25,0"
+            Margin="0,70,25,0"
             Width="375"
-            Height="325">
+            Height="370">
 
-            <Grid
-                x:Name="Grd_Language">
+            <Border
+                BorderBrush="{DynamicResource S1}"
+                BorderThickness="2.5"
+                CornerRadius="10">
 
-                <TextBlock
-                    x:Name="Txt_Language_Title"
-                    Text="Preferences"
-                    Foreground="{DynamicResource T}"
-                    FontFamily="Montserrat"
-                    FontSize="20"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Margin="0,5,0,0"/>
+                <Grid
+                    x:Name="Grd_Language">
 
-                <StackPanel
-                    Width="325"
-                    Height="325"
-                    Margin="0,25,0,0"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center">
+                    <TextBlock
+                        x:Name="Txt_Language_Title"
+                        Text="Language"
+                        Foreground="{DynamicResource T}"
+                        FontFamily="Montserrat"
+                        FontSize="20"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0,5,0,0"/>
 
-                    <StackPanel
-                        Height="35"
-                        Margin="0,10,0,10"
-                        Orientation="Horizontal">
 
-                        <TextBlock
-                            x:Name="Txt_Language_Language_Title"
-                            Text="Language:"
-                            Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"/>
-
-                        <ComboBox
-                            x:Name="Lst_Language"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Width="200"
-                            Height="25"
-                            Margin="30,0,0,0"
-                            Foreground="{StaticResource P1}"
-                            FontFamily="Montserrat"
-                            FontSize="14">
-
-                            <ComboBoxItem
-                                Content="English"/>
-
-                            <ComboBoxItem
-                                Content="Deutsch"/>
-
-                            <ComboBoxItem
-                                Content="Español"/>
-
-                            <ComboBoxItem
-                                Content="Français"/>
-
-                            <ComboBoxItem
-                                Content="中国人"/>
-
-                            <ComboBoxItem
-                                Content="Português"/>
-
-                            <ComboBoxItem 
-                                Content="Pусский"/>
-                        </ComboBox>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
+                </Grid>
+            </Border>
         </Grid>
-
-        <Button
-            x:Name="Btn_Apply"
-            Click="Btn_Apply_Click"
-            Width="150"
-            Height="35"
-            VerticalAlignment="Bottom"
-            Margin="0,0,0,45"
-            Foreground="{DynamicResource T}"
-            Background="{DynamicResource P1}"
-            BorderThickness="2"
-            BorderBrush="{DynamicResource S1}"
-            FontFamily="Montserrat"
-            FontSize="20"
-            FontWeight="Bold"
-            Content="Apply"/>
     </Grid>
 </Window>
