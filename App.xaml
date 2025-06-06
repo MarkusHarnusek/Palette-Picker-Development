@@ -5,10 +5,588 @@
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
+        
+        <Color x:Key="S1Color">#0055bf</Color>
+        
+        <Color x:Key="S2Color">#87cefa</Color>
+        
         <SolidColorBrush x:Key="P1" Color="#070d0d" />
+        
         <SolidColorBrush x:Key="P2" Color="#262626" />
-        <SolidColorBrush x:Key="S1" Color="#0055bf" />
-        <SolidColorBrush x:Key="S2" Color="#87cefa" />
+        
+        <SolidColorBrush x:Key="S1" Color="{StaticResource S1Color}" />
+        
+        <SolidColorBrush x:Key="S2" Color="{StaticResource S2Color}" />
+        
         <SolidColorBrush x:Key="T" Color="#eefafb" />
+
+        <Style x:Key="SelectButtonStyle" TargetType="Button">
+
+            <Setter 
+                Property="Background" 
+                Value="Transparent"/>
+
+            <Setter
+                Property="Foreground"
+                Value="{DynamicResource T}"/>
+
+            <Setter 
+                Property="BorderThickness" 
+                Value="0"/>
+
+            <Setter 
+                Property="FontFamily"
+                Value="Montserrat"/>
+
+            <Setter 
+                Property="FontWeight"
+                Value="DemiBold"/>
+
+            <Setter
+                Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate
+                        TargetType="Button">
+
+                        <Border 
+                            x:Name="border"
+                            CornerRadius="5" 
+                            Background="{DynamicResource S1}">
+
+                            <ContentPresenter 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger 
+                                Property="IsMouseOver"
+                                Value="True">
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="FontSize"
+                                                By="2"
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <DoubleAnimation 
+                                                Storyboard.TargetProperty="FontSize"
+                                                By="-2"
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                       EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style 
+            x:Key="IconButtonStyle"
+            TargetType="Button">
+
+            <Setter
+                Property="Background" 
+                Value="Transparent"/>
+
+            <Setter 
+                Property="Foreground"
+                Value="{DynamicResource P1}"/>
+
+            <Setter 
+                Property="BorderThickness" 
+                Value="0"/>
+            <Setter
+                Property="FontFamily"
+                Value="Montserrat"/>
+
+            <Setter 
+                Property="FontWeight" 
+                Value="DemiBold"/>
+
+            <Setter 
+                Property="Padding"
+                Value="5"/>
+
+            <Setter 
+                Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate
+                        TargetType="Button">
+
+                        <Border 
+                            x:Name="border" 
+                            CornerRadius="5" 
+                            Background="{DynamicResource P1}" 
+                            ClipToBounds="True">
+
+                            <Viewbox 
+                                x:Name="iconViewbox" 
+                                Margin="{TemplateBinding Padding}">
+
+                                <Canvas 
+                                    x:Name="iconCanvas" 
+                                    RenderTransformOrigin="0.5,0.5" 
+                                    Width="1000" 
+                                    Height="1000">
+
+                                    <Canvas.RenderTransform>
+
+                                        <ScaleTransform/>
+                                    </Canvas.RenderTransform>
+                                    <ContentPresenter/>
+                                </Canvas>
+                            </Viewbox>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger 
+                                Property="IsMouseOver" 
+                                Value="True">
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="iconCanvas"
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                From="1" 
+                                                To="1.15" 
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="iconCanvas" 
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                From="1" To="1.15"
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="iconCanvas" 
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" 
+                                                From="1.15"
+                                                To="1" 
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="iconCanvas" 
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" 
+                                                From="1.15" 
+                                                To="1"
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style 
+            x:Key="ComboBoxToggleButton" 
+            TargetType="ToggleButton">
+
+            <Setter
+                Property="Background" 
+                Value="Transparent"/>
+
+            <Setter 
+                Property="BorderThickness"
+                Value="0"/>
+
+            <Setter 
+                Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate 
+                        TargetType="ToggleButton">
+
+                        <Border 
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                            <Path 
+                                x:Name="Arrow" Data="M0,0 L4,4 L8,0 Z"
+                                Width="8" Height="4"
+                                Fill="{DynamicResource T}"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style
+            x:Key="RoundedComboBoxStyle"
+            TargetType="ComboBox">
+
+            <Setter 
+                Property="Background" 
+                Value="{DynamicResource S1}"/>
+
+            <Setter 
+                Property="Foreground"
+                Value="{DynamicResource T}"/>
+
+            <Setter
+                Property="BorderBrush"
+                Value="Gray"/>
+
+            <Setter 
+                Property="BorderThickness"
+                Value="1"/>
+
+            <Setter
+                Property="FontFamily"
+                Value="Montserrat"/>
+
+            <Setter 
+                Property="FontWeight" 
+                Value="DemiBold"/>
+
+            <Setter 
+                Property="Padding"
+                Value="5"/>
+
+            <Setter 
+                Property="ItemContainerStyle">
+
+                <Setter.Value>
+
+                    <Style
+                        TargetType="ListBoxItem">
+
+                        <Setter 
+                            Property="FontSize"
+                            Value="14"/>
+
+                        <Setter
+                            Property="Padding" 
+                            Value="5"/>
+
+                        <Style.Triggers>
+
+                            <Trigger 
+                                Property="IsMouseOver"
+                                Value="True">
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <DoubleAnimation 
+                                                Storyboard.TargetProperty="FontSize" 
+                                                To="18" 
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <DoubleAnimation 
+                                                Storyboard.TargetProperty="FontSize"
+                                                To="14" 
+                                                Duration="0:0:0.2">
+
+                                                <DoubleAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter 
+                Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate
+                        TargetType="ComboBox">
+
+                        <Grid
+                            x:Name="templateRoot"
+                            SnapsToDevicePixels="True">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition
+                                    Width="*"/>
+
+                                <ColumnDefinition
+                                    Width="Auto"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                x:Name="Bd" 
+                                CornerRadius="5" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}"
+                                Grid.ColumnSpan="2">
+
+                                <Grid>
+
+                                    <ContentPresenter
+                                        Name="ContentSite"
+                                        IsHitTestVisible="False" 
+                                        Margin="3,0" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Left" 
+                                        Content="{TemplateBinding SelectionBoxItem}" 
+                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
+
+                                    <TextBox
+                                        Name="PART_EditableTextBox" 
+                                        Margin="3,0"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Visibility="Hidden" 
+                                        IsReadOnly="{TemplateBinding IsReadOnly}"/>
+
+                                </Grid>
+                            </Border>
+
+                            <ToggleButton
+                                Name="ToggleButton"
+                                Grid.Column="1" 
+                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                ClickMode="Press"
+                                Style="{StaticResource ComboBoxToggleButton}"/>
+
+                            <Popup 
+                                Name="PART_Popup" 
+                                Placement="Bottom" 
+                                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                                AllowsTransparency="True"
+                                PopupAnimation="Slide" 
+                                Grid.ColumnSpan="2">
+
+                                <Border 
+                                    x:Name="DropDownBorder" 
+                                    CornerRadius="5" 
+                                    BorderBrush="{DynamicResource S1}"
+                                    BorderThickness="1" 
+                                    Background="{DynamicResource P1}" 
+                                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
+                                    MaxHeight="{TemplateBinding MaxDropDownHeight}">
+
+                                    <ScrollViewer
+                                        SnapsToDevicePixels="True">
+
+                                        <ItemsPresenter
+                                            KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger 
+                                Property="IsMouseOver"
+                                Value="True">
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <ColorAnimation 
+                                                Storyboard.TargetName="Bd" 
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                To="Blue"
+                                                Duration="0:0:0.2">
+
+                                                <ColorAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </ColorAnimation.EasingFunction>
+                                            </ColorAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="Bd" 
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                To="Gray" 
+                                                Duration="0:0:0.2">
+
+                                                <ColorAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </ColorAnimation.EasingFunction>
+                                            </ColorAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger 
+                                Property="IsKeyboardFocusWithin" 
+                                Value="True">
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="Bd"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                To="Red" 
+                                                Duration="0:0:0.2">
+
+                                                <ColorAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </ColorAnimation.EasingFunction>
+                                            </ColorAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="Bd"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                To="Gray"
+                                                Duration="0:0:0.2">
+
+                                                <ColorAnimation.EasingFunction>
+
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
+                                                </ColorAnimation.EasingFunction>
+                                            </ColorAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
