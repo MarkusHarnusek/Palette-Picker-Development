@@ -499,7 +499,7 @@
                                             <ColorAnimation 
                                                 Storyboard.TargetName="Bd" 
                                                 Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                To="Blue"
+                                                To="{DynamicResource S1Color}"
                                                 Duration="0:0:0.2">
 
                                                 <ColorAnimation.EasingFunction>
@@ -548,7 +548,7 @@
                                             <ColorAnimation
                                                 Storyboard.TargetName="Bd"
                                                 Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                To="Red" 
+                                                To="{DynamicResource S2Color}" 
                                                 Duration="0:0:0.2">
 
                                                 <ColorAnimation.EasingFunction>
