@@ -302,7 +302,7 @@ namespace PalettePicker
             }
         }
 
-        public static void SaveFile(string paletteName, string primary1, string primary2, string seconadary1, string secondary2, string text, bool readOnly, bool homeVisible, bool pinned)
+        public static string SaveFile(string primary1, string primary2, string seconadary1, string secondary2, string text, bool readOnly, bool homeVisible, bool pinned)
         {
             string path = GetSavePath();
 
@@ -316,7 +316,7 @@ namespace PalettePicker
                 {
                     valid = true,
                     filePath = Path.GetDirectoryName(path),
-                    paletteName = paletteName,
+                    paletteName = Path.GetFileNameWithoutExtension(path),
                     primary1 = primary1,
                     primary2 = primary2,
                     secondary1 = seconadary1,
@@ -329,10 +329,13 @@ namespace PalettePicker
 
                 string jsonString = JsonSerializer.Serialize(palette);
                 File.WriteAllText(path, jsonString);
+
+                return Path.GetFileNameWithoutExtension(path);
             }
             else
             {
                 System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(3, MainWindow.currentLanguage).msg, GetTranslatedInvalidErrMsg(3, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                return string.Empty;
             }
         }
 
