@@ -9,14 +9,15 @@
         ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
         Title="Paltette Picker" 
-        Height="440"
-        Width="800"
+        Height="460"
+        Width="820"
         Background="{DynamicResource P1}">
 
-    <StackPanel>
+    <StackPanel
+        Margin="20,10,0,0">
 
         <Border
-            Margin="2.5,2.5,0,0"
+            Margin="0,0,0,0"
             Height="30"
             Width="377.5"
             HorizontalAlignment="Left"
@@ -75,8 +76,8 @@
             Height="340"
             Width="760"
             VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Margin="0,25,0,0">
+            HorizontalAlignment="Left"
+            Margin="0,10,0,0">
 
             <Grid
                 x:Name="Grd_Primary1"
