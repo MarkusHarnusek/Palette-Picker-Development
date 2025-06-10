@@ -20,66 +20,90 @@
         
         <SolidColorBrush x:Key="T" Color="#eefafb" />
 
-        <Style x:Key="Font_Size_Up_Button_Style" TargetType="Button">
-
+        <Style 
+            x:Key="Font_Size_Up_Button_Style" 
+            TargetType="Button">
+            
             <Setter 
-                Property="Background" 
+                Property="Background"
                 Value="Transparent"/>
-
+            
             <Setter
-                Property="Foreground"
+                Property="Foreground" 
                 Value="{DynamicResource T}"/>
-
-            <Setter 
-                Property="BorderThickness" 
+            
+            <Setter
+                Property="BorderThickness"
                 Value="0"/>
 
-            <Setter 
+            <Setter
                 Property="FontFamily"
                 Value="Montserrat"/>
-
+            
             <Setter 
-                Property="FontWeight"
+                Property="FontWeight" 
                 Value="DemiBold"/>
-
-            <Setter
+            
+            <Setter 
                 Property="Template">
-
+                
                 <Setter.Value>
-
+                    
                     <ControlTemplate
                         TargetType="Button">
-
-                        <Border 
-                            x:Name="border"
+                        
+                        <Border
+                            x:Name="border" 
                             CornerRadius="5" 
                             Background="{DynamicResource S1}">
-
-                            <ContentPresenter 
-                                HorizontalAlignment="Center" 
-                                VerticalAlignment="Center"/>
-
+                            
+                            <ContentPresenter
+                                x:Name="contentPresenter" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                
+                                <ContentPresenter.RenderTransform>
+                                    
+                                    <ScaleTransform 
+                                        x:Name="scaleTransform" 
+                                        ScaleX="1" 
+                                        ScaleY="1"/>
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
                         </Border>
-
+                        
                         <ControlTemplate.Triggers>
-
+                            
                             <Trigger 
                                 Property="IsMouseOver"
                                 Value="True">
-
+                                
                                 <Trigger.EnterActions>
-
+                                    
                                     <BeginStoryboard>
-
-                                        <Storyboard>
-
-                                            <DoubleAnimation
-                                                Storyboard.TargetProperty="FontSize"
-                                                By="2"
+                                        
+                                        <Storyboard 
+                                            TargetName="scaleTransform">
+                                            
+                                            <DoubleAnimation 
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1.1" 
                                                 Duration="0:0:0.2">
-
+                                                
                                                 <DoubleAnimation.EasingFunction>
-
+                                                    
+                                                    <CubicEase
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            
+                                            <DoubleAnimation 
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1.1" 
+                                                Duration="0:0:0.2">
+                                                
+                                                <DoubleAnimation.EasingFunction>
+                                                    
                                                     <CubicEase
                                                         EasingMode="EaseOut"/>
                                                 </DoubleAnimation.EasingFunction>
@@ -87,22 +111,35 @@
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>
-
+                                
                                 <Trigger.ExitActions>
-
+                                    
                                     <BeginStoryboard>
-
-                                        <Storyboard>
-
-                                            <DoubleAnimation 
-                                                Storyboard.TargetProperty="FontSize"
-                                                By="-2"
+                                        
+                                        <Storyboard
+                                            TargetName="scaleTransform">
+                                            
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="ScaleX" 
+                                                To="1"
                                                 Duration="0:0:0.2">
-
+                                                
                                                 <DoubleAnimation.EasingFunction>
-
+                                                    
                                                     <CubicEase 
-                                                       EasingMode="EaseOut"/>
+                                                        EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="ScaleY" 
+                                                To="1"
+                                                Duration="0:0:0.2">
+                                                
+                                                <DoubleAnimation.EasingFunction>
+                                                    
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
                                         </Storyboard>
