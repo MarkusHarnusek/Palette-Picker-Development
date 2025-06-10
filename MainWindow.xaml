@@ -32,150 +32,41 @@
                 Orientation="Horizontal">
 
 
-                <Border
-                    Margin="2.5,0,0,0"
+                <Button
+                    x:Name="Btn_Select"
+                    Click="Btn_Select_Click"
+                    Style="{StaticResource Font_Size_Up_Button_Style}"
                     Width="90"
                     Height="20"
-                    CornerRadius="5"
-                    Background="{DynamicResource S1}">
+                    Content="Select"
+                    Margin="2.5,0,0,0"/>
 
-                    <Button  
-                       x:Name="Btn_Select"
-                       Click="Btn_Select_Click"
-                       MouseEnter="Btn_Select_MouseEnter" 
-                       MouseLeave="Btn_Select_MouseLeave"
-                       Background="Transparent"
-                       Foreground="{DynamicResource T}"
-                       BorderThickness="0"
-                       Content="Select"  
-                       FontFamily="Montserrat"  
-                       FontWeight="DemiBold">
-
-                        <Button.Template>
-
-                            <ControlTemplate 
-                                TargetType="Button">
-
-                                <Border
-                                    Background="{TemplateBinding Background}">
-
-                                    <ContentPresenter 
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Border>
-
-                <Border
-                    Margin="2.5,0,0,0"
+                <Button
+                    x:Name="Btn_Save"
+                    Click="Btn_Save_Click"
+                    Style="{StaticResource Font_Size_Up_Button_Style}"
                     Width="90"
                     Height="20"
-                    CornerRadius="5"
-                    Background="{DynamicResource S1}">
+                    Content="Save"
+                    Margin="2.5,0,0,0"/>
 
-                    <Button  
-                        x:Name="Btn_Save"
-                        Click="Btn_Save_Click"
-                        MouseEnter="Btn_Save_MouseEnter"
-                        MouseLeave="Btn_Save_MouseLeave"
-                        Background="Transparent"
-                        Foreground="{DynamicResource T}"
-                        BorderThickness="0"
-                        Content="Save"  
-                        FontFamily="Montserrat"  
-                        FontWeight="DemiBold">
-
-                        <Button.Template>
-
-                            <ControlTemplate 
-                                TargetType="Button">
-
-                                <Border
-                                    Background="{TemplateBinding Background}">
-
-                                    <ContentPresenter 
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Border>
-
-
-                <Border
-                    Margin="2.5,0,0,0"
+                <Button
+                    x:Name="Btn_Generate"
+                    Click="Btn_Generate_Click"
+                    Style="{StaticResource Font_Size_Up_Button_Style}"
                     Width="90"
                     Height="20"
-                    CornerRadius="5"
-                    Background="{DynamicResource S1}">
+                    Content="Generate"
+                    Margin="2.5,0,0,0"/>
 
-                    <Button  
-                        x:Name="Btn_Generate"
-                        MouseEnter="Btn_Generate_MouseEnter"
-                        MouseLeave="Btn_Generate_MouseLeave"
-                        Click="Btn_Generate_Click"
-                        Background="Transparent"
-                        Foreground="{DynamicResource T}"
-                        BorderThickness="0"
-                        Content="Generate"  
-                        FontFamily="Montserrat"  
-                        FontWeight="DemiBold">
-
-                        <Button.Template>
-
-                            <ControlTemplate 
-                                TargetType="Button">
-
-                                <Border
-                                    Background="{TemplateBinding Background}">
-
-                                    <ContentPresenter 
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Border>
-
-                <Border
-                    Margin="2.5,0,0,0"
+                <Button
+                    x:Name="Btn_Options"
+                    Click="Btn_Options_Click"
+                    Style="{StaticResource Font_Size_Up_Button_Style}"
                     Width="90"
                     Height="20"
-                    CornerRadius="5"
-                    Background="{DynamicResource S1}">
-
-                    <Button  
-                        x:Name="Btn_Options"
-                        Click="Btn_Options_Click"
-                        MouseEnter="Btn_Options_MouseEnter" 
-                        MouseLeave="Btn_Options_MouseLeave"
-                        Background="Transparent"
-                        Foreground="{DynamicResource T}"
-                        BorderThickness="0"
-                        Content="Options"  
-                        FontFamily="Montserrat"  
-                        FontWeight="DemiBold">
-
-                        <Button.Template>
-
-                            <ControlTemplate 
-                                TargetType="Button">
-
-                                <Border
-                                    Background="{TemplateBinding Background}">
-
-                                    <ContentPresenter 
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Border>
+                    Content="Options"
+                    Margin="2.5,0,0,0"/>
             </StackPanel>
         </Border>
 
