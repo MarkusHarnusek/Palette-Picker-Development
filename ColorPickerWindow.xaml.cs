@@ -26,6 +26,12 @@ namespace PalettePicker
         {
             MainWindow.UpdateGridInfos((MainWindow)Application.Current.MainWindow);
             MainWindow.alreadyEditing[editingNum] = false;
+            
+            if (GetHexColor(hue, saturation, luminance) != originalHex)
+            {
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);
+            }
         }
 
         private void InfoUpdate()

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -29,7 +27,7 @@ namespace PalettePicker
 
         #endregion
 
-        private string currentEditingName = string.Empty;
+        public static string currentEditingName = string.Empty;
 
         public static bool[] alreadyEditing = new bool[5];
 
@@ -44,6 +42,8 @@ namespace PalettePicker
 
         public static void SetLanguage(int languageID, MainWindow instance)
         {
+            SetWindowTitle(languageID, currentEditingName, true, instance);
+
             switch (languageID)
             {
                 case 0:
@@ -120,7 +120,7 @@ namespace PalettePicker
 
                 case 4:
                     instance.Title = "调色板选择器";
-                    instance.Btn_Generate.Content = "Générer";
+                    instance.Btn_Generate.Content = "生成";
                     instance.Btn_Save.Content = "保存";
                     instance.Btn_Select.Content = "选择";
                     instance.Btn_Options.Content = "选项";
@@ -172,6 +172,63 @@ namespace PalettePicker
                     instance.Btn_Text_Edit.Content = "Редактировать";
                     break;
             }
+        }
+
+        public static void SetWindowTitle(int languageID, string name, bool saved, MainWindow instance)
+        {
+            string text = string.Empty;
+
+            if (name == string.Empty)
+            {
+                switch (languageID)
+                {
+                    case 0:
+                        text = saved ? "" : "* ";
+                        text += "Palette Picker";
+                        break;
+
+                    case 1:
+                        text = saved ? "" : "* ";
+                        text += "Palettenauswahl";
+                        break;
+
+                    case 2:
+                        text = saved ? "" : "* ";
+                        text += "Selector de paleta";
+                        break;
+
+                    case 3:
+                        text = saved ? "" : "* ";
+                        text += "Sélecteur de palette";
+                        break;
+
+                    case 4:
+                        text = saved ? "" : "* ";
+                        text += "调色板选择器";
+                        break;
+
+                    case 5:
+                        text = saved ? "" : "* ";
+                        text += "Seletor de paleta";
+                        break;
+
+                    case 6:
+                        text = saved ? "" : "* ";
+                        text += "Выбор палитры";
+                        break;
+                }
+            }
+            else
+            {
+                if (!saved)
+                {
+                    text = "* ";
+                }
+
+                text += name;
+            }
+
+            instance.Title = text;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -261,6 +318,7 @@ namespace PalettePicker
         private void Btn_Generate_Click(object sender, RoutedEventArgs e)
         {
             SetRandomColors();
+            SetWindowTitle(currentLanguage, string.Empty, true, this);
         }
 
         #endregion
@@ -269,7 +327,9 @@ namespace PalettePicker
 
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            Save.SaveFile(currentEditingName, Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
+            string name = Save.SaveFile(Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
+            currentEditingName = name;
+            SetWindowTitle(currentLanguage, name, true, this);
         }
 
         #endregion
@@ -290,6 +350,7 @@ namespace PalettePicker
                 readOnly = Save.GetSaveInfo(editingFilePath).readOnly;
                 homeVisible = Save.GetSaveInfo(editingFilePath).homeVisible;
                 pinned = Save.GetSaveInfo(editingFilePath).pinned;
+                SetWindowTitle(currentLanguage, currentEditingName, true, this);
                 UpdateGridInfos(this);
             }
         }
@@ -361,7 +422,6 @@ namespace PalettePicker
             }
 
             alreadyEditing[1] = true;
-
             InitColorPick(Primary2 ?? string.Empty, 1);
         }
 
