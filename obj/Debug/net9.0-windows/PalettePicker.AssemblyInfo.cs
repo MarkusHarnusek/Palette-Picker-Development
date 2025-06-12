@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PalettePicker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7da253e6b9cef0f12daa49abae01aa3a14c2026")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c32bf789d119f462056e881a9cde92f0dd5fedb0")]
 [assembly: System.Reflection.AssemblyProductAttribute("PalettePicker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PalettePicker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
