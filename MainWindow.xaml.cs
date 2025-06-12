@@ -34,6 +34,7 @@ namespace PalettePicker
         public static string editingFilePath = string.Empty;
 
         public static int currentLanguage = 0;
+        private static bool isProgressSaved = true;
 
         public MainWindow()
         {
@@ -177,6 +178,7 @@ namespace PalettePicker
         public static void SetWindowTitle(int languageID, string name, bool saved, MainWindow instance)
         {
             string text = string.Empty;
+            isProgressSaved = saved;
 
             if (name == string.Empty)
             {
@@ -485,5 +487,18 @@ namespace PalettePicker
         }
 
         #endregion
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!isProgressSaved)
+            {
+                MessageBoxResult result = MessageBox.Show("Do you want to quit without saving progress?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

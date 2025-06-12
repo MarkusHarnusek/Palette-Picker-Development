@@ -1,7 +1,8 @@
-﻿.vs/
+.vs/
 bin
 obj
 CommitMessage.txt
+log.txt
 PalettePicker.csproj.user
-PalettePicker.sln
 README.md
+PalettePicker.sln

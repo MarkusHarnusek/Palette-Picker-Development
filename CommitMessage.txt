@@ -1,1 +1,8 @@
-﻿
+﻿ - Overhauled general UI for better aesthetics
+ - Improved all button hover effects and animations
+ - Reworked main window save logic (Naming the file now in the save path select dialog)
+ - Removed pallete name text box from main window because of the reworked save logic
+ - Improved options window panel layout to improve usability and understandability
+ - Reworked setting logic (changes will now automaticly be applied with no need to apply them manually)
+ - Added universal button style templates
+ - Finalized and improved saving logic for better user experience
