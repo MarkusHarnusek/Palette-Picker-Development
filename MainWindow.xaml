@@ -13,10 +13,9 @@
         Width="820"
         Background="{DynamicResource P1}" Closing="Window_Closing">
 
-    <!-- Test -->
-    
     <StackPanel
-        Margin="20,10,0,0">
+        Margin="20,10,0,0"
+        x:FieldModifier="none">
 
         <Border
             Margin="0,0,0,0"
