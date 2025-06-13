@@ -140,7 +140,8 @@
                             Foreground="{DynamicResource T}"
                             FontFamily="Montserrat"
                             FontWeight="Light"
-                            FontSize="13"/>
+                            FontSize="13"
+                            />
 
                         <Button
                             x:Name="Btn_Primary1_Edit"
