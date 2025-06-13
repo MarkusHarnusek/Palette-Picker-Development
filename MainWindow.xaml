@@ -79,17 +79,39 @@
             HorizontalAlignment="Left"
             Margin="0,10,0,0">
 
-            <Grid
+            <Border
                 x:Name="Grd_Primary1"
-                Background="#FFFFFF"
-                Width="152">
+                Style="{StaticResource Grid_Height_Scale_Up_Style}"
+                Width="152"
+                Background="#FFFFFF">
 
                 <Button
                     x:Name="Btn_Primary1"
                     Click="Btn_Primary1_Click"
                     Background="Transparent"
                     Foreground="Transparent"
-                    BorderBrush="Transparent"/>
+                    BorderBrush="Transparent">
+
+                    <Button.Template>
+                        
+                        <ControlTemplate 
+                            TargetType="Button">
+                            
+                            <Border
+                                Background="{TemplateBinding Background}">
+                                
+                                <ContentPresenter 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Border>
+
+
+            <Grid
+                Margin="-152,0,0,0">
 
                 <Border
                     Width="115"
@@ -99,9 +121,9 @@
                     Margin="0,208,0,0"
                     BorderBrush="{DynamicResource S1}"
                     BorderThickness="2.5">
-                    
+
                     <StackPanel>
-    
+
                         <TextBlock
                             x:Name="Txt_Primary1Title"
                             Text="Primary 1"
@@ -109,8 +131,8 @@
                             Foreground="{DynamicResource T}"
                             FontFamily="Montserrat"
                             FontSize="14"/>
-    
-    
+
+
                         <TextBlock
                             x:Name="Txt_Primary1"
                             Text="HEX"
@@ -119,7 +141,7 @@
                             FontFamily="Montserrat"
                             FontWeight="Light"
                             FontSize="13"/>
-    
+
                         <Button
                             x:Name="Btn_Primary1_Edit"
                             Click="Btn_Primary1_Edit_Click"
@@ -133,17 +155,38 @@
                 </Border>
             </Grid>
 
-            <Grid
+            <Border
                 x:Name="Grd_Primary2"
-                Background="#FFFFFF"
-                Width="152">
+                Style="{StaticResource Grid_Height_Scale_Up_Style}"
+                Width="152"
+                Background="#FFFFFF">
 
                 <Button
                     x:Name="Btn_Primary2"
                     Click="Btn_Primary2_Click"
                     Background="Transparent"
                     Foreground="Transparent"
-                    BorderBrush="Transparent"/>
+                    BorderBrush="Transparent">
+
+                    <Button.Template>
+
+                        <ControlTemplate 
+                            TargetType="Button">
+
+                            <Border
+                                Background="{TemplateBinding Background}">
+
+                                <ContentPresenter 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Border>
+
+            <Grid
+                Margin="-152,0,0,0">
 
                 <Border
                     Width="115"
