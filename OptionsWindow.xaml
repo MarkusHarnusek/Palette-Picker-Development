@@ -24,89 +24,91 @@
             FontWeight="DemiBold"
             Margin="0,10,0,0"/>
 
-        <Border
-            Width="210"
-            Height="370"
-            Margin="25,50,0,25"
-            HorizontalAlignment="Left"
-            CornerRadius="10"
-            Background="Transparent"
-            BorderBrush="{DynamicResource S1}"
-            BorderThickness="2.5">
-
-            <StackPanel
-                x:Name="Stp_SettingsTabs"
-                Width="200"
-                Height="360"
-                HorizontalAlignment="Center">
-
-                <Border
-                    x:Name="Brd_Btn_Preferences"
-                    MouseEnter="Brd_Btn_Preferences_MouseEnter"
-                    MouseLeave="Brd_Btn_Preferences_MouseLeave"
-                    Background="{DynamicResource S1}"
-                    Height="30"
-                    Margin="5,5,5,0"
-                    CornerRadius="7.5">
-
-                    <Button
-                        x:Name="Btn_Language"
-                        Click="Btn_Preferences_Click" 
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Foreground="{DynamicResource T}"
-                        Content="Language"
-                        FontFamily="Montserrat"
-                        FontSize="20">
-
-                        <Button.Template>
-
-                            <ControlTemplate 
-                                TargetType="Button">
-
-                                <Border
-                                    Background="{TemplateBinding Background}">
-
-                                    <ContentPresenter 
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Border>
-            </StackPanel>
-        </Border>
-
-
-        <Grid
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Margin="0,70,25,0"
-            Width="375"
-            Height="370">
+        <StackPanel
+            Margin="0,50,0,0"
+            Orientation="Horizontal">
 
             <Border
+                Width="210"
+                Height="370"
+                Margin="25,0,0,0"
+                CornerRadius="10"
+                Background="Transparent"
                 BorderBrush="{DynamicResource S1}"
-                BorderThickness="2.5"
-                CornerRadius="10">
+                BorderThickness="2.5">
 
-                <Grid
-                    x:Name="Grd_Language">
+                <StackPanel
+                    x:Name="Stp_SettingsTabs"
+                    Width="200"
+                    Height="360"
+                    HorizontalAlignment="Center">
 
-                    <TextBlock
-                        x:Name="Txt_Language_Title"
-                        Text="Language"
-                        Foreground="{DynamicResource T}"
-                        FontFamily="Montserrat"
-                        FontSize="20"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Center"
-                        Margin="0,5,0,0"/>
+                    <Border
+                        x:Name="Brd_Btn_Preferences"
+                        MouseEnter="Brd_Btn_Preferences_MouseEnter"
+                        MouseLeave="Brd_Btn_Preferences_MouseLeave"
+                        Background="{DynamicResource S1}"
+                        Height="30"
+                        Margin="5,5,5,0"
+                        CornerRadius="7.5">
 
+                        <Button
+                            x:Name="Btn_Language"
+                            Click="Btn_Preferences_Click" 
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Foreground="{DynamicResource T}"
+                            Content="Language"
+                            FontFamily="Montserrat"
+                            FontSize="20">
 
-                </Grid>
+                            <Button.Template>
+
+                                <ControlTemplate 
+                                    TargetType="Button">
+
+                                    <Border
+                                        Background="{TemplateBinding Background}">
+
+                                        <ContentPresenter 
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+                </StackPanel>
             </Border>
-        </Grid>
+
+
+            <Grid
+                Margin="10,0,0,0"
+                Width="375"
+                Height="370">
+
+                <Border
+                    BorderBrush="{DynamicResource S1}"
+                    BorderThickness="2.5"
+                    CornerRadius="10">
+
+                    <Grid
+                        x:Name="Grd_Language">
+
+                        <TextBlock
+                            x:Name="Txt_Language_Title"
+                            Text="Language"
+                            Foreground="{DynamicResource T}"
+                            FontFamily="Montserrat"
+                            FontSize="20"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,5,0,0"/>
+
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
