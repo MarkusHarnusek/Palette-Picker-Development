@@ -19,11 +19,11 @@ namespace PalettePicker
         /// </summary>
         public void SetDarkTheme()
         {
-            Current.Resources["P1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#070d0d"));
-            Current.Resources["P2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#262626"));
-            Current.Resources["S1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0055bf"));
-            Current.Resources["S2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#87cefa"));
-            Current.Resources["T"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#eefafb"));
+            Current.Resources["P1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#373739"));
+            Current.Resources["P2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#888888"));
+            Current.Resources["S1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2157E5"));
+            Current.Resources["S2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#90D5FF"));
+            Current.Resources["T"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F5F5F5"));
         }
 
         /// <summary>
@@ -31,11 +31,11 @@ namespace PalettePicker
         /// </summary>
         public void SetLightTheme()
         {
-            Current.Resources["P1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#eefafb"));
-            Current.Resources["P2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#87cefa"));
-            Current.Resources["S1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0055bf"));
-            Current.Resources["S2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#262626"));
-            Current.Resources["T"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#070d0d"));
+            Current.Resources["P1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F5F5F5"));
+            Current.Resources["P2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#90D5FF"));
+            Current.Resources["S1"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2157E5"));
+            Current.Resources["S2"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#888888"));
+            Current.Resources["T"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#373739"));
         }
 
         #endregion
