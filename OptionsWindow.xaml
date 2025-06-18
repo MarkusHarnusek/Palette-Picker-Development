@@ -34,8 +34,8 @@
                 Margin="25,0,0,0"
                 CornerRadius="10"
                 Background="Transparent"
-                BorderBrush="{DynamicResource S1}"
-                BorderThickness="2.5">
+                BorderBrush="{DynamicResource P2}"
+                BorderThickness="1">
 
                 <StackPanel
                     x:Name="Stp_SettingsTabs"
@@ -43,41 +43,15 @@
                     Height="360"
                     HorizontalAlignment="Center">
 
-                    <Border
-                        x:Name="Brd_Btn_Preferences"
-                        MouseEnter="Brd_Btn_Preferences_MouseEnter"
-                        MouseLeave="Brd_Btn_Preferences_MouseLeave"
-                        Background="{DynamicResource S1}"
-                        Height="30"
-                        Margin="5,5,5,0"
-                        CornerRadius="7.5">
-
-                        <Button
-                            x:Name="Btn_Language"
-                            Click="Btn_Preferences_Click" 
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Foreground="{DynamicResource T}"
-                            Content="Language"
-                            FontFamily="Montserrat"
-                            FontSize="20">
-
-                            <Button.Template>
-
-                                <ControlTemplate 
-                                    TargetType="Button">
-
-                                    <Border
-                                        Background="{TemplateBinding Background}">
-
-                                        <ContentPresenter 
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Border>
+                    <Button
+                        x:Name="Btn_Language"
+                        Click="Btn_Preferences_Click" 
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Foreground="{DynamicResource T}"
+                        Content="Language"
+                        FontFamily="Montserrat"
+                        FontSize="20"/>
                 </StackPanel>
             </Border>
 
@@ -88,8 +62,8 @@
                 Height="370">
 
                 <Border
-                    BorderBrush="{DynamicResource S1}"
-                    BorderThickness="2.5"
+                    BorderBrush="{DynamicResource P2}"
+                    BorderThickness="1"
                     CornerRadius="10">
 
                     <Grid
@@ -104,12 +78,6 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
                             Margin="0,5,0,0"/>
-
-                        <StackPanel
-                            Margin="0,40,0,0">
-                            
-                            <CheckBox/>                            
-                        </StackPanel>
                     </Grid>
                 </Border>
             </Grid>
