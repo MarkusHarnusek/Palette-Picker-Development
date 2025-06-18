@@ -1080,7 +1080,7 @@
                                                 Storyboard.TargetName="border"
                                                 Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
                                                 To="{StaticResource S2Color}"
-                                                Duration="0:0:0.5"/>
+                                                Duration="0:0:0.2"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>
@@ -1095,7 +1095,7 @@
                                                 Storyboard.TargetName="border" 
                                                 Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
                                                 To="{StaticResource P2Color}" 
-                                                Duration="0:0:0.5"/>
+                                                Duration="0:0:0.2"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.ExitActions>
@@ -1115,7 +1115,7 @@
                                                 Storyboard.TargetName="border"
                                                 Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" 
                                                 To="{StaticResource S2Color}"
-                                                Duration="0:0:0.5"/>
+                                                Duration="0:0:0.2"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>
@@ -1130,7 +1130,7 @@
                                                 Storyboard.TargetName="border" 
                                                 Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
                                                 To="{StaticResource P2Color}" 
-                                                Duration="0:0:0.5"/>
+                                                Duration="0:0:0.2"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.ExitActions>

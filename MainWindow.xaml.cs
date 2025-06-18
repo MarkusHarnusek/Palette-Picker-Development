@@ -33,13 +33,12 @@ namespace PalettePicker
 
         public static string editingFilePath = string.Empty;
 
-        public static int currentLanguage = 5;
+        public static int currentLanguage = 0;
         private static bool isProgressSaved = true;
 
         public MainWindow()
         {
             InitializeComponent();
-            SetLanguage(5, this);
         }
 
         public static void SetLanguage(int languageID, MainWindow instance)
