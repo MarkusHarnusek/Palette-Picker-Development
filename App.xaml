@@ -46,7 +46,7 @@
 
             <Setter 
                 Property="Background"
-                Value="Transparent"/>
+                Value="{DynamicResource P1}"/>
 
             <Setter
                 Property="Foreground" 
@@ -54,7 +54,11 @@
 
             <Setter
                 Property="BorderThickness"
-                Value="0"/>
+                Value="1"/>
+
+            <Setter
+                Property="BorderBrush"
+                Value="{DynamicResource T}"/>
 
             <Setter
                 Property="FontFamily"
@@ -75,7 +79,9 @@
                         <Border
                             x:Name="border" 
                             CornerRadius="5" 
-                            Background="{DynamicResource S1}">
+                            Background="{DynamicResource P1}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
 
                             <ContentPresenter
                                 x:Name="contentPresenter" 
