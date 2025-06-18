@@ -58,7 +58,7 @@
 
             <Setter
                 Property="BorderBrush"
-                Value="{DynamicResource T}"/>
+                Value="{DynamicResource P2}"/>
 
             <Setter
                 Property="FontFamily"
