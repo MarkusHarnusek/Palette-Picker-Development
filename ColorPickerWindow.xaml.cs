@@ -17,21 +17,12 @@ namespace PalettePicker
 
         private string currentUserHexInput = string.Empty;
 
+        private bool closing = false;
+
         public ColorPickerWindow()
         {
             InitializeComponent();
             InfoUpdate();
-        }
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            MainWindow.UpdateGridInfos((MainWindow)Application.Current.MainWindow);
-            MainWindow.alreadyEditing[editingNum] = false;
-            
-            if (GetHexColor(hue, saturation, luminance) != originalHex)
-            {
-                var mainWindow = (MainWindow)Application.Current.MainWindow;
-                MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);
-            }
         }
 
         private void InfoUpdate()
@@ -401,7 +392,10 @@ namespace PalettePicker
         {
             if (!ValidateHex(currentUserHexInput))
             {
-                MessageBox.Show("The inputed hex was not in the right format. Reverting to the original color.", "Input Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (closing)
+                {
+                    this.Visibility = Visibility.Hidden;
+                }
 
                 switch (MainWindow.currentLanguage)
                 {
@@ -504,6 +498,20 @@ namespace PalettePicker
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 Txb_HexColor_LostFocus(sender, e);
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            closing = true;
+
+            MainWindow.UpdateGridInfos((MainWindow)Application.Current.MainWindow);
+            MainWindow.alreadyEditing[editingNum] = false;
+
+            if (GetHexColor(hue, saturation, luminance) != originalHex)
+            {
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);
             }
         }
     }

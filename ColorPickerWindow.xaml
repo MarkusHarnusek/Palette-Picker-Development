@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PalettePicker"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:MainWindow, IsDesignTimeCreatable=True}"
-        Closed="Window_Closed"
+        Closing="Window_Closing"
         Title="Pick Color" 
         ResizeMode="NoResize"
         Background="{DynamicResource P1}"
