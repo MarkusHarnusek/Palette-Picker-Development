@@ -731,213 +731,375 @@
         <!-- Combobox with border enlargment on mouse hover -->
 
         <!-- ComboBox ToggleButton Template -->
-        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
-            <Border Background="Transparent" Padding="5">
-                <Path x:Name="Arrow" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{DynamicResource T}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <ControlTemplate
+            x:Key="ComboBoxToggleButton"
+            TargetType="ToggleButton">
+            
+            <Border
+                Background="Transparent"
+                Padding="5">
+                
+                <Path 
+                    x:Name="Arrow" Data="M 0 0 L 4 4 L 8 0 Z"
+                    Fill="{DynamicResource T}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Border>
         </ControlTemplate>
 
-        <!-- Modern ComboBox Style -->
-        <Style x:Key="ModernComboBoxStyle" TargetType="ComboBox">
-            <Setter Property="Foreground" Value="{DynamicResource T}"/>
-            <Setter Property="FontFamily" Value="Montserrat"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Background" Value="{DynamicResource P1}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource P2}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Template">
+        <!-- ComboBox Style -->
+        
+        <Style
+            x:Key="Combobox_Style" 
+            TargetType="ComboBox">
+            
+            <Setter 
+                Property="Foreground" 
+                Value="{DynamicResource T}"/>
+            
+            <Setter
+                Property="FontFamily"
+                Value="Montserrat"/>
+            
+            <Setter
+                Property="FontSize" 
+                Value="14"/>
+            
+            <Setter
+                Property="Background" 
+                Value="{DynamicResource P1}"/>
+            
+            <Setter
+                Property="BorderBrush" 
+                Value="{DynamicResource P2}"/>
+            
+            <Setter
+                Property="BorderThickness"
+                Value="1"/>
+            
+            <Setter 
+                Property="Template">
+                
                 <Setter.Value>
-                    <ControlTemplate TargetType="ComboBox">
-                        <Border x:Name="Border" 
+                    
+                    <ControlTemplate 
+                        TargetType="ComboBox">
+                        
+                        <Border 
+                            x:Name="Border" 
                             Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             CornerRadius="5">
+                            
                             <Grid>
+                                
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    
+                                    <ColumnDefinition 
+                                        Width="*"/>
+                                    
+                                    <ColumnDefinition
+                                        Width="Auto"/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <ContentPresenter 
-                                Name="ContentSite" 
-                                Grid.Column="0" 
-                                Margin="5,3,3,3" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Left"
-                                ContentSource="SelectedItem"
-                                IsHitTestVisible="False">
+                                    Name="ContentSite" 
+                                    Grid.Column="0" 
+                                    Margin="5,3,3,3" 
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Left"
+                                    ContentSource="SelectedItem"
+                                    IsHitTestVisible="False">
+                                    
                                     <ContentPresenter.RenderTransform>
-                                        <ScaleTransform x:Name="ContentScale" ScaleX="1" ScaleY="1"/>
+                                        
+                                        <ScaleTransform 
+                                            x:Name="ContentScale" 
+                                            ScaleX="1" 
+                                            ScaleY="1"/>
                                     </ContentPresenter.RenderTransform>
                                 </ContentPresenter>
+                                
                                 <ToggleButton 
-                                Grid.Column="1" 
-                                Name="ToggleButton" 
-                                Template="{StaticResource ComboBoxToggleButton}"
-                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                Focusable="False"
-                                ClickMode="Press"/>
-                                <Popup Name="Popup" 
-                                   Placement="Bottom" 
-                                   IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
-                                   AllowsTransparency="True" 
-                                   Focusable="False" 
-                                   PopupAnimation="Slide">
-                                    <Border x:Name="DropDownBorder" 
+                                    Grid.Column="1" 
+                                    Name="ToggleButton" 
+                                    Template="{StaticResource ComboBoxToggleButton}"
+                                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Focusable="False"
+                                    ClickMode="Press"/>
+                                
+                                <Popup 
+                                    Name="Popup" 
+                                    Placement="Bottom" 
+                                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    AllowsTransparency="True" 
+                                    Focusable="False" 
+                                    PopupAnimation="Slide">
+                                    
+                                    <Border
+                                        x:Name="DropDownBorder" 
                                         BorderBrush="{DynamicResource P2}" 
                                         BorderThickness="1" 
                                         Background="{DynamicResource P1}" 
                                         CornerRadius="5"
                                         MinWidth="{TemplateBinding ActualWidth}"
                                         MaxHeight="200">
-                                        <ScrollViewer SnapsToDevicePixels="True" CanContentScroll="True">
-                                            <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" 
-                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        
+                                        <ScrollViewer
+                                            SnapsToDevicePixels="True"
+                                            CanContentScroll="True">
+                                            
+                                            <ItemsPresenter 
+                                                KeyboardNavigation.DirectionalNavigation="Contained" 
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                         </ScrollViewer>
                                     </Border>
                                 </Popup>
                             </Grid>
                         </Border>
+                        
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
+                            
+                            <Trigger
+                                Property="IsMouseOver"
+                                Value="True">
+                                
                                 <Trigger.EnterActions>
+                                    
                                     <BeginStoryboard>
+                                        
                                         <Storyboard>
+                                            
                                             <ColorAnimation 
-                                            Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
-                                            To="{StaticResource S2Color}"
-                                            Duration="0:0:0.2"/>
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
+                                                To="{StaticResource S2Color}"
+                                                Duration="0:0:0.2"/>
+                                            
                                             <DoubleAnimation 
-                                            Storyboard.TargetName="ContentScale"
-                                            Storyboard.TargetProperty="ScaleX"
-                                            To="1.1" 
-                                            Duration="0:0:0.2">
+                                                Storyboard.TargetName="ContentScale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1.1" 
+                                                Duration="0:0:0.2">
+                                                
                                                 <DoubleAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseOut"/>
+                                                    
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
+                                            
                                             <DoubleAnimation 
-                                            Storyboard.TargetName="ContentScale"
-                                            Storyboard.TargetProperty="ScaleY"
-                                            To="1.1" 
-                                            Duration="0:0:0.2">
+                                                Storyboard.TargetName="ContentScale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1.1" 
+                                                Duration="0:0:0.2">
+                                                
                                                 <DoubleAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseOut"/>
+                                                    
+                                                    <CubicEase
+                                                        EasingMode="EaseOut"/>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>
+                                
                                 <Trigger.ExitActions>
+                                    
                                     <BeginStoryboard>
+                                        
                                         <Storyboard>
+                                            
                                             <ColorAnimation 
-                                            Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
-                                            To="{StaticResource P2Color}"
-                                            Duration="0:0:0.2"/>
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
+                                                To="{StaticResource P2Color}"
+                                                Duration="0:0:0.2"/>
+                                            
                                             <DoubleAnimation 
-                                            Storyboard.TargetName="ContentScale"
-                                            Storyboard.TargetProperty="ScaleX"
-                                            To="1" 
-                                            Duration="0:0:0.2">
+                                                Storyboard.TargetName="ContentScale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1" 
+                                                Duration="0:0:0.2">
+                                                
                                                 <DoubleAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseOut"/>
+                                                    
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
+                                            
                                             <DoubleAnimation 
-                                            Storyboard.TargetName="ContentScale"
-                                            Storyboard.TargetProperty="ScaleY"
-                                            To="1" 
-                                            Duration="0:0:0.2">
+                                                Storyboard.TargetName="ContentScale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1" 
+                                                Duration="0:0:0.2">
+                                                
                                                 <DoubleAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseOut"/>
+                                                    
+                                                    <CubicEase 
+                                                        EasingMode="EaseOut"/>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.ExitActions>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="0.5"/>
+                            
+                            <Trigger
+                                Property="IsEnabled" 
+                                Value="False">
+                                
+                                <Setter
+                                    Property="Opacity"
+                                    Value="0.5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="ItemContainerStyle">
+            
+            <Setter
+                Property="ItemContainerStyle">
+                
                 <Setter.Value>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Foreground" Value="{DynamicResource T}"/>
-                        <Setter Property="FontFamily" Value="Montserrat"/>
-                        <Setter Property="FontSize" Value="14"/>
-                        <Setter Property="Padding" Value="5"/>
-                        <Setter Property="Template">
+                    
+                    <Style 
+                        TargetType="ListBoxItem">
+                        
+                        <Setter
+                            Property="Foreground"
+                            Value="{DynamicResource T}"/>
+                        
+                        <Setter
+                            Property="FontFamily"
+                            Value="Montserrat"/>
+                        
+                        <Setter
+                            Property="FontSize" 
+                            Value="14"/>
+                        
+                        <Setter 
+                            Property="Padding"
+                            Value="5"/>
+                        
+                        <Setter 
+                            Property="Template">
+                            
                             <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="Border" 
+                                
+                                <ControlTemplate
+                                    TargetType="ListBoxItem">
+                                    
+                                    <Border 
+                                        x:Name="Border" 
                                         Padding="{TemplateBinding Padding}" 
                                         SnapsToDevicePixels="True"
                                         Background="Transparent">
+                                        
                                         <ContentPresenter 
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                            
                                             <ContentPresenter.RenderTransform>
-                                                <ScaleTransform x:Name="ItemScale" ScaleX="1" ScaleY="1"/>
+                                                
+                                                <ScaleTransform
+                                                    x:Name="ItemScale"
+                                                    ScaleX="1" ScaleY="1"/>
                                             </ContentPresenter.RenderTransform>
                                         </ContentPresenter>
                                     </Border>
+                                    
                                     <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource S1}"/>
+                                        
+                                        <Trigger
+                                            Property="IsSelected"
+                                            Value="True">
+                                            
+                                            <Setter 
+                                                TargetName="Border"
+                                                Property="Background" 
+                                                Value="{DynamicResource S1}"/>
+                                            
                                         </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource S2}"/>
+                                        
+                                        <Trigger 
+                                            Property="IsMouseOver"
+                                            Value="True">
+                                            
+                                            <Setter
+                                                TargetName="Border"
+                                                Property="Background"
+                                                Value="{DynamicResource S2}"/>
+                                            
                                             <Trigger.EnterActions>
+                                                
                                                 <BeginStoryboard>
+                                                    
                                                     <Storyboard>
+                                                        
                                                         <DoubleAnimation 
-                                                        Storyboard.TargetName="ItemScale"
-                                                        Storyboard.TargetProperty="ScaleX"
-                                                        To="1.1" 
-                                                        Duration="0:0:0.2">
+                                                            Storyboard.TargetName="ItemScale"
+                                                            Storyboard.TargetProperty="ScaleX"
+                                                            To="1.1" 
+                                                            Duration="0:0:0.2">
+                                                            
                                                             <DoubleAnimation.EasingFunction>
-                                                                <CubicEase EasingMode="EaseOut"/>
+                                                                
+                                                                <CubicEase
+                                                                    EasingMode="EaseOut"/>
                                                             </DoubleAnimation.EasingFunction>
                                                         </DoubleAnimation>
+                                                        
                                                         <DoubleAnimation 
-                                                        Storyboard.TargetName="ItemScale"
-                                                        Storyboard.TargetProperty="ScaleY"
-                                                        To="1.1" 
-                                                        Duration="0:0:0.2">
+                                                            Storyboard.TargetName="ItemScale"
+                                                            Storyboard.TargetProperty="ScaleY"
+                                                            To="1.1" 
+                                                            Duration="0:0:0.2">
+                                                            
                                                             <DoubleAnimation.EasingFunction>
-                                                                <CubicEase EasingMode="EaseOut"/>
+                                                                
+                                                                <CubicEase 
+                                                                    EasingMode="EaseOut"/>
                                                             </DoubleAnimation.EasingFunction>
                                                         </DoubleAnimation>
                                                     </Storyboard>
                                                 </BeginStoryboard>
                                             </Trigger.EnterActions>
+                                            
                                             <Trigger.ExitActions>
+                                                
                                                 <BeginStoryboard>
+                                                    
                                                     <Storyboard>
+                                                        
                                                         <DoubleAnimation 
-                                                        Storyboard.TargetName="ItemScale"
-                                                        Storyboard.TargetProperty="ScaleX"
-                                                        To="1" 
-                                                        Duration="0:0:0.2">
+                                                            Storyboard.TargetName="ItemScale"
+                                                            Storyboard.TargetProperty="ScaleX"
+                                                            To="1" 
+                                                            Duration="0:0:0.2">
+                                                            
                                                             <DoubleAnimation.EasingFunction>
-                                                                <CubicEase EasingMode="EaseOut"/>
+                                                                
+                                                                <CubicEase
+                                                                    EasingMode="EaseOut"/>
                                                             </DoubleAnimation.EasingFunction>
                                                         </DoubleAnimation>
+                                                        
                                                         <DoubleAnimation 
-                                                        Storyboard.TargetName="ItemScale"
-                                                        Storyboard.TargetProperty="ScaleY"
-                                                        To="1" 
-                                                        Duration="0:0:0.2">
+                                                            Storyboard.TargetName="ItemScale"
+                                                            Storyboard.TargetProperty="ScaleY"
+                                                            To="1" 
+                                                            Duration="0:0:0.2">
+                                                            
                                                             <DoubleAnimation.EasingFunction>
-                                                                <CubicEase EasingMode="EaseOut"/>
+                                                                
+                                                                <CubicEase 
+                                                                    EasingMode="EaseOut"/>
                                                             </DoubleAnimation.EasingFunction>
                                                         </DoubleAnimation>
                                                     </Storyboard>
