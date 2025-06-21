@@ -791,7 +791,7 @@
                             Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
-                            CornerRadius="5">
+                            CornerRadius="7.5">
                             
                             <Grid>
                                 
@@ -807,7 +807,7 @@
                                 <ContentPresenter 
                                     Name="ContentSite" 
                                     Grid.Column="0" 
-                                    Margin="5,3,3,3" 
+                                    Margin="3" 
                                     VerticalAlignment="Center" 
                                     HorizontalAlignment="Left"
                                     ContentSource="SelectedItem"
@@ -843,7 +843,7 @@
                                         BorderBrush="{DynamicResource P2}" 
                                         BorderThickness="1" 
                                         Background="{DynamicResource P1}" 
-                                        CornerRadius="5"
+                                        CornerRadius="7.5"
                                         MinWidth="{TemplateBinding ActualWidth}"
                                         MaxHeight="200">
                                         
@@ -875,7 +875,7 @@
                                             <ColorAnimation 
                                                 Storyboard.TargetName="Border"
                                                 Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
-                                                To="{StaticResource S2Color}"
+                                                To="{StaticResource P2Color}"
                                                 Duration="0:0:0.2"/>
                                             
                                             <DoubleAnimation 
@@ -1003,7 +1003,8 @@
                                         <ContentPresenter 
                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            RenderTransformOrigin="0,0.5">
                                             
                                             <ContentPresenter.RenderTransform>
                                                 
@@ -1034,7 +1035,7 @@
                                             <Setter
                                                 TargetName="Border"
                                                 Property="Background"
-                                                Value="{DynamicResource S2}"/>
+                                                Value="{DynamicResource P2}"/>
                                             
                                             <Trigger.EnterActions>
                                                 

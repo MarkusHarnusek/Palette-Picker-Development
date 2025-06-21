@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PalettePicker
@@ -23,6 +24,7 @@ namespace PalettePicker
         {
             InitializeComponent();
             InfoUpdate();
+            DataContext = this;
         }
 
         private void InfoUpdate()

@@ -39,6 +39,7 @@ namespace PalettePicker
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;   
         }
 
         public static void SetLanguage(int languageID, MainWindow instance)

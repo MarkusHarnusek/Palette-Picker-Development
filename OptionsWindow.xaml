@@ -45,13 +45,20 @@
 
                     <Button
                         x:Name="Btn_Language"
-                        Click="Btn_Preferences_Click" 
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Foreground="{DynamicResource T}"
+                        Style="{StaticResource Heigth_Fade_Button_Style}"
+                        Click="Btn_Language_Click" 
                         Content="Language"
-                        FontFamily="Montserrat"
-                        FontSize="20"/>
+                        FontSize="20"
+                        Height="35"/>
+
+                    <Button
+                        x:Name="Btn_Appearance"
+                        Visibility="Collapsed"
+                        Click="Btn_Appearance_Click"
+                        Style="{StaticResource Heigth_Fade_Button_Style}"
+                        Content="Appearance"
+                        FontSize="20" 
+                        Height="35"/>
                 </StackPanel>
             </Border>
 
@@ -66,18 +73,74 @@
                     BorderThickness="1"
                     CornerRadius="10">
 
-                    <Grid
-                        x:Name="Grd_Language">
+                    <Grid>
 
-                        <TextBlock
-                            x:Name="Txt_Language_Title"
-                            Text="Language"
-                            Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
-                            FontSize="20"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center"
-                            Margin="0,5,0,0"/>
+                        <Grid
+                            x:Name="Grd_None"
+                            Visibility="Collapsed">
+
+                            <TextBlock
+                                x:Name="Txt_NoGrdSelected"
+                                Text="No settings menu selected"
+                                Foreground="{DynamicResource T}"
+                                FontSize="20"
+                                FontFamily="Montserrat"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid
+                            x:Name="Grd_Language"
+                            Visibility="Visible">
+
+                            <TextBlock
+                                x:Name="Txt_Language_Title"
+                                Text="Language"
+                                Foreground="{DynamicResource T}"
+                                FontFamily="Montserrat"
+                                FontSize="20"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,5,0,0"/>
+
+                            <StackPanel
+                                Margin="0,40,0,0">
+
+                                <ComboBox
+                                    x:Name="Cmb_Language"
+                                    Style="{StaticResource Combobox_Style}"
+                                    ItemsSource="{Binding MyItems}"
+                                    SelectedIndex="0"
+                                    Width="200"
+                                    Height="25" SelectionChanged="Cmb_Language_SelectionChanged">
+
+                                    <ComboBox.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <TextBlock
+                                                Height="20"
+                                                Text="{Binding}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid
+                            x:Name="Grd_Appearance"
+                            Visibility="Collapsed">
+
+                            <TextBlock
+                                x:Name="Txt_Appearance_Title"
+                                Text="Appearance"
+                                Foreground="{DynamicResource T}"
+                                FontFamily="Montserrat"
+                                FontSize="20"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,5,0,0"/>
+                        </Grid>
                     </Grid>
                 </Border>
             </Grid>
