@@ -1,6 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace PalettePicker
 {
@@ -9,6 +11,8 @@ namespace PalettePicker
     /// </summary>
     public partial class ColorPickerWindow : Window
     {
+        private const int refreshRate = 50;
+
         private string originalHex = "#000000";
         private float hue = 0;
         private float saturation = 100;
@@ -76,15 +80,29 @@ namespace PalettePicker
             }
 
             Rct_ColorPreview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, luminance)));
-            Rct_Hue_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, 100, 50)));
-            Rct_Saturation_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, 50)));
-            Rct_Luminance_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, luminance)));
+
+            Rct_Brd_Hue_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, 100, 50)));
+            double hue_margin = ((hue / 360.0) * 158.0) - 79;
+            Brd_Hue_Preview.Margin = new Thickness(hue_margin, Brd_Hue_Preview.Margin.Top, Brd_Hue_Preview.Margin.Right, Brd_Hue_Preview.Margin.Bottom);
+
+            Rct_Brd_Saturation_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, 50)));
+            double saturation_margin = ((saturation / 100.0) * 158.0) - 79;
+            Brd_Saturation_Preview.Margin = new Thickness(saturation_margin, Brd_Saturation_Preview.Margin.Top, Brd_Saturation_Preview.Margin.Right, Brd_Saturation_Preview.Margin.Bottom);
+
+            Rct_Brd_Luminance_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, luminance)));
+            double luminance_margin = ((luminance / 100.0) * 158.0) - 79;
+            Brd_Luminance_Preview.Margin = new Thickness(luminance_margin, Brd_Luminance_Preview.Margin.Top, Brd_Luminance_Preview.Margin.Right, Brd_Luminance_Preview.Margin.Bottom);
 
             GrS_Color_Luminace_Normal.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, 50));
             GrS_Color_Saturation_Max.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(hue, 100, luminance));
             GrS_Color_Saturation_Min.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(hue, 0, luminance));
 
             Txb_HexColor.Text = GetHexColor(hue, saturation, luminance);
+
+            if (GetHexColor(hue, saturation, luminance) != originalHex && Title.ToString()[0] != '*')
+            {
+                Title = "* " + Title;
+            }
         }
 
         public void SetLanguage(int languageId, ColorPickerWindow instance)
@@ -94,120 +112,106 @@ namespace PalettePicker
             switch (languageId)
             {
                 case 0:
-                    instance.Title = "Color Picker";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "Currently editing: Primary 1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "Currently editing: Primary 2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "Currently editing: Secondary 1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "Currently editing: Secondary 2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "Currently editing: Text"; break;
+                        case 0: instance.Title = "Primary 1"; break;
+                        case 1: instance.Title = "Primary 2"; break;
+                        case 2: instance.Title = "Secondary 1"; break;
+                        case 3: instance.Title = "Secondary 2"; break;
+                        case 4: instance.Title = "Text"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "Pick your desired color";
+                    instance.Txt_ColorPickerTitle.Text = "ColorPicker";
                     instance.Btn_OK.Content = "OK";
 
                     break;
 
                 case 1:
-                    instance.Title = "Farbwähler";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Primär 1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Primär 2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Sekundär 1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Sekundär 2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "Derzeit bearbeitet: Text"; break;
+                        case 0: instance.Title = "Primär 1"; break;
+                        case 1: instance.Title = "Primär 2"; break;
+                        case 2: instance.Title = "Sekundär 1"; break;
+                        case 3: instance.Title = "Sekundär 2"; break;
+                        case 4: instance.Title = "Text"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "Wähle die gewünschte Farbe";
+                    instance.Txt_ColorPickerTitle.Text = "Farbwähler";
                     instance.Btn_OK.Content = "OK";
 
                     break;
 
                 case 2:
-                    instance.Title = "Selector de color";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Primario 1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Primario 2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Secundario 1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Secundario 2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "Actualmente editando: Texto"; break;
+                        case 0: instance.Title = "Primario 1"; break;
+                        case 1: instance.Title = "Primario 2"; break;
+                        case 2: instance.Title = "Secundario 1"; break;
+                        case 3: instance.Title = "Secundario 2"; break;
+                        case 4: instance.Title = "Texto"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "Seleccione su color deseado";
+                    instance.Txt_ColorPickerTitle.Text = "Selector de color";
                     instance.Btn_OK.Content = "OK";
 
                     break;
 
                 case 3:
-                    instance.Title = "Sélecteur de couleur";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Primaire 1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Primaire 2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Secondaire 1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Secondaire 2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "Actuellement en cours d'édition : Texte"; break;
+                        case 0: instance.Title = "Primaire 1"; break;
+                        case 1: instance.Title = "Primaire 2"; break;
+                        case 2: instance.Title = "Secondaire 1"; break;
+                        case 3: instance.Title = "Secondaire 2"; break;
+                        case 4: instance.Title = "Texte"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "Sélectionnez la couleur souhaitée";
+                    instance.Txt_ColorPickerTitle.Text = "Sélecteur de couleur";
                     instance.Btn_OK.Content = "OK";
 
                     break;
 
                 case 4:
-                    instance.Title = "颜色选择器";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "当前编辑：主色1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "当前编辑：主色2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "当前编辑：辅助色1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "当前编辑：辅助色2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "当前编辑：文本"; break;
+                        case 0: instance.Title = "主色1"; break;
+                        case 1: instance.Title = "主色2"; break;
+                        case 2: instance.Title = "辅助色1"; break;
+                        case 3: instance.Title = "辅助色2"; break;
+                        case 4: instance.Title = "文本"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "选择您想要的颜色";
+                    instance.Txt_ColorPickerTitle.Text = "颜色选择器";
                     instance.Btn_OK.Content = "确定";
 
                     break;
 
                 case 5:
-                    instance.Title = "Seletor de cores";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Primário 1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Primário 2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Secundário 1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Secundário 2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "Editando atualmente: Texto"; break;
+                        case 0: instance.Title = "Primário 1"; break;
+                        case 1: instance.Title = "Primário 2"; break;
+                        case 2: instance.Title = "Secundário 1"; break;
+                        case 3: instance.Title = "Secundário 2"; break;
+                        case 4: instance.Title = "Texto"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "Selecione a cor desejada";
+                    instance.Txt_ColorPickerTitle.Text = "Seletor de cores";
                     instance.Btn_OK.Content = "OK";
 
                     break;
 
                 case 6:
-                    instance.Title = "Выбор цвета";
-
                     switch (editingNum)
                     {
-                        case 0: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Основной 1"; break;
-                        case 1: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Основной 2"; break;
-                        case 2: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Вторичный 1"; break;
-                        case 3: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Вторичный 2"; break;
-                        case 4: instance.Txt_CurrentEditingColor.Text = "В данный момент редактируется: Текст"; break;
+                        case 0: instance.Title = "Основной 1"; break;
+                        case 1: instance.Title = "Основной 2"; break;
+                        case 2: instance.Title = "Вторичный 1"; break;
+                        case 3: instance.Title = "Вторичный 2"; break;
+                        case 4: instance.Title = "Текст"; break;
                     }
 
-                    instance.Txt_ColorPickerTitle.Text = "Выберите желаемый цвет";
+                    instance.Txt_ColorPickerTitle.Text = "Выбор цвета";
                     instance.Btn_OK.Content = "ОК";
 
                     break;
@@ -322,10 +326,14 @@ namespace PalettePicker
         #region ColorButtons
 
         #region Hue
+
         private void Btn_Hue_Increase_Click(object sender, RoutedEventArgs e)
         {
             hue++;
             if (hue > 360) hue = 0;
+
+            double left = ((hue / 360.0) * 158.0) - 79;
+            Brd_Hue_Preview.Margin = new Thickness(left, Brd_Hue_Preview.Margin.Top, Brd_Hue_Preview.Margin.Right, Brd_Hue_Preview.Margin.Bottom);
 
             InfoUpdate();
         }
@@ -335,9 +343,11 @@ namespace PalettePicker
             hue--;
             if (hue < 0) hue = 360;
 
+            double left = ((hue / 360.0) * 158.0) - 79;
+            Brd_Hue_Preview.Margin = new Thickness(left, Brd_Hue_Preview.Margin.Top, Brd_Hue_Preview.Margin.Right, Brd_Hue_Preview.Margin.Bottom);
+
             InfoUpdate();
         }
-
 
         #endregion
 
@@ -348,6 +358,9 @@ namespace PalettePicker
             saturation++;
             if (saturation > 100) saturation = 0;
 
+            double left = ((saturation / 100.0) * 158.0) - 79;
+            Brd_Saturation_Preview.Margin = new Thickness(left, Brd_Saturation_Preview.Margin.Top, Brd_Saturation_Preview.Margin.Right, Brd_Saturation_Preview.Margin.Bottom);
+
             InfoUpdate();
         }
 
@@ -355,6 +368,9 @@ namespace PalettePicker
         {
             saturation--;
             if (saturation < 0) saturation = 100;
+
+            double left = ((saturation / 100.0) * 158.0) - 79;
+            Brd_Saturation_Preview.Margin = new Thickness(left, Brd_Saturation_Preview.Margin.Top, Brd_Saturation_Preview.Margin.Right, Brd_Saturation_Preview.Margin.Bottom);
 
             InfoUpdate();
         }
@@ -368,6 +384,9 @@ namespace PalettePicker
             luminance++;
             if (luminance > 100) luminance = 0;
 
+            double left = ((luminance / 100.0) * 158.0) - 158;
+            Brd_Luminance_Preview.Margin = new Thickness(left, Brd_Luminance_Preview.Margin.Top, Brd_Luminance_Preview.Margin.Right, Brd_Luminance_Preview.Margin.Bottom);
+
             InfoUpdate();
         }
 
@@ -375,6 +394,9 @@ namespace PalettePicker
         {
             luminance--;
             if (luminance < 0) luminance = 100;
+
+            double left = ((luminance / 100.0) * 158.0) - 158;
+            Brd_Luminance_Preview.Margin = new Thickness(left, Brd_Luminance_Preview.Margin.Top, Brd_Luminance_Preview.Margin.Right, Brd_Luminance_Preview.Margin.Bottom);
 
             InfoUpdate();
         }

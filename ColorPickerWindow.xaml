@@ -19,7 +19,7 @@
 
             <TextBlock
                 x:Name="Txt_ColorPickerTitle"
-                Text="Pick your desired color"
+                Text="Color Picker"
                 Foreground="{DynamicResource T}"
                 HorizontalAlignment="Center"
                 Height="15"
@@ -27,20 +27,9 @@
                 FontWeight="SemiBold"
                 FontSize="13"/>
 
-            <TextBlock
-                x:Name="Txt_CurrentEditingColor"
-                Text="Currently editing: colorName"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Foreground="{DynamicResource T}"
-                FontSize="12"
-                FontFamily="Montserrat"
-                FontWeight="Light"
-                Margin="0,5,0,0"/>
-
             <Rectangle
             x:Name="Rct_ColorPreview"
-            Margin="0,40,230,0"
+            Margin="0,40,210,0"
             Fill="#FF0000"
             Width="115"
             Height="115"
@@ -48,9 +37,9 @@
             RadiusY="10"/>
 
             <Border
-                Margin="115,-135,0,0"
+                Margin="135,-135,0,0"
                 Height="150"
-                Width="210"
+                Width="200"
                 BorderBrush="{DynamicResource P2}"
                 BorderThickness="1"
                 CornerRadius="10">
@@ -73,19 +62,12 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
 
-                        <Rectangle
-                            x:Name="Rct_Hue_Preview"
-                            Width="25"
-                            Height="25"
-                            Margin="0,0,5,0"
-                            Fill="#FF0000"
-                            RadiusX="5"
-                            RadiusY="5"/>
-
-                        <Button
+                        <RepeatButton
                             x:Name="Btn_Hue_Decrease"
-                            Style="{StaticResource Font_Icon_Size_Up_Button_Style}"
+                            Style="{StaticResource Font_Icon_Size_Up_Repeat_Button_Style}"
                             Click="Btn_Hue_Decrease_Click"
+                            Delay="300"
+                            Interval="20"
                             Width="25"
                             Height="25"
                             VerticalAlignment="Center">
@@ -100,32 +82,53 @@
                                 FontSize="24"
                                 Margin="0,0,0,4">
                             </TextBlock>
-                        </Button>
+                        </RepeatButton>
 
-                        <Rectangle
+                        <Grid
                             Height="26"
                             Width="100"
-                            Margin="5,0,5,0"
-                            RadiusX="5"
-                            RadiusY="5">
+                            Margin="5,0,5,0">
 
-                            <Rectangle.Fill>
+                            <Rectangle
+                                RadiusX="5"
+                                RadiusY="5">
 
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,-0.05">
+                                <Rectangle.Fill>
 
-                                    <GradientStop Color="#FF0000" Offset="0"/>
-                                    <GradientStop Color="#FFFF00" Offset="0.25"/>
-                                    <GradientStop Color="#00FFFF" Offset="0.50"/>
-                                    <GradientStop Color="#0000FF" Offset="0.75"/>
-                                    <GradientStop Color="#FF0000" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,-0.05">
 
-                        <Button
+                                        <GradientStop Color="#FF0000" Offset="0"/>
+                                        <GradientStop Color="#FFFF00" Offset="0.25"/>
+                                        <GradientStop Color="#00FFFF" Offset="0.50"/>
+                                        <GradientStop Color="#0000FF" Offset="0.75"/>
+                                        <GradientStop Color="#FF0000" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <Border
+                                x:Name="Brd_Hue_Preview"
+                                Height="16"
+                                Width="16"
+                                Margin="-79,0,0,0"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource P2}"
+                                CornerRadius="5">
+
+                                <Rectangle
+                                    x:Name="Rct_Brd_Hue_Preview"
+                                    Fill="#FF0000"
+                                    RadiusX="4.25"
+                                    RadiusY="4.25"/>
+                            </Border>
+                        </Grid>
+
+                        <RepeatButton
                             x:Name="Btn_Hue_Increase"
-                            Style="{StaticResource Font_Icon_Size_Up_Button_Style}"
+                            Style="{StaticResource Font_Icon_Size_Up_Repeat_Button_Style}"
                             Click="Btn_Hue_Increase_Click"
+                            Delay="300"
+                            Interval="20"
                             Width="25"
                             Height="25"
                             VerticalAlignment="Center">
@@ -140,7 +143,7 @@
                                 FontSize="24"
                                 Margin="0,0,0,4">
                             </TextBlock>
-                        </Button>
+                        </RepeatButton>
                     </StackPanel>
 
                     <TextBlock
@@ -158,19 +161,12 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
 
-                        <Rectangle
-                            x:Name="Rct_Saturation_Preview"
-                            Width="25"
-                            Height="25"
-                            Margin="0,0,5,0"
-                            Fill="#FF0000"
-                            RadiusX="5"
-                            RadiusY="5"/>
-
-                        <Button
+                        <RepeatButton
                             x:Name="Btn_Stauration_Decrease"
-                            Style="{StaticResource Font_Icon_Size_Up_Button_Style}"
+                            Style="{StaticResource Font_Icon_Size_Up_Repeat_Button_Style}"
                             Click="Btn_Stauration_Decrease_Click"
+                            Delay="300"
+                            Interval="20"
                             Width="25"
                             Height="25"
                             VerticalAlignment="Center">
@@ -185,36 +181,57 @@
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
-                        </Button>
+                        </RepeatButton>
 
-                        <Rectangle
+                        <Grid
                             Height="26"
                             Width="100"
-                            Margin="5,0,5,0"
-                            RadiusX="5"
-                            RadiusY="5">
+                            Margin="5,0,5,0">
 
-                            <Rectangle.Fill>
+                            <Rectangle
+                                RadiusX="5"
+                                RadiusY="5">
 
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,-0.05">
-                                    <GradientStop 
-                                        x:Name="GrS_Color_Saturation_Min"
-                                        Color="#FFFFFF" 
-                                        Offset="0"/>
+                                <Rectangle.Fill>
 
-                                    <GradientStop
-                                        x:Name="GrS_Color_Saturation_Max"
-                                        Color="#FF0000" 
-                                        Offset="1"/>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,-0.05">
+                                        <GradientStop 
+                                            x:Name="GrS_Color_Saturation_Min"
+                                            Color="#FFFFFF" 
+                                            Offset="0"/>
 
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
+                                        <GradientStop
+                                            x:Name="GrS_Color_Saturation_Max"
+                                            Color="#FF0000" 
+                                            Offset="1"/>
 
-                        <Button
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            
+                            <Border
+                                x:Name="Brd_Saturation_Preview"
+                                Height="16"
+                                Width="16"
+                                Margin="-79,0,0,0"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource P2}"
+                                CornerRadius="5">
+
+                                <Rectangle
+                                    x:Name="Rct_Brd_Saturation_Preview"
+                                    Fill="#FF0000"
+                                    RadiusX="4.25"
+                                    RadiusY="4.25"/>
+                            </Border>
+                        </Grid>
+
+                        <RepeatButton
                             x:Name="Btn_Saturation_Increase"
-                            Style="{StaticResource Font_Icon_Size_Up_Button_Style}"
+                            Style="{StaticResource Font_Icon_Size_Up_Repeat_Button_Style}"
                             Click="Btn_Saturation_Increase_Click"
+                            Delay="300"
+                            Interval="20"
                             Width="25"
                             Height="25"
                             VerticalAlignment="Center">
@@ -229,7 +246,7 @@
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
-                        </Button>
+                        </RepeatButton>
                     </StackPanel>
 
                     <TextBlock
@@ -247,19 +264,12 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
 
-                        <Rectangle
-                            x:Name="Rct_Luminance_Preview"
-                            Width="25"
-                            Height="25"
-                            Margin="0,0,5,0"
-                            Fill="#FF0000"
-                            RadiusX="5"
-                            RadiusY="5"/>
-
-                        <Button
+                        <RepeatButton
                             x:Name="Btn_Luminance_Decrease"
-                            Style="{StaticResource Font_Icon_Size_Up_Button_Style}"
+                            Style="{StaticResource Font_Icon_Size_Up_Repeat_Button_Style}"
                             Click="Btn_Luminance_Decrease_Click"
+                            Delay="300"
+                            Interval="20"
                             Width="25"
                             Height="25"
                             VerticalAlignment="Center">
@@ -274,39 +284,61 @@
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
-                        </Button>
+                        </RepeatButton>
 
-                        <Rectangle
+                        <Grid
                             Height="26"
                             Width="100"
-                            Margin="5,0,5,0"
-                            RadiusX="5"
-                            RadiusY="5">
+                            Margin="5,0,5,0">
+                            
+                            <Rectangle
+                                RadiusX="5"
+                                RadiusY="5">
 
-                            <Rectangle.Fill>
+                                <Rectangle.Fill>
 
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,-0.05">
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,-0.05">
 
-                                    <GradientStop 
-                                        Color="#000000" 
-                                        Offset="0"/>
+                                        <GradientStop 
+                                            Color="#000000" 
+                                            Offset="0"/>
 
-                                    <GradientStop
-                                        x:Name="GrS_Color_Luminace_Normal"
-                                        Color="#FF0000" 
-                                        Offset="0.5"/>
+                                        <GradientStop
+                                            x:Name="GrS_Color_Luminace_Normal"
+                                            Color="#FF0000" 
+                                            Offset="0.5"/>
 
-                                    <GradientStop 
-                                        Color="#FFFFFF" 
-                                        Offset="1"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
+                                        <GradientStop 
+                                            Color="#FFFFFF" 
+                                            Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
 
-                        <Button
+                            <Border
+                                x:Name="Brd_Luminance_Preview"
+                                Height="16"
+                                Width="16"
+                                Margin="0,0,0,0"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource P2}"
+                                CornerRadius="5">
+
+                                <Rectangle
+                                    x:Name="Rct_Brd_Luminance_Preview"
+                                    Fill="#FF0000"
+                                    RadiusX="4.25"
+                                    RadiusY="4.25"/>
+                            </Border>
+                        </Grid>
+
+
+                        <RepeatButton
                             x:Name="Btn_Luminance_Increase"
-                            Style="{StaticResource Font_Icon_Size_Up_Button_Style}"
+                            Style="{StaticResource Font_Icon_Size_Up_Repeat_Button_Style}"
                             Click="Btn_Luminance_Increase_Click"
+                            Delay="300"
+                            Interval="20"
                             Width="25"
                             Height="25"
                             VerticalAlignment="Center">
@@ -321,7 +353,7 @@
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
-                        </Button>
+                        </RepeatButton>
                     </StackPanel>
                 </StackPanel>
             </Border>
