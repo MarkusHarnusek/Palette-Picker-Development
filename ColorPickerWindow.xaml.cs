@@ -22,6 +22,7 @@ namespace PalettePicker
 
         private string currentUserHexInput = string.Empty;
 
+        private bool isProgressSaved = true;
         private bool closing = false;
 
         public ColorPickerWindow()
@@ -99,9 +100,23 @@ namespace PalettePicker
 
             Txb_HexColor.Text = GetHexColor(hue, saturation, luminance);
 
-            if (GetHexColor(hue, saturation, luminance) != originalHex && Title.ToString()[0] != '*')
+            if (GetHexColor(hue, saturation, luminance) != originalHex)
             {
-                Title = "* " + Title;
+                if (Title[0] != '*')
+                {
+                    Title = "* " + Title;
+                }
+
+                isProgressSaved = false;
+            }
+            else
+            {
+                isProgressSaved = true;
+
+                if (Title[0] != '*')
+                {
+                    Title = Title.Substring(2);
+                }
             }
         }
 
@@ -514,6 +529,7 @@ namespace PalettePicker
                     break;
             }
 
+            isProgressSaved = true;
             this.Close();
         }
 
@@ -532,10 +548,20 @@ namespace PalettePicker
             MainWindow.UpdateGridInfos((MainWindow)Application.Current.MainWindow);
             MainWindow.alreadyEditing[editingNum] = false;
 
-            if (GetHexColor(hue, saturation, luminance) != originalHex)
+            if (!isProgressSaved)
             {
-                var mainWindow = (MainWindow)Application.Current.MainWindow;
-                MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);
+                MessageBoxResult result = MessageBox.Show("Do you want to quit without saving progress?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
+
+                if (GetHexColor(hue, saturation, luminance) != originalHex)
+                {
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);
+                }
             }
         }
     }
