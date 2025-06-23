@@ -419,11 +419,12 @@ namespace PalettePicker
                     return false;
                 }
 
-                var jsonData = JsonSerializer.Deserialize<Dictionary<string, object>>(content) ?? null;
+                var jsonData = JsonSerializer.Deserialize<Dictionary<string, object>>(content);
 
                 if (jsonData == null)
                 {
                     errorMessage = GetShortTranslatedErrMsg(3, MainWindow.currentLanguage);
+                    return false;
                 }
 
                 if (jsonData.Count != 11)

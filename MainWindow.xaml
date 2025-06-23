@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:MainWindow, IsDesignTimeCreatable=True}"
         ContentRendered="Window_ContentRendered"
+        Closing="Window_Closing"
+        Closed="Window_Closed"
         ResizeMode="NoResize"
         Title="Paltette Picker" 
         Height="520"
         Width="820"
-        Background="{DynamicResource P1}" Closing="Window_Closing">
+        Background="{DynamicResource P1}">
 
     <StackPanel
         Margin="20,10,0,0">

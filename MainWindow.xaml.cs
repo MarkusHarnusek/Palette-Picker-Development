@@ -282,7 +282,7 @@ namespace PalettePicker
 
         public static void UpdateGridInfos(MainWindow instance)
         {
-            instance.Grd_Primary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Primary1));
+           instance.Grd_Primary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Primary1));
             instance.Grd_Primary2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Primary2));
             instance.Grd_Secondary1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Secondary1));
             instance.Grd_Secondary2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Secondary2));
@@ -500,6 +500,11 @@ namespace PalettePicker
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
