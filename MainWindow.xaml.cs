@@ -476,17 +476,6 @@ namespace PalettePicker
             }
         }
 
-        private string GetRandomPalleteName()
-        {
-            Random random = new Random();
-
-            string[] prefixes = { "Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega", "Mega", "Giga", "Tera", "Peta", "Exa", "Zetta", "Yotta", "Eco", "Neo", "Retro", "Urban", "Quantum", "Cosmic", "Solar", "Lunar", "Astro", "Electro", "Hydro", "Geo", "Cyber", "Nano", "Bio", "Techno", "Ultra", "Hyper", "Infra", "Inter", "Intra", "Sub", "Super", "Semi", "Pseudo", "Trans", "Over", "Under", "Iso", "Anti", "Turbo", "Velo", "Rocket", "Sonic", "Cipher", "Vector", "Primal", "Aero", "Mystique", "Crystal", "Stellar", "Astra", "Solaris", "Celestio", "Cyclonic", "Temporal", "Galactic", "Seraphic", "Phantom", "Spectral", "Virtual", "Digital", "Analog", "Magnetic", "Radiant", "Glacial", "Voltaic", "Harmonic", "Dynamic", "Infinite", "Eternal", "Arcane", "Mystery", "Futuristic", "Prismatic", "Optic", "Chromatic", "Vital", "Raw" };
-            string[] names = { "Aurora", "Borealis", "Celestial", "Dusk", "Eclipse", "Frost", "Glimmer", "Harmony", "Illusion", "Jubilant", "Kaleidoscope", "Luminous", "Mirage", "Nebula", "Oasis", "Paradigm", "Quartz", "Radiance", "Serenity", "Tranquil", "Utopia", "Vivid", "Whisper", "Xanadu", "Zenith", "Abyss", "Brilliance", "Cascade", "Drift", "Euphoria", "Flare", "Gossamer", "Halo", "Iridescence", "Jade", "Kismet", "Lucid", "Mystic", "Nimbus", "Opal", "Pulse", "Quiver", "Rhapsody", "Saffron", "Tidal", "Unity", "Vortex", "Wonder", "Xenial", "Yonder", "Zephyr", "Amber", "Bliss", "Celeste", "Dawn", "Ember", "Flora", "Gleam", "Harbor", "Infusion", "Jubilee", "Kiara", "Luxe", "Melody", "Nova", "Orchid", "Phoenix", "Quasar", "Reverie", "Solstice", "Tangerine", "Umbra", "Velvet", "Wisp", "Xenon", "Zest", "Aerial", "Brisk", "Chroma", "Dapple", "Elegance", "Fable", "Gusto", "Haven", "Ivory", "Jolt", "Keen", "Lush", "Majestic", "Noir", "Opus", "Prism", "Quintessence", "Ripple", "Sparrow", "Tonic", "Ultraviolet", "Vantage", "Wanderlust", "Ethereal" };
-            string[] suffixes = { "Mist", "Shade", "Tint", "Bloom", "Rush", "Wave", "Dream", "Spark", "Drift", "Gleam", "Glint", "Glow", "Pulse", "Surge", "Breeze", "Whisper", "Echo", "Fusion", "Sparkle", "Frost", "Blaze", "Shimmer", "Burst", "Stream", "Aurora", "Cascade", "Dusk", "Dawn", "Haze", "Flux", "Vibe", "Bolt", "Drizzle", "Murmur", "Ripple", "Glaze", "Crush", "Sizzle", "Twist", "Spiral", "Glide", "Sweep", "Slide", "Crackle", "Flicker", "Shine", "Luster", "Glisten", "Beam", "Roar", "Sway", "Swirl", "Flurry", "Quiver", "Lilt", "Zephyr", "Flutter", "Scintilla", "Fleck", "Patter", "Tingle", "Dapple", "Vortex", "Swell", "Curl", "Drape", "Veil", "Hush", "Gush", "Spill", "Drop", "Crest", "Clash", "Slick", "Fume", "Trace", "Twinge", "Quake", "Wisp", "Flick", "Blush", "Smolder", "Hollow", "Drum", "Ember", "Fervor", "Glimmer", "Cadence", "Undertone", "Overtone", "Undercurrent", "Afterglow", "Nightfall", "Daybreak", "Moonrise", "Twilight", "Sunset", "Sunrise", "Nocturne", "Reverie" };
-
-            return $"{prefixes[random.Next(prefixes.Length)]}-{names[random.Next(names.Length)]}-{suffixes[random.Next(suffixes.Length)]}";
-        }
-
         #endregion
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
