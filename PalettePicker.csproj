@@ -24,6 +24,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>OptionsWindow.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\SaveClassResources\SaveClass.Designer.cs">
+      <DependentUpon>SaveClass.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +55,24 @@
       <LastGenOutput>ColorPickerWindow.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.ru.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.pt.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.zh.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.fr.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.es.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\MainWindowResources\MainWindow.resx">
       <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +98,28 @@
     <EmbeddedResource Update="Resources\OptionsWindowResources\OptionsWindow.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OptionsWindow.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.ru.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.pt.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.zh.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.fr.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.es.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SaveClassResources\SaveClass.resx">
+      <LastGenOutput>SaveClass.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

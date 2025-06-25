@@ -22,7 +22,7 @@ namespace PalettePicker
                         case 3: return ("Aucun fichier sélectionné.", "Erreur de sélection");
                         case 4: return ("未选择文件。", "选择错误");
                         case 5: return ("Nenhum arquivo selecionado.", "Erro de seleção");
-                        case 6: return ("Не выбрана ни одна файл.", "Ошибка выбора");
+                        case 6: return ("нНе выбраа ни одна файл.", "Ошибка выбора");
                     }
 
                     break;
@@ -82,20 +82,6 @@ namespace PalettePicker
                     }
 
                     break;
-
-                case 5:
-                    switch (languageId)
-                    {
-                        case 0: return ("Error occured while extracting json save file.", "File Read Error");
-                        case 1: return ("Fehler beim Extrahieren der JSON-Speicherdatei.", "Dateilesefehler");
-                        case 2: return ("Se produjo un error al extraer el archivo de guardado JSON.", "Error de lectura de archivo");
-                        case 3: return ("Une erreur s'est produite lors de l'extraction du fichier de sauvegarde JSON.", "Erreur de lecture de fichier");
-                        case 4: return ("提取 JSON 保存文件时发生错误。", "文件读取错误");
-                        case 5: return ("Ocorreu um erro ao extrair o arquivo de salvamento JSON.", "Erro de leitura de arquivo");
-                        case 6: return ("Произошла ошибка при извлечении файла сохранения JSON.", "Ошибка чтения файла");
-                    }
-
-                    break;
             }
 
             return (string.Empty, string.Empty);
@@ -119,7 +105,7 @@ namespace PalettePicker
 
                     break;
 
-                case 1:
+                 case 1:
                     switch (languageId)
                     {
                         case 0: return "File is not a JSON file.";
@@ -350,7 +336,7 @@ namespace PalettePicker
             Dictionary<string, string>? jsonData = GetJsonValues(path);
             if (jsonData == null)
             {
-                System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(5, MainWindow.currentLanguage).msg, GetTranslatedInvalidErrMsg(5, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).msg + "JSON was ´NULL", GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
                 return (string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, false, false, false);
             }
 
