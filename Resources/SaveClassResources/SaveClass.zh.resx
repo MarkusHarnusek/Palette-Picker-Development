@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FileEmptyErr" xml:space="preserve">
-    <value>文件是空的。</value>
-  </data>
   <data name="FileErrMsg" xml:space="preserve">
     <value>所选文件不是有效的调色板 JSON 文件。</value>
   </data>
@@ -163,5 +160,11 @@
   </data>
   <data name="WrongPairCountErr" xml:space="preserve">
     <value>文件不包含正确数量的值对。</value>
+  </data>
+  <data name="E" xml:space="preserve">
+    <value>文件是空的。</value>
+  </data>
+  <data name="SelectDialog" xml:space="preserve">
+    <value>选择调色板</value>
   </data>
 </root>

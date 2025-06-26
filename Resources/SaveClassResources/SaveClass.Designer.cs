@@ -63,9 +63,9 @@ namespace PalettePicker.Resources.SaveClassResources {
         /// <summary>
         ///   Looks up a localized string similar to File is empty..
         /// </summary>
-        internal static string FileEmptyErr {
+        internal static string E {
             get {
-                return ResourceManager.GetString("FileEmptyErr", resourceCulture);
+                return ResourceManager.GetString("E", resourceCulture);
             }
         }
         
@@ -165,6 +165,15 @@ namespace PalettePicker.Resources.SaveClassResources {
         internal static string SaveErrTitle {
             get {
                 return ResourceManager.GetString("SaveErrTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the color palette.
+        /// </summary>
+        internal static string SelectDialog {
+            get {
+                return ResourceManager.GetString("SelectDialog", resourceCulture);
             }
         }
         

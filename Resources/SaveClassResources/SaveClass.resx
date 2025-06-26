@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FileEmptyErr" xml:space="preserve">
-    <value>File is empty.</value>
-    <comment>The content for the file being empty error message.</comment>
-  </data>
   <data name="FileErrMsg" xml:space="preserve">
     <value>File Error</value>
     <comment>The text for the 'File Error' message box</comment>
@@ -176,5 +172,13 @@
   <data name="WrongPairCountErr" xml:space="preserve">
     <value>File does not contain the correct number of value pairs.</value>
     <comment>The content for the wrong number of value pairs error message box</comment>
+  </data>
+  <data name="E" xml:space="preserve">
+    <value>File is empty.</value>
+    <comment>The content for the file being empty error message.</comment>
+  </data>
+  <data name="SelectDialog" xml:space="preserve">
+    <value>Select the color palette</value>
+    <comment>The text for the palette select dialog</comment>
   </data>
 </root>
