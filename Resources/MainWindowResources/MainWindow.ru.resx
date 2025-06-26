@@ -133,7 +133,7 @@
     <value>Выйти без сохранения прогресса?</value>
     <comment>The text of the exit confirmation message box</comment>
   </data>
-  <data name="ExitConfirmTitle" xml:space="preserve">
+  <data name="ExitConfirmationTitle" xml:space="preserve">
     <value>Подтверждение выхода</value>
     <comment>The title of the exit confirmation message box</comment>
   </data>

@@ -397,7 +397,8 @@ namespace PalettePicker
                 if (GetHexColor(hue, saturation, luminance, this) != originalHex)
                 {
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
-                    MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);
+                    MainWindow.isProgressSaved = false;
+                    MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, mainWindow);
                 }
             }
         }

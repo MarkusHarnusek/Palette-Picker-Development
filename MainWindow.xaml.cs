@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using PalettePicker.Resources.MainWindowResources;
+using System.Globalization;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -19,14 +21,6 @@ namespace PalettePicker
 
         #endregion
 
-        #region CurrentEditingConfig
-
-        private bool readOnly = false;
-        private bool homeVisible = false;
-        private bool pinned = false;
-
-        #endregion
-
         public static string currentEditingName = string.Empty;
 
         public static bool[] alreadyEditing = new bool[5];
@@ -34,7 +28,7 @@ namespace PalettePicker
         public static string editingFilePath = string.Empty;
 
         public static int currentLanguage = 0;
-        private static bool isProgressSaved = true;
+        public static bool isProgressSaved = true;
 
         public MainWindow()
         {
@@ -42,196 +36,65 @@ namespace PalettePicker
             DataContext = this;   
         }
 
-        public static void SetLanguage(int languageID, MainWindow instance)
+        private static void SetProgressSaved(bool saved, MainWindow instance)
         {
-            SetWindowTitle(languageID, currentEditingName, true, instance);
-
-            switch (languageID)
-            {
-                case 0:
-                    instance.Title = "Palette Picker";
-                    instance.Btn_Generate.Content = "Generate";
-                    instance.Btn_Save.Content = "Save";
-                    instance.Btn_Select.Content = "Select";
-                    instance.Btn_Options.Content = "Options";
-                    instance.Txt_Primary1Title.Text = "Primary 1";
-                    instance.Txt_Primary2Title.Text = "Primary 2";
-                    instance.Txt_Secondary1Title.Text = "Secondary 1";
-                    instance.Txt_Secondary2Title.Text = "Secondary 2";
-                    instance.Txt_TextTitle.Text = "Text";
-                    instance.Btn_Primary1_Edit.Content = "Edit";
-                    instance.Btn_Primary2_Edit.Content = "Edit";
-                    instance.Btn_Secondary1_Edit.Content = "Edit";
-                    instance.Btn_Secondary2_Edit.Content = "Edit";
-                    instance.Btn_Text_Edit.Content = "Edit";
-                    break;
-
-                case 1:
-                    instance.Title = "Palettenauswahl";
-                    instance.Btn_Generate.Content = "Generieren";
-                    instance.Btn_Save.Content = "Speichern";
-                    instance.Btn_Select.Content = "Auswählen";
-                    instance.Btn_Options.Content = "Einstellungen";
-                    instance.Txt_Primary1Title.Text = "Primär 1";
-                    instance.Txt_Primary2Title.Text = "Primär 2";
-                    instance.Txt_Secondary1Title.Text = "Sekundär 1";
-                    instance.Txt_Secondary2Title.Text = "Sekundär 2";
-                    instance.Txt_TextTitle.Text = "Text";
-                    instance.Btn_Primary1_Edit.Content = "Bearbeiten";
-                    instance.Btn_Primary2_Edit.Content = "Bearbeiten";
-                    instance.Btn_Secondary1_Edit.Content = "Bearbeiten";
-                    instance.Btn_Secondary2_Edit.Content = "Bearbeiten";
-                    instance.Btn_Text_Edit.Content = "Bearbeiten";
-                    break;
-
-                case 2:
-                    instance.Title = "Selector de paleta";
-                    instance.Btn_Generate.Content = "Genera";
-                    instance.Btn_Save.Content = "Ahorrar";
-                    instance.Btn_Select.Content = "Seleccionar";
-                    instance.Btn_Options.Content = "Opciones";
-                    instance.Txt_Primary1Title.Text = "Primario 1";
-                    instance.Txt_Primary2Title.Text = "Primario 2";
-                    instance.Txt_Secondary1Title.Text = "Secundario 1";
-                    instance.Txt_Secondary2Title.Text = "Secundario 2";
-                    instance.Txt_TextTitle.Text = "Texto";
-                    instance.Btn_Primary1_Edit.Content = "Editar";
-                    instance.Btn_Primary2_Edit.Content = "Editar";
-                    instance.Btn_Secondary1_Edit.Content = "Editar";
-                    instance.Btn_Secondary2_Edit.Content = "Editar";
-                    instance.Btn_Text_Edit.Content = "Editar";
-                    break;
-
-                case 3:
-                    instance.Title = "Sélecteur de palette";
-                    instance.Btn_Generate.Content = "Générer";
-                    instance.Btn_Save.Content = "Sauvegarder";
-                    instance.Btn_Select.Content = "Sélectionner";
-                    instance.Btn_Options.Content = "Options";
-                    instance.Txt_Primary1Title.Text = "Primaire 1";
-                    instance.Txt_Primary2Title.Text = "Primaire 2";
-                    instance.Txt_Secondary1Title.Text = "Secondaire 1";
-                    instance.Txt_Secondary2Title.Text = "Secondaire 2";
-                    instance.Txt_TextTitle.Text = "Texte";
-                    instance.Btn_Primary1_Edit.Content = "Éditer";
-                    instance.Btn_Primary2_Edit.Content = "Éditer";
-                    instance.Btn_Secondary1_Edit.Content = "Éditer";
-                    instance.Btn_Secondary2_Edit.Content = "Éditer";
-                    instance.Btn_Text_Edit.Content = "Éditer";
-                    break;
-
-                case 4:
-                    instance.Title = "调色板选择器";
-                    instance.Btn_Generate.Content = "生成";
-                    instance.Btn_Save.Content = "保存";
-                    instance.Btn_Select.Content = "选择";
-                    instance.Btn_Options.Content = "选项";
-                    instance.Txt_Primary1Title.Text = "主要 1";
-                    instance.Txt_Primary2Title.Text = "主要 2";
-                    instance.Txt_Secondary1Title.Text = "次要 1";
-                    instance.Txt_Secondary2Title.Text = "次要 2";
-                    instance.Txt_TextTitle.Text = "文本";
-                    instance.Btn_Primary1_Edit.Content = "编辑";
-                    instance.Btn_Primary2_Edit.Content = "编辑";
-                    instance.Btn_Secondary1_Edit.Content = "编辑";
-                    instance.Btn_Secondary2_Edit.Content = "编辑";
-                    instance.Btn_Text_Edit.Content = "编辑";
-                    break;
-
-                case 5:
-                    instance.Title = "Seletor de paleta";
-                    instance.Btn_Generate.Content = "Gerar";
-                    instance.Btn_Save.Content = "Salvar";
-                    instance.Btn_Select.Content = "Selecionar";
-                    instance.Btn_Options.Content = "Opções";
-                    instance.Txt_Primary1Title.Text = "Primário 1";
-                    instance.Txt_Primary2Title.Text = "Primário 2";
-                    instance.Txt_Secondary1Title.Text = "Secundário 1";
-                    instance.Txt_Secondary2Title.Text = "Secundário 2";
-                    instance.Txt_TextTitle.Text = "Texto";
-                    instance.Btn_Primary1_Edit.Content = "Editar";
-                    instance.Btn_Primary2_Edit.Content = "Editar";
-                    instance.Btn_Secondary1_Edit.Content = "Editar";
-                    instance.Btn_Secondary2_Edit.Content = "Editar";
-                    instance.Btn_Text_Edit.Content = "Editar";
-                    break;
-
-                case 6:
-                    instance.Title = "Выбор палитры";
-                    instance.Btn_Generate.Content = "Сгенерировать";
-                    instance.Btn_Save.Content = "Сохранить";
-                    instance.Btn_Select.Content = "Выбрать";
-                    instance.Btn_Options.Content = "Настройки";
-                    instance.Txt_Primary1Title.Text = "Основной 1";
-                    instance.Txt_Primary2Title.Text = "Основной 2";
-                    instance.Txt_Secondary1Title.Text = "Вторичный 1";
-                    instance.Txt_Secondary2Title.Text = "Вторичный 2";
-                    instance.Txt_TextTitle.Text = "Текст";
-                    instance.Btn_Primary1_Edit.Content = "Редактировать";
-                    instance.Btn_Primary2_Edit.Content = "Редактировать";
-                    instance.Btn_Secondary1_Edit.Content = "Редактировать";
-                    instance.Btn_Secondary2_Edit.Content = "Редактировать";
-                    instance.Btn_Text_Edit.Content = "Редактировать";
-                    break;
-            }
+            isProgressSaved = saved;
+            SetWindowTitle(currentLanguage, currentEditingName, instance);
         }
 
-        public static void SetWindowTitle(int languageID, string name, bool saved, MainWindow instance)
+        public static void SetWindowTitle(int languageID, string name, MainWindow instance)
         {
-            string text = string.Empty;
-            isProgressSaved = saved;
+            string text;
 
-            if (name == string.Empty)
+            if (string.IsNullOrEmpty(name))
             {
-                switch (languageID)
-                {
-                    case 0:
-                        text = saved ? "" : "* ";
-                        text += "Palette Picker";
-                        break;
-
-                    case 1:
-                        text = saved ? "" : "* ";
-                        text += "Palettenauswahl";
-                        break;
-
-                    case 2:
-                        text = saved ? "" : "* ";
-                        text += "Selector de paleta";
-                        break;
-
-                    case 3:
-                        text = saved ? "" : "* ";
-                        text += "Sélecteur de palette";
-                        break;
-
-                    case 4:
-                        text = saved ? "" : "* ";
-                        text += "调色板选择器";
-                        break;
-
-                    case 5:
-                        text = saved ? "" : "* ";
-                        text += "Seletor de paleta";
-                        break;
-
-                    case 6:
-                        text = saved ? "" : "* ";
-                        text += "Выбор палитры";
-                        break;
-                }
+                text = PalettePicker.Resources.MainWindowResources.MainWindow.WindowTitle;
             }
             else
             {
-                if (!saved)
-                {
-                    text = "* ";
-                }
+                text = name;
+            }
 
-                text += name;
+            if (!isProgressSaved)
+            {
+                text = "* " + text;
             }
 
             instance.Title = text;
+        }
+
+        public static void SetLanguage(int languageID, MainWindow instance)
+        {
+            string[] cultures = { "en-UK", "de-DE", "es-ES", "fr-FR", "zh-CN", "pt-PT", "ru-RU" };
+
+            if (languageID < 0 || languageID >= cultures.Length)
+            {
+                languageID = 0;
+            }
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultures[languageID]);
+            SetWindowTitle(languageID, currentEditingName, instance);
+            UpdateUI(instance);
+        }
+
+        private static void UpdateUI(MainWindow instance)
+        {
+            instance.Btn_Select.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Select;
+            instance.Btn_Save.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Save;
+            instance.Btn_Generate.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Generate;
+            instance.Btn_Options.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Options;
+
+            instance.Txt_Primary1Title.Text = PalettePicker.Resources.MainWindowResources.MainWindow.Primary1;
+            instance.Txt_Primary2Title.Text = PalettePicker.Resources.MainWindowResources.MainWindow.Primary2;
+            instance.Txt_Secondary1Title.Text = PalettePicker.Resources.MainWindowResources.MainWindow.Secondary1;
+            instance.Txt_Secondary2Title.Text = PalettePicker.Resources.MainWindowResources.MainWindow.Secondary2;
+            instance.Txt_TextTitle.Text = PalettePicker.Resources.MainWindowResources.MainWindow.Text;
+
+            instance.Btn_Primary1_Edit.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Edit;
+            instance.Btn_Primary2_Edit.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Edit;
+            instance.Btn_Secondary1_Edit.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Edit;
+            instance.Btn_Secondary2_Edit.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Edit;
+            instance.Btn_Text_Edit.Content = PalettePicker.Resources.MainWindowResources.MainWindow.Edit;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -321,7 +184,7 @@ namespace PalettePicker
         private void Btn_Generate_Click(object sender, RoutedEventArgs e)
         {
             SetRandomColors();
-            SetWindowTitle(currentLanguage, string.Empty, true, this);
+            SetProgressSaved(false, this);
         }
 
         #endregion
@@ -332,7 +195,7 @@ namespace PalettePicker
         {
             string name = Save.SaveFile(Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
             currentEditingName = name;
-            SetWindowTitle(currentLanguage, name, true, this);
+            SetProgressSaved(true, this);
         }
 
         #endregion
@@ -350,10 +213,7 @@ namespace PalettePicker
                 Secondary1 = Save.GetSaveInfo(editingFilePath).secondary1;
                 Secondary2 = Save.GetSaveInfo(editingFilePath).secondary2;
                 Text = Save.GetSaveInfo(editingFilePath).text;
-                readOnly = Save.GetSaveInfo(editingFilePath).readOnly;
-                homeVisible = Save.GetSaveInfo(editingFilePath).homeVisible;
-                pinned = Save.GetSaveInfo(editingFilePath).pinned;
-                SetWindowTitle(currentLanguage, currentEditingName, true, this);
+                SetProgressSaved(true, this);
                 UpdateGridInfos(this);
             }
         }
@@ -408,7 +268,7 @@ namespace PalettePicker
         {
             if (alreadyEditing[0])
             {
-                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoText, PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
@@ -420,7 +280,7 @@ namespace PalettePicker
         {
             if (alreadyEditing[1])
             {
-                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoText, PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
@@ -432,7 +292,7 @@ namespace PalettePicker
         {
             if (alreadyEditing[2])
             {
-                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoText, PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
@@ -444,7 +304,7 @@ namespace PalettePicker
         {
             if (alreadyEditing[3])
             {
-                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoText, PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
@@ -456,7 +316,7 @@ namespace PalettePicker
         {
             if (alreadyEditing[4])
             {
-                MessageBox.Show("This color is already being edited.", "Edit Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoText, PalettePicker.Resources.MainWindowResources.MainWindow.EditInfoTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
@@ -466,23 +326,11 @@ namespace PalettePicker
 
         #endregion
 
-        #region PalleteNameControls
-
-        private void Txb_PalleteName_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                Keyboard.ClearFocus();
-            }
-        }
-
-        #endregion
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!isProgressSaved)
             {
-                MessageBoxResult result = MessageBox.Show("Do you want to quit without saving progress?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show(PalettePicker.Resources.MainWindowResources.MainWindow.ExitConfirmationText, PalettePicker.Resources.MainWindowResources.MainWindow.ExitConfirmationTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.No)
                 {

@@ -99,9 +99,9 @@ namespace PalettePicker.Resources.MainWindowResources {
         /// <summary>
         ///   Looks up a localized string similar to Exit Confirmation.
         /// </summary>
-        internal static string ExitConfirmTitle {
+        internal static string ExitConfirmationTitle {
             get {
-                return ResourceManager.GetString("ExitConfirmTitle", resourceCulture);
+                return ResourceManager.GetString("ExitConfirmationTitle", resourceCulture);
             }
         }
         

@@ -133,7 +133,7 @@
     <value>Do you want to quit without your saving progress?</value>
     <comment>The text of the exit confirmation message box</comment>
   </data>
-  <data name="ExitConfirmTitle" xml:space="preserve">
+  <data name="ExitConfirmationTitle" xml:space="preserve">
     <value>Exit Confirmation</value>
     <comment>The title of the exit confirmation message box</comment>
   </data>

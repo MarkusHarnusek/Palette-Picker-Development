@@ -133,7 +133,7 @@
     <value>您要退出而不保存进度吗？</value>
     <comment>The text of the exit confirmation message box</comment>
   </data>
-  <data name="ExitConfirmTitle" xml:space="preserve">
+  <data name="ExitConfirmationTitle" xml:space="preserve">
     <value>退出确认</value>
     <comment>The title of the exit confirmation message box</comment>
   </data>

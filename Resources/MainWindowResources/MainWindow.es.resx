@@ -133,7 +133,7 @@
     <value>¿Desea salir sin guardar su progreso?</value>
     <comment>The text of the exit confirmation message box</comment>
   </data>
-  <data name="ExitConfirmTitle" xml:space="preserve">
+  <data name="ExitConfirmationTitle" xml:space="preserve">
     <value>Confirmación de salida</value>
     <comment>The title of the exit confirmation message box</comment>
   </data>
