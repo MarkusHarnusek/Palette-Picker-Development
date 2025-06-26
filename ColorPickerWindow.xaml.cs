@@ -25,12 +25,12 @@ namespace PalettePicker
         public ColorPickerWindow()
         {
             InitializeComponent();
-            InfoUpdate();
+            InfoUpdate(this);
             DataContext = this;
-            SetLanguage(MainWindow.currentLanguage);
+            SetLanguage(MainWindow.currentLanguage, this);
         }
 
-        private void SetLanguage(int languageID)
+        public static void SetLanguage(int languageID, ColorPickerWindow instance)
         {
             string[] cultures = { "en-UK", "de-DE", "es-ES", "fr-FR", "zh-CN", "pt-PT", "ru-RU" };
 
@@ -40,10 +40,10 @@ namespace PalettePicker
             }
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultures[languageID]);
-            UpdateUI();
+            UpdateUI(instance);
         }
 
-        private void UpdateUI()
+        private static void UpdateUI(ColorPickerWindow instance)
         {
             string[] titles =
             [
@@ -54,218 +54,60 @@ namespace PalettePicker
                 PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.TextText
             ];
 
-            if (editingNum == -1)
+            // ISSUE #22
+
+            instance.Title = instance.editingNum == -1 ? PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.WindowTitle : instance.isProgressSaved ? titles[instance.editingNum] : "* " + titles[instance.editingNum];
+
+            instance.Txt_Hue_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.HueText + instance.hue.ToString();
+            instance.Txt_Saturation_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.SaturationText + instance.saturation.ToString();
+            instance.Txt_Luminance_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.LuminanceText + instance.luminance.ToString();
+
+            InfoUpdate(instance);
+        }
+
+        private static void InfoUpdate(ColorPickerWindow instance)
+        {
+            instance.Txt_Hue_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.HueText + Math.Round(instance.hue).ToString();
+            instance.Txt_Saturation_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.SaturationText + Math.Round(instance.saturation).ToString();
+            instance.Txt_Luminance_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.LuminanceText + Math.Round(instance.luminance).ToString();
+
+            instance.Rct_ColorPreview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, instance.saturation, instance.luminance, instance)));
+
+            instance.Rct_Brd_Hue_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, 100, 50, instance)));
+            double hue_margin = ((instance.hue / 360.0) * 158.0) - 79;
+            instance.Brd_Hue_Preview.Margin = new Thickness(hue_margin, instance.Brd_Hue_Preview.Margin.Top, instance.Brd_Hue_Preview.Margin.Right, instance.Brd_Hue_Preview.Margin.Bottom);
+
+            instance.Rct_Brd_Saturation_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, instance.saturation, 50, instance)));
+            double saturation_margin = ((instance.saturation / 100.0) * 158.0) - 79;
+            instance.Brd_Saturation_Preview.Margin = new Thickness(saturation_margin, instance.Brd_Saturation_Preview.Margin.Top, instance.Brd_Saturation_Preview.Margin.Right, instance.Brd_Saturation_Preview.Margin.Bottom);
+
+            instance.Rct_Brd_Luminance_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, instance.saturation, instance.luminance, instance)));
+            double luminance_margin = ((instance.luminance / 100.0) * 158.0) - 79;
+            instance.Brd_Luminance_Preview.Margin = new Thickness(luminance_margin, instance.Brd_Luminance_Preview.Margin.Top, instance.Brd_Luminance_Preview.Margin.Right, instance.Brd_Luminance_Preview.Margin.Bottom);
+
+            instance.GrS_Color_Luminace_Normal.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, instance.saturation, 50, instance));
+            instance.GrS_Color_Saturation_Max.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, 100, instance.luminance, instance));
+            instance.GrS_Color_Saturation_Min.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(instance.hue, 0, instance.luminance, instance));
+
+            instance.Txb_HexColor.Text = GetHexColor(instance.hue, instance.saturation, instance.luminance, instance);
+
+            if (GetHexColor(instance.hue, instance.saturation, instance.luminance, instance) != instance.originalHex)
             {
-                Title = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.WindowTitle;
+                if (instance.Title[0] != '*')
+                {
+                    instance.Title = "* " + instance.Title;
+                }
+
+                instance.isProgressSaved = false;
             }
             else
             {
-                Title = titles[editingNum];
-            }
+                instance.isProgressSaved = true;
 
-            Txt_Hue_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.HueText + hue.ToString();
-            Txt_Saturation_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.SaturationText + saturation.ToString();
-            Txt_Luminance_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.LuminanceText + luminance.ToString();
-        }
-
-        private void InfoUpdate()
-        {
-            switch (MainWindow.currentLanguage)
-            {
-                case 0:
-                    Txt_Hue_Info.Text = $"Color Hue: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"Color Saturation: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"Color Luminance: {Math.Round(luminance).ToString()}";
-                    break;
-
-                case 1:
-                    Txt_Hue_Info.Text = $"Farbton: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"Farbintensität: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"Farbhelligkeit: {Math.Round(luminance).ToString()}";
-                    break;
-
-                case 2:
-                    Txt_Hue_Info.Text = $"Tono de color: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"Saturación de color: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"Luminosidad del color: {Math.Round(luminance).ToString()}";
-                    break;
-
-                case 3:
-                    Txt_Hue_Info.Text = $"Teinte de couleur: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"Saturation de couleur: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"Luminosité de la couleur: {Math.Round(luminance).ToString()}";
-                    break;
-
-                case 4:
-                    Txt_Hue_Info.Text = $"颜色色调: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"颜色饱和度: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"颜色亮度: {Math.Round(luminance).ToString()}";
-                    break;
-
-                case 5:
-                    Txt_Hue_Info.Text = $"Cor Hue: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"Cor Saturação: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"Cor Luminosidade: {Math.Round(luminance).ToString()}";
-                    break;
-
-                case 6:
-                    Txt_Hue_Info.Text = $"Цветовой оттенок: {Math.Round(hue).ToString()}";
-                    Txt_Saturation_Info.Text = $"Цветовая насыщенность: {Math.Round(saturation).ToString()}";
-                    Txt_Luminance_Info.Text = $"Цветовая яркость: {Math.Round(luminance).ToString()}";
-                    break;
-
-            }
-
-            Rct_ColorPreview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, luminance)));
-
-            Rct_Brd_Hue_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, 100, 50)));
-            double hue_margin = ((hue / 360.0) * 158.0) - 79;
-            Brd_Hue_Preview.Margin = new Thickness(hue_margin, Brd_Hue_Preview.Margin.Top, Brd_Hue_Preview.Margin.Right, Brd_Hue_Preview.Margin.Bottom);
-
-            Rct_Brd_Saturation_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, 50)));
-            double saturation_margin = ((saturation / 100.0) * 158.0) - 79;
-            Brd_Saturation_Preview.Margin = new Thickness(saturation_margin, Brd_Saturation_Preview.Margin.Top, Brd_Saturation_Preview.Margin.Right, Brd_Saturation_Preview.Margin.Bottom);
-
-            Rct_Brd_Luminance_Preview.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, luminance)));
-            double luminance_margin = ((luminance / 100.0) * 158.0) - 79;
-            Brd_Luminance_Preview.Margin = new Thickness(luminance_margin, Brd_Luminance_Preview.Margin.Top, Brd_Luminance_Preview.Margin.Right, Brd_Luminance_Preview.Margin.Bottom);
-
-            GrS_Color_Luminace_Normal.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(hue, saturation, 50));
-            GrS_Color_Saturation_Max.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(hue, 100, luminance));
-            GrS_Color_Saturation_Min.Color = (Color)ColorConverter.ConvertFromString(GetHexColor(hue, 0, luminance));
-
-            Txb_HexColor.Text = GetHexColor(hue, saturation, luminance);
-
-            if (GetHexColor(hue, saturation, luminance) != originalHex)
-            {
-                if (Title[0] != '*')
+                if (instance.Title[0] != '*')
                 {
-                    Title = "* " + Title;
+                    instance.Title = instance.Title.Substring(2);
                 }
-
-                isProgressSaved = false;
-            }
-            else
-            {
-                isProgressSaved = true;
-
-                if (Title[0] != '*')
-                {
-                    Title = Title.Substring(2);
-                }
-            }
-        }
-
-        public void SetLanguage(int languageId, ColorPickerWindow instance)
-        {
-            InfoUpdate();
-
-            switch (languageId)
-            {
-                case 0:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "Primary 1"; break;
-                        case 1: instance.Title = "Primary 2"; break;
-                        case 2: instance.Title = "Secondary 1"; break;
-                        case 3: instance.Title = "Secondary 2"; break;
-                        case 4: instance.Title = "Text"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "ColorPicker";
-                    instance.Btn_OK.Content = "OK";
-
-                    break;
-
-                case 1:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "Primär 1"; break;
-                        case 1: instance.Title = "Primär 2"; break;
-                        case 2: instance.Title = "Sekundär 1"; break;
-                        case 3: instance.Title = "Sekundär 2"; break;
-                        case 4: instance.Title = "Text"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "Farbwähler";
-                    instance.Btn_OK.Content = "OK";
-
-                    break;
-
-                case 2:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "Primario 1"; break;
-                        case 1: instance.Title = "Primario 2"; break;
-                        case 2: instance.Title = "Secundario 1"; break;
-                        case 3: instance.Title = "Secundario 2"; break;
-                        case 4: instance.Title = "Texto"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "Selector de color";
-                    instance.Btn_OK.Content = "OK";
-
-                    break;
-
-                case 3:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "Primaire 1"; break;
-                        case 1: instance.Title = "Primaire 2"; break;
-                        case 2: instance.Title = "Secondaire 1"; break;
-                        case 3: instance.Title = "Secondaire 2"; break;
-                        case 4: instance.Title = "Texte"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "Sélecteur de couleur";
-                    instance.Btn_OK.Content = "OK";
-
-                    break;
-
-                case 4:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "主色1"; break;
-                        case 1: instance.Title = "主色2"; break;
-                        case 2: instance.Title = "辅助色1"; break;
-                        case 3: instance.Title = "辅助色2"; break;
-                        case 4: instance.Title = "文本"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "颜色选择器";
-                    instance.Btn_OK.Content = "确定";
-
-                    break;
-
-                case 5:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "Primário 1"; break;
-                        case 1: instance.Title = "Primário 2"; break;
-                        case 2: instance.Title = "Secundário 1"; break;
-                        case 3: instance.Title = "Secundário 2"; break;
-                        case 4: instance.Title = "Texto"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "Seletor de cores";
-                    instance.Btn_OK.Content = "OK";
-
-                    break;
-
-                case 6:
-                    switch (editingNum)
-                    {
-                        case 0: instance.Title = "Основной 1"; break;
-                        case 1: instance.Title = "Основной 2"; break;
-                        case 2: instance.Title = "Вторичный 1"; break;
-                        case 3: instance.Title = "Вторичный 2"; break;
-                        case 4: instance.Title = "Текст"; break;
-                    }
-
-                    instance.Txt_ColorPickerTitle.Text = "Выбор цвета";
-                    instance.Btn_OK.Content = "ОК";
-
-                    break;
             }
         }
 
@@ -280,12 +122,12 @@ namespace PalettePicker
             hue = GetHslFromHex(hex).hue;
             saturation = GetHslFromHex(hex).saturation;
             luminance = GetHslFromHex(hex).lightness;
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
-        private string GetHexColor(float h, float s, float l)
+        private static string GetHexColor(float h, float s, float l, ColorPickerWindow instance)
         {
-            h = hue % 360;
+            h = instance.hue % 360;
             s /= 100;
             l /= 100;
 
@@ -386,7 +228,7 @@ namespace PalettePicker
             double left = ((hue / 360.0) * 158.0) - 79;
             Brd_Hue_Preview.Margin = new Thickness(left, Brd_Hue_Preview.Margin.Top, Brd_Hue_Preview.Margin.Right, Brd_Hue_Preview.Margin.Bottom);
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         private void Btn_Hue_Decrease_Click(object sender, RoutedEventArgs e)
@@ -397,7 +239,7 @@ namespace PalettePicker
             double left = ((hue / 360.0) * 158.0) - 79;
             Brd_Hue_Preview.Margin = new Thickness(left, Brd_Hue_Preview.Margin.Top, Brd_Hue_Preview.Margin.Right, Brd_Hue_Preview.Margin.Bottom);
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         #endregion
@@ -412,7 +254,7 @@ namespace PalettePicker
             double left = ((saturation / 100.0) * 158.0) - 79;
             Brd_Saturation_Preview.Margin = new Thickness(left, Brd_Saturation_Preview.Margin.Top, Brd_Saturation_Preview.Margin.Right, Brd_Saturation_Preview.Margin.Bottom);
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         private void Btn_Stauration_Decrease_Click(object sender, RoutedEventArgs e)
@@ -423,7 +265,7 @@ namespace PalettePicker
             double left = ((saturation / 100.0) * 158.0) - 79;
             Brd_Saturation_Preview.Margin = new Thickness(left, Brd_Saturation_Preview.Margin.Top, Brd_Saturation_Preview.Margin.Right, Brd_Saturation_Preview.Margin.Bottom);
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         #endregion
@@ -438,7 +280,7 @@ namespace PalettePicker
             double left = ((luminance / 100.0) * 158.0) - 158;
             Brd_Luminance_Preview.Margin = new Thickness(left, Brd_Luminance_Preview.Margin.Top, Brd_Luminance_Preview.Margin.Right, Brd_Luminance_Preview.Margin.Bottom);
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         private void Btn_Luminance_Decrease_Click(object sender, RoutedEventArgs e)
@@ -449,7 +291,7 @@ namespace PalettePicker
             double left = ((luminance / 100.0) * 158.0) - 158;
             Brd_Luminance_Preview.Margin = new Thickness(left, Brd_Luminance_Preview.Margin.Top, Brd_Luminance_Preview.Margin.Right, Brd_Luminance_Preview.Margin.Bottom);
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         #endregion
@@ -472,36 +314,7 @@ namespace PalettePicker
                     this.Visibility = Visibility.Hidden;
                 }
 
-                switch (MainWindow.currentLanguage)
-                {
-                    case 0:
-                        MessageBox.Show("The inputed hex was not in the right format. Reverting to the original color.", "Input Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-
-                    case 1:
-                        MessageBox.Show("Der eingegebene Hex-Code war nicht im richtigen Format. Rückkehr zur Originalfarbe.", "Eingabewarnung", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-
-                    case 2:
-                        MessageBox.Show("El hex ingresado no estaba en el formato correcto. Volviendo al color original.", "Advertencia de entrada", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-
-                    case 3:
-                        MessageBox.Show("Le code hexadécimal saisi n'était pas au bon format. Retour à la couleur d'origine.", "Avertissement d'entrée", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-
-                    case 4:
-                        MessageBox.Show("输入的十六进制格式不正确。恢复到原始颜色。", "输入警告", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-
-                    case 5:
-                        MessageBox.Show("O hex inserido não estava no formato correto. Revertendo para a cor original.", "Aviso de entrada", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-
-                    case 6:
-                        MessageBox.Show("Введенный hex-код был неверного формата. Возврат к оригинальному цвету.", "Предупреждение о вводе", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
-                }
+                MessageBox.Show(PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.InputWarningTitle, PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.InputWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 Txb_HexColor.Text = originalHex;
                 currentUserHexInput = originalHex;
@@ -511,7 +324,7 @@ namespace PalettePicker
             saturation = GetHslFromHex(currentUserHexInput).saturation;
             luminance = GetHslFromHex(currentUserHexInput).lightness;
 
-            InfoUpdate();
+            InfoUpdate(this);
         }
 
         private bool ValidateHex(string hex)
@@ -544,24 +357,24 @@ namespace PalettePicker
             switch (editingNum)
             {
                 case 0:
-                    MainWindow.Primary1 = GetHexColor(hue, saturation, luminance);
+                    MainWindow.Primary1 = GetHexColor(hue, saturation, luminance, this);
                     break;
 
                 case 1:
-                    string hexColor = GetHexColor(hue, saturation, luminance);
-                    MainWindow.Primary2 = GetHexColor(hue, saturation, luminance);
+                    string hexColor = GetHexColor(hue, saturation, luminance, this);
+                    MainWindow.Primary2 = GetHexColor(hue, saturation, luminance, this);
                     break;
 
                 case 2:
-                    MainWindow.Secondary1 = GetHexColor(hue, saturation, luminance);
+                    MainWindow.Secondary1 = GetHexColor(hue, saturation, luminance, this);
                     break;
 
                 case 3:
-                    MainWindow.Secondary2 = GetHexColor(hue, saturation, luminance);
+                    MainWindow.Secondary2 = GetHexColor(hue, saturation, luminance, this);
                     break;
 
                 case 4:
-                    MainWindow.Text = GetHexColor(hue, saturation, luminance);
+                    MainWindow.Text = GetHexColor(hue, saturation, luminance, this);
                     break;
             }
 
@@ -586,14 +399,14 @@ namespace PalettePicker
 
             if (!isProgressSaved)
             {
-                MessageBoxResult result = MessageBox.Show("Do you want to quit without saving progress?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show(PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.ExitConfirmationText, PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.ExitConfirmationTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.No)
                 {
                     e.Cancel = true;
                 }
 
-                if (GetHexColor(hue, saturation, luminance) != originalHex)
+                if (GetHexColor(hue, saturation, luminance, this) != originalHex)
                 {
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     MainWindow.SetWindowTitle(MainWindow.currentLanguage, MainWindow.currentEditingName, false, mainWindow);

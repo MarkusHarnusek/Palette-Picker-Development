@@ -310,7 +310,7 @@ namespace PalettePicker
         {
             ColorPickerWindow colorPickerWindow = new ColorPickerWindow();
             colorPickerWindow.ColorPickInit(currentColor, editing);
-            colorPickerWindow.SetLanguage(currentLanguage, colorPickerWindow);
+            ColorPickerWindow.SetLanguage(currentLanguage, colorPickerWindow);
             colorPickerWindow.Show();
         }
 

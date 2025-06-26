@@ -51,6 +51,7 @@ namespace PalettePicker
         private void UpdateUI()
         {
             Title = PalettePicker.Resources.OptionsWindowResources.OptionsWindow.WindowTitle;
+            Txt_WindowTitle.Text = PalettePicker.Resources.OptionsWindowResources.OptionsWindow.WindowTitle;
             Btn_Language.Content = PalettePicker.Resources.OptionsWindowResources.OptionsWindow.LanguageGridButton;
             Txt_Language_Title.Text = PalettePicker.Resources.OptionsWindowResources.OptionsWindow.LanguageSideButton;
         }
@@ -82,7 +83,7 @@ namespace PalettePicker
                 {
                     if (window is ColorPickerWindow colorPickerWindow)
                     {
-                        colorPickerWindow.SetLanguage(MainWindow.currentLanguage, colorPickerWindow);
+                        ColorPickerWindow.SetLanguage(MainWindow.currentLanguage, colorPickerWindow);
                     }
                     else if (window is MainWindow mainWindow)
                     {
