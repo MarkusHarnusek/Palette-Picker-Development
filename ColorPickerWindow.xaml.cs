@@ -1,8 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using System.Threading;
+﻿using PalettePicker.Resources.ColorPickerWindowResources;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace PalettePicker
 {
@@ -11,8 +10,6 @@ namespace PalettePicker
     /// </summary>
     public partial class ColorPickerWindow : Window
     {
-        private const int refreshRate = 50;
-
         private string originalHex = "#000000";
         private float hue = 0;
         private float saturation = 100;
@@ -30,6 +27,45 @@ namespace PalettePicker
             InitializeComponent();
             InfoUpdate();
             DataContext = this;
+            SetLanguage(MainWindow.currentLanguage);
+        }
+
+        private void SetLanguage(int languageID)
+        {
+            string[] cultures = { "en-UK", "de-DE", "es-ES", "fr-FR", "zh-CN", "pt-PT", "ru-RU" };
+
+            if (languageID < 0 || languageID >= cultures.Length)
+            {
+                languageID = 0;
+            }
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultures[languageID]);
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            string[] titles =
+            [
+                PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.Primary1Text,
+                PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.Primary2Text,
+                PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.Secondary1Text,
+                PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.Secondary2Text,
+                PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.TextText
+            ];
+
+            if (editingNum == -1)
+            {
+                Title = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.WindowTitle;
+            }
+            else
+            {
+                Title = titles[editingNum];
+            }
+
+            Txt_Hue_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.HueText + hue.ToString();
+            Txt_Saturation_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.SaturationText + saturation.ToString();
+            Txt_Luminance_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.LuminanceText + luminance.ToString();
         }
 
         private void InfoUpdate()
