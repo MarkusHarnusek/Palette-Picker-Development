@@ -54,8 +54,6 @@ namespace PalettePicker
                 PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.TextText
             ];
 
-            // ISSUE #22
-
             instance.Title = instance.editingNum == -1 ? PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.WindowTitle : instance.isProgressSaved ? titles[instance.editingNum] : "* " + titles[instance.editingNum];
 
             instance.Txt_Hue_Info.Text = PalettePicker.Resources.ColorPickerWindowResources.ColorPickerWindow.HueText + instance.hue.ToString();
@@ -93,18 +91,17 @@ namespace PalettePicker
 
             if (GetHexColor(instance.hue, instance.saturation, instance.luminance, instance) != instance.originalHex)
             {
-                if (instance.Title[0] != '*')
+                if (!instance.Title.StartsWith("* "))
                 {
                     instance.Title = "* " + instance.Title;
                 }
-
                 instance.isProgressSaved = false;
             }
             else
             {
                 instance.isProgressSaved = true;
 
-                if (instance.Title[0] != '*')
+                if (instance.Title.StartsWith("* "))
                 {
                     instance.Title = instance.Title.Substring(2);
                 }
