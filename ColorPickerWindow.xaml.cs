@@ -354,28 +354,19 @@ namespace PalettePicker
 
         private void Btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            switch (editingNum)
+            string newColor = GetHexColor(hue, saturation, luminance, this);
+
+            Action<string>[] setters = {
+                val => MainWindow.Primary1 = val,
+                val => MainWindow.Primary2 = val,
+                val => MainWindow.Secondary1 = val,
+                val => MainWindow.Secondary2 = val,
+                val => MainWindow.Text = val
+                };
+
+            if (editingNum >= 0 && editingNum < setters.Length)
             {
-                case 0:
-                    MainWindow.Primary1 = GetHexColor(hue, saturation, luminance, this);
-                    break;
-
-                case 1:
-                    string hexColor = GetHexColor(hue, saturation, luminance, this);
-                    MainWindow.Primary2 = GetHexColor(hue, saturation, luminance, this);
-                    break;
-
-                case 2:
-                    MainWindow.Secondary1 = GetHexColor(hue, saturation, luminance, this);
-                    break;
-
-                case 3:
-                    MainWindow.Secondary2 = GetHexColor(hue, saturation, luminance, this);
-                    break;
-
-                case 4:
-                    MainWindow.Text = GetHexColor(hue, saturation, luminance, this);
-                    break;
+                setters[editingNum](newColor);
             }
 
             isProgressSaved = true;
