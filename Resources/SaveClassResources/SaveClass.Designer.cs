@@ -63,14 +63,14 @@ namespace PalettePicker.Resources.SaveClassResources {
         /// <summary>
         ///   Looks up a localized string similar to File is empty..
         /// </summary>
-        internal static string E {
+        internal static string FileEmptyErr {
             get {
-                return ResourceManager.GetString("E", resourceCulture);
+                return ResourceManager.GetString("FileEmptyErr", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File Error.
+        ///   Looks up a localized string similar to The selected file is not a valid palette JSON file..
         /// </summary>
         internal static string FileErrMsg {
             get {
@@ -79,7 +79,7 @@ namespace PalettePicker.Resources.SaveClassResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The selected file is not a valid palette JSON file..
+        ///   Looks up a localized string similar to File Error.
         /// </summary>
         internal static string FileErrTitle {
             get {
@@ -147,6 +147,33 @@ namespace PalettePicker.Resources.SaveClassResources {
         internal static string JSONNullErr {
             get {
                 return ResourceManager.GetString("JSONNullErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing key required: .
+        /// </summary>
+        internal static string MissingKeyErr {
+            get {
+                return ResourceManager.GetString("MissingKeyErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error reading file: .
+        /// </summary>
+        internal static string ReadingErr {
+            get {
+                return ResourceManager.GetString("ReadingErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select where to save the palette.
+        /// </summary>
+        internal static string SaveDialog {
+            get {
+                return ResourceManager.GetString("SaveDialog", resourceCulture);
             }
         }
         

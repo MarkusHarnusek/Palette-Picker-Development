@@ -161,10 +161,19 @@
   <data name="WrongPairCountErr" xml:space="preserve">
     <value>Datei enthält nicht die richtige Anzahl an Wertepaaren.</value>
   </data>
-  <data name="E" xml:space="preserve">
+  <data name="FileEmptyErr" xml:space="preserve">
     <value>Datei ist leer.</value>
   </data>
   <data name="SelectDialog" xml:space="preserve">
     <value>Wählen Sie die Farbpalette aus</value>
+  </data>
+  <data name="MissingKeyErr" xml:space="preserve">
+    <value>Folgender benötigter Datensatz fehlt: </value>
+  </data>
+  <data name="SaveDialog" xml:space="preserve">
+    <value>Wählen Sie aus wo Sie die Palette speichern möchten</value>
+  </data>
+  <data name="ReadingErr" xml:space="preserve">
+    <value>Fehler beim Lesen der Datei: </value>
   </data>
 </root>

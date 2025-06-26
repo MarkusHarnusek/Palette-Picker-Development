@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using PalettePicker.Resources.OptionsWindowResources;
+using System.Globalization;
+using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace PalettePicker
@@ -7,86 +10,24 @@ namespace PalettePicker
     {
         private static string filePath = string.Empty;
 
-        #region Translation
-
-        private static (string msg, string title) GetTranslatedInvalidErrMsg(int msgId, int languageId)
+        private static void SetLanguage(int languageID)
         {
-            switch (msgId)
+            string[] cultures = { "en-UK", "de-DE", "es-ES", "fr-FR", "zh-CN", "pt-PT", "ru-RU" };
+
+            if (languageID < 0 || languageID >= cultures.Length)
             {
-                case 0:
-                    switch (languageId)
-                    {
-                        case 0: return ("No file selected.", "Select Error");
-                        case 1: return ("Keine Datei ausgewählt.", "Fehler beim Auswählen");
-                        case 2: return ("Ningún archivo seleccionado.", "Seleccionar error");
-                        case 3: return ("Aucun fichier sélectionné.", "Erreur de sélection");
-                        case 4: return ("未选择文件。", "选择错误");
-                        case 5: return ("Nenhum arquivo selecionado.", "Erro de seleção");
-                        case 6: return ("нНе выбраа ни одна файл.", "Ошибка выбора");
-                    }
-
-                    break;
-
-                case 1:
-                    switch (languageId)
-                    {
-                        case 0: return ("The selected file is not a valid palette JSON file.", "File Error");
-                        case 1: return ("Die ausgewählte Datei ist keine gültige Palette-JSON-Datei.", "Dateifehler");
-                        case 2: return ("El archivo seleccionado no es un archivo JSON de paleta válido.", "Error de archivo");
-                        case 3: return ("Le fichier sélectionné n'est pas un fichier JSON de palette valide.", "Erreur de fichier");
-                        case 4: return ("所选文件不是有效的调色板 JSON 文件。", "文件错误");
-                        case 5: return ("O arquivo selecionado não é um arquivo JSON de paleta válido.", "Erro de arquivo");
-                        case 6: return ("Выбранный файл не является допустимым файлом JSON палитры.", "Ошибка файла");
-                    }
-
-                    break;
-
-                case 2:
-                    switch (languageId)
-                    {
-                        case 0: return ("No folder select.", "Select Error");
-                        case 1: return ("Kein Ordner ausgewählt.", "Fehler bei der Auswahl");
-                        case 2: return ("Ninguna carpeta seleccionada.", "Error de selección");
-                        case 3: return ("Aucun dossier sélectionné.", "Erreur de sélection");
-                        case 4: return ("未选择文件夹。", "选择错误");
-                        case 5: return ("Nenhuma pasta selecionada.", "Erro de seleção");
-                        case 6: return ("Не выбрана ни одна папка.", "Ошибка выбора");
-                    }
-
-                    break;
-
-                case 3:
-                    switch (languageId)
-                    {
-                        case 0: return ("Error occured while trying to save file. Path is either empty or does not exist.", "Save Error");
-                        case 1: return ("Fehler beim Speichern der Datei. Der Pfad ist entweder leer oder existiert nicht.", "Speicher Fehler");
-                        case 2: return ("Se produjo un error al intentar guardar el archivo. La ruta está vacía o no existe.", "Error de guardado");
-                        case 3: return ("Une erreur s'est produite lors de la tentative d'enregistrement du fichier. Le chemin est vide ou n'existe pas.", "Erreur d'enregistrement");
-                        case 4: return ("保存文件时发生错误。路径为空或不存在。", "保存错误");
-                        case 5: return ("Ocorreu um erro ao tentar salvar o arquivo. O caminho está vazio ou não existe.", "Erro de salvamento");
-                        case 6: return ("Произошла ошибка при попытке сохранить файл. Путь либо пуст, либо не существует.", "Ошибка сохранения");
-                    }
-
-                    break;
-
-                case 4:
-                    switch (languageId)
-                    {
-                        case 0: return ("Error occured while extracting json save file with following error message:", "File Read Error");
-                        case 1: return ("Fehler beim Extrahieren der JSON-Speicherdatei mit folgender Fehlermeldung:", "Dateilesefehler");
-                        case 2: return ("Se produjo un error al extraer el archivo de guardado JSON con el siguiente mensaje de error:", "Error de lectura de archivo");
-                        case 3: return ("Une erreur s'est produite lors de l'extraction du fichier de sauvegarde JSON avec le message d'erreur suivant:", "Erreur de lecture de fichier");
-                        case 4: return ("提取 JSON 保存文件时发生错误，错误消息如下：", "文件读取错误");
-                        case 5: return ("Ocorreu um erro ao extrair o arquivo de salvamento JSON com a seguinte mensagem de erro:", "Erro de leitura de arquivo");
-                        case 6: return ("Произошла ошибка при извлечении файла сохранения JSON со следующим сообщением об ошибке:", "Ошибка чтения файла");
-                    }
-
-                    break;
+                languageID = 0;
             }
 
-            return (string.Empty, string.Empty);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultures[languageID]);
         }
 
+        public Save()
+        {
+            SetLanguage(MainWindow.currentLanguage);
+        }
+
+        
         private static string GetShortTranslatedErrMsg(int errorId, int languageId)
         {
             switch (errorId)
@@ -105,7 +46,7 @@ namespace PalettePicker
 
                     break;
 
-                 case 1:
+                case 1:
                     switch (languageId)
                     {
                         case 0: return "File is not a JSON file.";
@@ -193,22 +134,9 @@ namespace PalettePicker
             return string.Empty;
         }
 
-        #endregion
-
         public static void SelectFile()
         {
-            string title = string.Empty;
-
-            switch (MainWindow.currentLanguage)
-            {
-                case 0: title = "Select the color palette"; break;
-                case 1: title = "Wählen Sie die Farbpalette aus"; break;
-                case 2: title = "Seleccione la paleta de colores"; break;
-                case 3: title = "Sélectionnez la palette de couleurs"; break;
-                case 4: title = "选择调色板"; break;
-                case 5: title = "Selecione a paleta de cores"; break;
-                case 6: title = "Выберите цветовую палитру"; break;
-            }
+            string title = Resources.SaveClassResources.SaveClass.FileErrMsg;
 
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
             {
@@ -226,13 +154,19 @@ namespace PalettePicker
 
             if (string.IsNullOrEmpty(filePath))
             {
-                System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(0, MainWindow.currentLanguage).msg, GetTranslatedInvalidErrMsg(0, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(Resources.SaveClassResources.SaveClass.SelectErrMsg,
+                    Resources.SaveClassResources.SaveClass.SelectErrTitle,
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Warning);
                 return;
             }
 
             if (!ValidatePallleteJsonFile(filePath, out string errMsg))
             {
-                System.Windows.MessageBox.Show($"{GetTranslatedInvalidErrMsg(1, MainWindow.currentLanguage).msg} {errMsg}", GetTranslatedInvalidErrMsg(1, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(Resources.SaveClassResources.SaveClass.FileErrMsg,
+                    Resources.SaveClassResources.SaveClass.FileErrTitle,
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Warning);
                 return;
             }
 
@@ -241,29 +175,9 @@ namespace PalettePicker
 
         public static string GetSavePath()
         {
-            string title = "Select the folder to save the palette";
-
-            switch (MainWindow.currentLanguage)
-            {
-                case 0: title = "Select where to save the palette"; break;
-
-                case 1: title = "Wählen Sie aus, wo Sie die Palette speichern möchten"; break;
-
-                case 2: title = "Seleziona dove salvare la palette"; break;
-
-                case 3: title = "Sélectionnez où enregistrer la palette  "; break;
-
-                case 4: title = "选择保存调色板的位置"; break;
-
-                case 5: title = "Selecione onde salvar a paleta"; break;
-
-                case 6: title = "Выберите место для сохранения палитры"; break;
-
-            }
-
             Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
             {
-                Title = title,
+                Title = Resources.SaveClassResources.SaveClass.SaveDialog,
                 Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 DefaultExt = ".json",
@@ -280,8 +194,8 @@ namespace PalettePicker
             else
             {
                 System.Windows.MessageBox.Show(
-                    GetTranslatedInvalidErrMsg(2, MainWindow.currentLanguage).msg,
-                    GetTranslatedInvalidErrMsg(2, MainWindow.currentLanguage).title,
+                    Resources.SaveClassResources.SaveClass.FolderSelectErrMsg,
+                    Resources.SaveClassResources.SaveClass.FolderSelectErrTitle,
                     System.Windows.MessageBoxButton.OK,
                     System.Windows.MessageBoxImage.Warning);
                 return string.Empty;
@@ -320,7 +234,10 @@ namespace PalettePicker
             }
             else
             {
-                System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(3, MainWindow.currentLanguage).msg, GetTranslatedInvalidErrMsg(3, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(Resources.SaveClassResources.SaveClass.SaveErrMsg,
+                    Resources.SaveClassResources.SaveClass.SaveErrTitle,
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Warning);
                 return string.Empty;
             }
         }
@@ -329,14 +246,20 @@ namespace PalettePicker
         {
             if (!ValidatePallleteJsonFile(path, out string errMsg))
             {
-                System.Windows.MessageBox.Show($"{GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).msg} {errMsg}", GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(Resources.SaveClassResources.SaveClass.FileReadErrMsg + errMsg,
+                    Resources.SaveClassResources.SaveClass.FileReadErrTitle,
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Warning);
                 return (string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, false, false, false);
             }
 
             Dictionary<string, string>? jsonData = GetJsonValues(path);
             if (jsonData == null)
             {
-                System.Windows.MessageBox.Show(GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).msg + "JSON was ´NULL", GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(Resources.SaveClassResources.SaveClass.FileReadErrMsg + errMsg, 
+                    Resources.SaveClassResources.SaveClass.FileReadErrTitle,
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Warning);
                 return (string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, false, false, false);
             }
 
@@ -357,7 +280,10 @@ namespace PalettePicker
         {
             if (!ValidatePallleteJsonFile(path, out string errMsg))
             {
-                System.Windows.MessageBox.Show($"{GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).msg} {errMsg}", GetTranslatedInvalidErrMsg(4, MainWindow.currentLanguage).title, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(Resources.SaveClassResources.SaveClass.FileReadErrMsg + errMsg,
+                    Resources.SaveClassResources.SaveClass.FileReadErrTitle,
+                    System.Windows.MessageBoxButton.OK, 
+                    System.Windows.MessageBoxImage.Warning);
                 return null;
             }
 
@@ -384,14 +310,14 @@ namespace PalettePicker
         {
             if (!File.Exists(jsonFile))
             {
-                errorMessage = GetShortTranslatedErrMsg(0, MainWindow.currentLanguage);
+                errorMessage = Resources.SaveClassResources.SaveClass.FileNotExistErr;
                 return false;
             }
 
             string fileExtension = Path.GetExtension(jsonFile);
             if (fileExtension != ".json")
             {
-                errorMessage = GetShortTranslatedErrMsg(1, MainWindow.currentLanguage);
+                errorMessage = Resources.SaveClassResources.SaveClass.FileNotJSONErr;
                 return false;
             }
 
@@ -401,7 +327,7 @@ namespace PalettePicker
 
                 if (string.IsNullOrWhiteSpace(content))
                 {
-                    errorMessage = GetShortTranslatedErrMsg(2, MainWindow.currentLanguage);
+                    errorMessage = Resources.SaveClassResources.SaveClass.FileEmptyErr;
                     return false;
                 }
 
@@ -409,13 +335,13 @@ namespace PalettePicker
 
                 if (jsonData == null)
                 {
-                    errorMessage = GetShortTranslatedErrMsg(3, MainWindow.currentLanguage);
+                    errorMessage = Resources.SaveClassResources.SaveClass.JSONNullErr;
                     return false;
                 }
 
                 if (jsonData.Count != 11)
                 {
-                    errorMessage = GetShortTranslatedErrMsg(4, MainWindow.currentLanguage);
+                    errorMessage = Resources.SaveClassResources.SaveClass.WrongPairCountErr;
                     return false;
                 }
 
@@ -424,7 +350,7 @@ namespace PalettePicker
                 {
                     if (!jsonData.ContainsKey(key))
                     {
-                        errorMessage = $"{GetShortTranslatedErrMsg(5, MainWindow.currentLanguage)}: {key}";
+                        errorMessage = Resources.SaveClassResources.SaveClass.MissingKeyErr + key;
                         return false;
                     }
                 }
@@ -434,7 +360,7 @@ namespace PalettePicker
             }
             catch (Exception ex)
             {
-                errorMessage = $"{GetShortTranslatedErrMsg(6, MainWindow.currentLanguage)}: {ex.Message}";
+                errorMessage = Resources.SaveClassResources.SaveClass.ReadingErr + ex.Message;
                 return false;
             }
         }

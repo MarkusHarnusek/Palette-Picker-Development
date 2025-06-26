@@ -142,7 +142,7 @@
     <value>选择错误</value>
   </data>
   <data name="JSONNullErr" xml:space="preserve">
-    <value>Данные JSON были нулевыми.</value>
+    <value>JSON 数据为空。</value>
   </data>
   <data name="SaveErrMsg" xml:space="preserve">
     <value>保存文件时发生错误。路径为空或不存在。</value>
@@ -161,10 +161,19 @@
   <data name="WrongPairCountErr" xml:space="preserve">
     <value>文件不包含正确数量的值对。</value>
   </data>
-  <data name="E" xml:space="preserve">
+  <data name="FileEmptyErr" xml:space="preserve">
     <value>文件是空的。</value>
   </data>
   <data name="SelectDialog" xml:space="preserve">
     <value>选择调色板</value>
+  </data>
+  <data name="MissingKeyErr" xml:space="preserve">
+    <value>缺少必需的键：</value>
+  </data>
+  <data name="SaveDialog" xml:space="preserve">
+    <value>选择保存调色板的位置</value>
+  </data>
+  <data name="ReadingErr" xml:space="preserve">
+    <value>读取文件时出错: </value>
   </data>
 </root>

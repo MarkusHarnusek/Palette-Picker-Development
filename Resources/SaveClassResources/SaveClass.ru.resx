@@ -161,10 +161,19 @@
   <data name="WrongPairCountErr" xml:space="preserve">
     <value>Файл не содержит правильного количества пар значений.</value>
   </data>
-  <data name="E" xml:space="preserve">
+  <data name="FileEmptyErr" xml:space="preserve">
     <value>Файл пуст.</value>
   </data>
   <data name="SelectDialog" xml:space="preserve">
     <value>Выберите цветовую палитру</value>
+  </data>
+  <data name="MissingKeyErr" xml:space="preserve">
+    <value>Отсутствует обязательный ключ: </value>
+  </data>
+  <data name="SaveDialog" xml:space="preserve">
+    <value>Выберите место для сохранения палитры</value>
+  </data>
+  <data name="ReadingErr" xml:space="preserve">
+    <value>Ошибка чтения файла: </value>
   </data>
 </root>

@@ -130,7 +130,7 @@
     <value>Le fichier n'est pas un fichier JSON.</value>
   </data>
   <data name="FileReadErrMsg" xml:space="preserve">
-    <value>Une erreur s'est produite lors de l'extraction du fichier de sauvegarde JSON avec le message d'erreur suivant: </value>
+    <value>Une erreur s'est produite lors de l'extraction du fichier de sauvegarde JSON avec le message d'erreur suivant :  </value>
   </data>
   <data name="FileReadErrTitle" xml:space="preserve">
     <value>Erreur de lecture de fichier</value>
@@ -161,10 +161,19 @@
   <data name="WrongPairCountErr" xml:space="preserve">
     <value>Le fichier ne contient pas le bon nombre de paires de valeurs.</value>
   </data>
-  <data name="E" xml:space="preserve">
+  <data name="FileEmptyErr" xml:space="preserve">
     <value>Le fichier est vide.</value>
   </data>
   <data name="SelectDialog" xml:space="preserve">
     <value>Sélectionnez la palette de couleurs</value>
+  </data>
+  <data name="MissingKeyErr" xml:space="preserve">
+    <value>Clé requise manquante : </value>
+  </data>
+  <data name="SaveDialog" xml:space="preserve">
+    <value>Sélectionnez où enregistrer la palette</value>
+  </data>
+  <data name="ReadingErr" xml:space="preserve">
+    <value>Erreur de lecture du fichier : </value>
   </data>
 </root>
