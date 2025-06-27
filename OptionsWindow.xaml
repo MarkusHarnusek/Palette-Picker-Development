@@ -19,7 +19,7 @@
             HorizontalAlignment="Center"
             Text="Options"
             Foreground="{DynamicResource T}"
-            FontFamily="Montserrat"
+            FontFamily="{StaticResource MontserratFontFamily}"
             FontSize="25"
             FontWeight="DemiBold"
             Margin="0,10,0,0"/>
@@ -84,7 +84,7 @@
                                 Text="No settings menu selected"
                                 Foreground="{DynamicResource T}"
                                 FontSize="20"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"/>
                         </Grid>
@@ -97,7 +97,7 @@
                                 x:Name="Txt_Language_Title"
                                 Text="Language"
                                 Foreground="{DynamicResource T}"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="20"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
@@ -135,7 +135,7 @@
                                 x:Name="Txt_Appearance_Title"
                                 Text="Appearance"
                                 Foreground="{DynamicResource T}"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="20"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"

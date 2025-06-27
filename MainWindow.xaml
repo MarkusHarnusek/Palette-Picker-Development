@@ -131,7 +131,7 @@
                             Text="Primary 1"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontSize="14"/>
 
 
@@ -140,7 +140,7 @@
                             Text="HEX"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontWeight="Light"
                             FontSize="13"/>
 
@@ -151,7 +151,7 @@
                             Content="Edit"
                             Height="20"
                             FontSize="12"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             Margin="2"/>
                     </StackPanel>
                 </Border>
@@ -206,7 +206,7 @@
                             Text="Primary 2"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontSize="14"/>
 
 
@@ -215,7 +215,7 @@
                             Text="HEX"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontWeight="Light"
                             FontSize="13"/>
 
@@ -281,7 +281,7 @@
                             Text="Secondary 1"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontSize="14"/>
 
 
@@ -290,7 +290,7 @@
                             Text="HEX"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontWeight="Light"
                             FontSize="13"/>
 
@@ -356,7 +356,7 @@
                             Text="Secondary 2"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontSize="14"/>
 
 
@@ -365,7 +365,7 @@
                             Text="HEX"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontWeight="Light"
                             FontSize="13"/>
 
@@ -431,7 +431,7 @@
                             Text="Text"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontSize="14"/>
 
 
@@ -440,7 +440,7 @@
                             Text="HEX"
                             HorizontalAlignment="Center"
                             Foreground="{DynamicResource T}"
-                            FontFamily="Montserrat"
+                            FontFamily="{StaticResource MontserratFontFamily}"
                             FontWeight="Light"
                             FontSize="13"/>
 

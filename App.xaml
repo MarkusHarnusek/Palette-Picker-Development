@@ -6,6 +6,11 @@
 
     <Application.Resources>
 
+        <!-- Font Resource -->
+
+        <FontFamily 
+            x:Key="MontserratFontFamily">pack://application:,,,/Fonts/Montserrat/#Montserrat</FontFamily>
+
         <!-- App-wide color resources -->
 
         <Color 
@@ -71,7 +76,7 @@
 
             <Setter
                 Property="FontFamily"
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
 
             <Setter 
                 Property="FontWeight" 
@@ -212,7 +217,7 @@
 
             <Setter
                 Property="FontFamily"
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
 
             <Setter 
                 Property="FontWeight" 
@@ -353,7 +358,7 @@
 
             <Setter
                 Property="FontFamily"
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
 
             <Setter 
                 Property="FontWeight" 
@@ -489,7 +494,7 @@
                 Value="0"/>
             <Setter
                 Property="FontFamily"
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
 
             <Setter 
                 Property="FontWeight" 
@@ -629,7 +634,7 @@
 
             <Setter 
                 Property="FontFamily"
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
 
             <Setter
                 Property="FontSize"
@@ -901,7 +906,7 @@
             
             <Setter
                 Property="FontFamily"
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
             
             <Setter
                 Property="FontSize" 
@@ -1117,7 +1122,7 @@
                         
                         <Setter
                             Property="FontFamily"
-                            Value="Montserrat"/>
+                            Value="{StaticResource MontserratFontFamily}"/>
                         
                         <Setter
                             Property="FontSize" 
@@ -1277,7 +1282,7 @@
 
             <Setter
                 Property="FontFamily" 
-                Value="Montserrat"/>
+                Value="{StaticResource MontserratFontFamily}"/>
 
             <Setter 
                 Property="HorizontalContentAlignment"

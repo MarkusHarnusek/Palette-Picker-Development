@@ -23,7 +23,7 @@
                 Foreground="{DynamicResource T}"
                 HorizontalAlignment="Center"
                 Height="15"
-                FontFamily="Montserrat"
+                FontFamily="{StaticResource MontserratFontFamily}"
                 FontWeight="SemiBold"
                 FontSize="13"/>
 
@@ -53,7 +53,7 @@
                         HorizontalAlignment="Center"  
                         Text="Color Hue: "
                         Foreground="{DynamicResource T}"
-                        FontFamily="Montserrat"
+                        FontFamily="{StaticResource MontserratFontFamily}"
                         FontWeight="Light"
                         FontSize="10"/>
 
@@ -78,7 +78,7 @@
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="◀"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="24"
                                 Margin="0,0,0,4">
                             </TextBlock>
@@ -139,7 +139,7 @@
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="▶"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="24"
                                 Margin="0,0,0,4">
                             </TextBlock>
@@ -152,7 +152,7 @@
                         HorizontalAlignment="Center"  
                         Text="Color Saturation: "
                         Foreground="{DynamicResource T}"
-                        FontFamily="Montserrat"
+                        FontFamily="{StaticResource MontserratFontFamily}"
                         FontWeight="Light"
                         FontSize="10"/>
 
@@ -177,7 +177,7 @@
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="◀"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
@@ -242,7 +242,7 @@
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="▶"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
@@ -255,7 +255,7 @@
                         HorizontalAlignment="Center"  
                         Text="Color Luminance: "
                         Foreground="{DynamicResource T}"
-                        FontFamily="Montserrat"
+                        FontFamily="{StaticResource MontserratFontFamily}"
                         FontWeight="Light"
                         FontSize="10"/>
 
@@ -280,7 +280,7 @@
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="◀"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
@@ -349,7 +349,7 @@
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="▶"
-                                FontFamily="Montserrat"
+                                FontFamily="{StaticResource MontserratFontFamily}"
                                 FontSize="22"
                                 Margin="0,0,0,4">
                             </TextBlock>
@@ -377,7 +377,7 @@
                 Click="Btn_OK_Click"
                 Margin="0,20,0,0"
                 Content="OK"
-                FontFamily="Montserrat"
+                FontFamily="{StaticResource MontserratFontFamily}"
                 Width="50"
                 Height="20"/>
         </StackPanel>

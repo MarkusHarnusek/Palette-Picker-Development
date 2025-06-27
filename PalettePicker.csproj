@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Montserrat\Montserrat-Italic-VariableFont_wght.ttf" />
+    <None Remove="Fonts\Montserrat\Montserrat-VariableFont_wght.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\ColorPickerWindowResources\ColorPickerWindow.Designer.cs">
       <DependentUpon>ColorPickerWindow.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -121,6 +126,10 @@
       <LastGenOutput>SaveClass.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Montserrat\Montserrat-VariableFont_wght.ttf" />
   </ItemGroup>
 
 </Project>
