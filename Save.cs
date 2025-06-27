@@ -105,7 +105,7 @@ namespace PalettePicker
                 homeVisible = true;
                 pinned = true;
 
-                Pallete palette = new Pallete
+                LegacyPallete palette = new LegacyPallete
                 {
                     valid = true,
                     filePath = Path.GetDirectoryName(path),

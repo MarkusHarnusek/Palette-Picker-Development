@@ -1,6 +1,7 @@
 .vs
 bin
 obj
+Example-Files
 CommitMessage.txt
 log.txt
 PalettePicker.csproj.user
