@@ -193,7 +193,7 @@ namespace PalettePicker
 
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            string name = Save.SaveFile(Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
+            string name = SaveLegacy.SaveFile(Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
             currentEditingName = name;
             SetProgressSaved(true, this);
         }
@@ -204,15 +204,15 @@ namespace PalettePicker
 
         private void Btn_Select_Click(object sender, RoutedEventArgs e)
         {
-            Save.SelectFile();
+            SaveLegacy.SelectFile();
             if (!string.IsNullOrEmpty(editingFilePath))
             {
-                currentEditingName = Save.GetSaveInfo(editingFilePath).name;
-                Primary1 = Save.GetSaveInfo(editingFilePath).primary1;
-                Primary2 = Save.GetSaveInfo(editingFilePath).primary2;
-                Secondary1 = Save.GetSaveInfo(editingFilePath).secondary1;
-                Secondary2 = Save.GetSaveInfo(editingFilePath).secondary2;
-                Text = Save.GetSaveInfo(editingFilePath).text;
+                currentEditingName = SaveLegacy.GetSaveInfo(editingFilePath).name;
+                Primary1 = SaveLegacy.GetSaveInfo(editingFilePath).primary1;
+                Primary2 = SaveLegacy.GetSaveInfo(editingFilePath).primary2;
+                Secondary1 = SaveLegacy.GetSaveInfo(editingFilePath).secondary1;
+                Secondary2 = SaveLegacy.GetSaveInfo(editingFilePath).secondary2;
+                Text = SaveLegacy.GetSaveInfo(editingFilePath).text;
                 SetProgressSaved(true, this);
                 UpdateGridInfos(this);
             }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PalettePicker
+namespace PalettePicker.Palette
 {
     // <summary>
     // The server profile of a palette, storing metadata about the palette.

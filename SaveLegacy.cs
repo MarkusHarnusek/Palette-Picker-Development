@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace PalettePicker
 {
-    internal class Save
+    internal class SaveLegacy
     {
         private static string filePath = string.Empty;
 
@@ -22,7 +22,7 @@ namespace PalettePicker
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultures[languageID]);
         }
 
-        public Save()
+        public SaveLegacy()
         {
             SetLanguage(MainWindow.currentLanguage);
         }
