@@ -62,14 +62,38 @@ namespace PalettePicker
         public static PublicProfile? SavePublicProfileFromText(string input)
         {
             // Decode the input string and remove leading/trailing whitespace
-            input = Codec.Decode(input).Trim();
+            input = Codec.DecodeFile(input).Trim();
             // Split the decoded string into lines using ';' as the separator
-            string[] lines = input.Split(';');
-
-            // Check if the number of value pairs is correct (should be 13)
-            if (lines.Length != 13)
+            // Collections (like colors and tags) are enclosed in brackets and may contain semicolons
+            List<string> lines = new List<string>();
+            int i = 0;
+            while (i < input.Length)
             {
-                log = $"--- ERROR --- \n{DateTime.Now:HH} File does not contain correct amount (13) value pairs \n---";
+                int sepIndex = input.IndexOf(';', i);
+                if (sepIndex == -1) sepIndex = input.Length;
+                string part = input.Substring(i, sepIndex - i);
+                // If this part contains an opening bracket, it is a collection
+                if (part.Contains("["))
+                {
+                    int openBracket = input.IndexOf('[', i);
+                    int closeBracket = input.IndexOf(']', openBracket);
+                    // Include everything up to the closing bracket
+                    part = input.Substring(i, closeBracket - i + 1);
+                    lines.Add(part);
+                    // Move i to after the closing bracket and next semicolon
+                    i = closeBracket + 2; // skip ']' and ';'
+                }
+                else
+                {
+                    lines.Add(part);
+                    i = sepIndex + 1;
+                }
+            }
+
+            // Check if the number of value pairs is correct (should be 14)
+            if (lines.Count != 14)
+            {
+                log = $"--- ERROR --- \n{DateTime.Now:HH} File does not contain correct amount (14) value pairs \n---";
             }
 
             // Dictionary to store key-value pairs from the file
@@ -80,17 +104,25 @@ namespace PalettePicker
                 // Parse each line into key-value pairs and add to the dictionary
                 foreach (string line in lines)
                 {
-                    values.Add(line.Split(':')[0].Trim(), line.Split(':')[1].Trim());
+                    int idx = line.IndexOf(':');
+                    values.Add(line.Substring(0, idx).Trim(), line.Substring(idx + 1).Trim());
                 }
 
                 // Dictionary to store color name-value pairs
                 Dictionary<string, string> colors = new Dictionary<string, string>();
 
                 // Parse the 'colors' field, remove brackets, and split by ';'
-                foreach (string value in values["colors"].Remove('[', ']').Split(';'))
+                foreach (string value in values["colors"].Trim('[', ']').Split(';'))
                 {
-                    colors.Add(value.Split(':')[0], value.Split(':')[1]);
+                    if (!string.IsNullOrWhiteSpace(value))
+                    {
+                        int idx = value.IndexOf(':');
+                        colors.Add(value.Substring(0, idx), value.Substring(idx + 1));
+                    }
                 }
+
+                // Parse the 'tags' field, remove brackets, and split by ';'
+                List<string> tags = values["tags"].Trim('[', ']').Split(';').Where(t => !string.IsNullOrWhiteSpace(t)).ToList();
 
                 // Create and return a new PublicProfile object with parsed values
                 return new PublicProfile
@@ -108,7 +140,7 @@ namespace PalettePicker
                     Favorites = int.Parse(values["favorites"]),
                     Downloads = int.Parse(values["downloads"]),
                     Colors = colors,
-                    Tags = values["tags"].Remove('[', ']').Split(';').ToList()
+                    Tags = tags
                 };
             }
             catch (Exception ex)
@@ -129,7 +161,7 @@ namespace PalettePicker
         {
             try
             {
-                File.WriteAllText(path, Codec.Encode(GetSaveProfileText(input).Trim()) + "\n");
+                File.WriteAllText(path, Codec.EncodeFile(GetSavePublicProfileText(input).Trim()));
             }
             catch (Exception ex)
             {
@@ -143,7 +175,7 @@ namespace PalettePicker
         /// </summary>
         /// <param name="input">The PublicProfile object to convert.</param>
         /// <returns>A string containing the profile data in the correct format.</returns>
-        public static string GetSaveProfileText(PublicProfile input)
+        public static string GetSavePublicProfileText(PublicProfile input)
         {
             string content = string.Empty;
             content += $"id:{input.Id};";
