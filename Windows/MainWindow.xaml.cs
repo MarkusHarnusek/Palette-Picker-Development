@@ -32,37 +32,6 @@ namespace PalettePicker
 
         public MainWindow()
         {
-            // New file Test
-
-            PublicProfile publicProfile = new PublicProfile
-            {
-                // 357 bytes > 278 bytes by encoding.
-                Id = Guid.NewGuid().ToString(),
-                Name = "New Palette",
-                Description = "This is a new palette created by PalettePicker.",
-                Author = "PalettePicker User",
-                IsPublic = true,
-                Created = DateTime.Now,
-                Modified = DateTime.Now,
-                IsDark = false,
-                BaseColor = "#FFFFFF", // Default base color
-                Views = 789,
-                Favorites = 456,
-                Downloads = 123,
-                Colors = new Dictionary<string, string>
-                {
-                    { "p1", "#FF0000" }, // Primary 1
-                    { "p2", "#00FF00" }, // Primary 2
-                    { "s1", "#0000FF" }, // Secondary 1
-                    { "s2", "#FFFF00" }, // Secondary 2
-                    { "text", "#000000" } // Text color
-                },
-                Tags = new List<string> { "color", "palette", "picker" }
-            };
-
-            FileOperations.SavePublicProfile("C:\\Users\\new_palette.palette", publicProfile);
-            MessageBox.Show(FileOperations.GetSavePublicProfileText(FileOperations.GetPublicProfile("C:\\Users\\new_palette.palette")));
-
             InitializeComponent();
             DataContext = this;   
         }
