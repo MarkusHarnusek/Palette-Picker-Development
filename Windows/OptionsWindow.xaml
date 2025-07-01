@@ -178,10 +178,11 @@
                                         HorizontalAlignment="Center"/>
 
                                     <TextBox
-                                        Height="20"
                                         x:Name="Txb_Preferences_SavePath"
+                                        KeyDown="Txb_Preferences_SavePath_KeyDown"
+                                        Height="20"
                                         Style="{StaticResource TextBox_BorderBrush_Fade}"
-                                        Margin="30,5,30,0" KeyDown="Txb_Preferences_SavePath_KeyDown"/>
+                                        Margin="30,5,30,0"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

@@ -14,7 +14,7 @@ namespace PalettePicker
         /// <summary>
         /// The current save path for user preferences.
         /// </summary>
-        private string savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "Local", "PalettePicker");
+        public string savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "Local", "PalettePicker");
 
         /// <summary>
         /// Gets the collection of predefined language options.
