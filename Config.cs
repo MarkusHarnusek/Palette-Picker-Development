@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace PalettePicker
 {
@@ -11,7 +6,7 @@ namespace PalettePicker
     {
         public static string? configFilePath { get; set;}
         public static bool isFirstRun { get; set; }
-        public static string? currentLanguage { get; set; }
+        public static int currentLanguage { get; set; }
         public static bool isDarkMode { get; set; }
         public static string? username { get; set; }
         public static string? password { get; set; }
@@ -32,13 +27,15 @@ namespace PalettePicker
         public static string GetConfigText =>
             $"PATH={configFilePath ?? string.Empty}\n" +
             $"FIRST_RUN={isFirstRun}\n" +
-            $"LANGUAGE={currentLanguage ?? "en-UK"}\n" +
+            $"LANGUAGE={currentLanguage}\n" +
             $"DARK_MODE={isDarkMode}\n" +
             $"USERNAME={username ?? "none"}\n" +
             $"PASSWORD={password ?? "none"}";
 
         public static void SetConfig()
         {
+            // Implement logic to create the directory if it doesn't exist      
+
             try
             {
                 File.WriteAllText(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json"), GetConfigText);
@@ -67,7 +64,7 @@ namespace PalettePicker
                                     isFirstRun = bool.Parse(parts[1]);
                                     break;
                                 case "LANGUAGE":
-                                    currentLanguage = parts[1];
+                                    currentLanguage = int.TryParse(parts[1], out int val) ? val : 0;
                                     break;
                                 case "DARK_MODE":
                                     isDarkMode = bool.Parse(parts[1]);
@@ -90,7 +87,7 @@ namespace PalettePicker
         {
             configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json");
             isFirstRun = true;
-            currentLanguage = "en-UK";
+            currentLanguage = 0;
             isDarkMode = false;
             username = "none";
             password = "none";
