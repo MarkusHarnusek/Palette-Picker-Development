@@ -125,6 +125,15 @@
     <value>Idioma</value>
     <comment>Name of the button on the side bar for the language</comment>
   </data>
+  <data name="PreferencesFolderSelectErrMsg" xml:space="preserve">
+    <value>O caminho inserido não é válido</value>
+  </data>
+  <data name="PreferencesFolderSelectErrTitle" xml:space="preserve">
+    <value>Erro de caminho</value>
+  </data>
+  <data name="PreferencesSideButton" xml:space="preserve">
+    <value>Preferências</value>
+  </data>
   <data name="WindowTitle" xml:space="preserve">
     <value>Opções</value>
     <comment>Language Grid Title</comment>

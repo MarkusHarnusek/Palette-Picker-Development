@@ -125,6 +125,15 @@
     <value>Sprache</value>
     <comment>Name of the button on the side bar for the language</comment>
   </data>
+  <data name="PreferencesFolderSelectErrMsg" xml:space="preserve">
+    <value>Der eingegebene Pfad ist nicht korrekt</value>
+  </data>
+  <data name="PreferencesFolderSelectErrTitle" xml:space="preserve">
+    <value>Pfad Fehler</value>
+  </data>
+  <data name="PreferencesSideButton" xml:space="preserve">
+    <value>Präferenzen</value>
+  </data>
   <data name="WindowTitle" xml:space="preserve">
     <value>Einstellungen</value>
     <comment>Language Grid Title</comment>

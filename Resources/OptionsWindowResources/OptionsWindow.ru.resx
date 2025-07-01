@@ -125,6 +125,15 @@
     <value>Язык</value>
     <comment>Name of the button on the side bar for the language</comment>
   </data>
+  <data name="PreferencesFolderSelectErrMsg" xml:space="preserve">
+    <value>Введённый путь недействителен</value>
+  </data>
+  <data name="PreferencesFolderSelectErrTitle" xml:space="preserve">
+    <value>Ошибка пути</value>
+  </data>
+  <data name="PreferencesSideButton" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
   <data name="WindowTitle" xml:space="preserve">
     <value>Опции</value>
     <comment>Language Grid Title</comment>
