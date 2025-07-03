@@ -79,6 +79,33 @@ namespace PalettePicker.Resources.OptionsWindowResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entered path is not a valid path.
+        /// </summary>
+        internal static string PreferencesFolderSelectErrMsg {
+            get {
+                return ResourceManager.GetString("PreferencesFolderSelectErrMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path Error.
+        /// </summary>
+        internal static string PreferencesFolderSelectErrTitle {
+            get {
+                return ResourceManager.GetString("PreferencesFolderSelectErrTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferences.
+        /// </summary>
+        internal static string PreferencesSideButton {
+            get {
+                return ResourceManager.GetString("PreferencesSideButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         internal static string WindowTitle {

@@ -1,4 +1,4 @@
-﻿using PalettePicker.Resources.MainWindowResources;
+﻿ using PalettePicker.Resources.MainWindowResources;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
@@ -30,10 +30,15 @@ namespace PalettePicker
         public static int currentLanguage = 0;
         public static bool isProgressSaved = true;
 
+        Config config = new Config();
+
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;   
+            DataContext = this;  
+            
+            Config.AppInit();
+            currentLanguage = Config.currentLanguage;
         }
 
         private static void SetProgressSaved(bool saved, MainWindow instance)

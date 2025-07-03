@@ -125,6 +125,15 @@
     <value>语言</value>
     <comment>Name of the button on the side bar for the language</comment>
   </data>
+  <data name="PreferencesFolderSelectErrMsg" xml:space="preserve">
+    <value>输入的路径不是有效路径</value>
+  </data>
+  <data name="PreferencesFolderSelectErrTitle" xml:space="preserve">
+    <value>路径错误</value>
+  </data>
+  <data name="PreferencesSideButton" xml:space="preserve">
+    <value>首选项</value>
+  </data>
   <data name="WindowTitle" xml:space="preserve">
     <value>选项</value>
     <comment>Language Grid Title</comment>
