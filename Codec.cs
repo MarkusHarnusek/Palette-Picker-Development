@@ -34,7 +34,7 @@
         /// <summary>
         /// All characters that will be identified as separators between words
         /// </summary>
-        private static char[] separators = new char[] { ':', ';', '[', ']' };
+        private static char[] separators = [ ':', ';', '[', ']' ];
 
         /// <summary>
         /// Encodes a single key string to its corresponding character in the charset.

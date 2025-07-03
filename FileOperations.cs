@@ -11,6 +11,8 @@ namespace PalettePicker
     /// </summary>
     internal class FileOperations
     {
+        #region Save File Operations
+
         /// <summary>
         /// Stores the latest log message, including errors and exceptions encountered during file operations.
         /// </summary>
@@ -197,7 +199,7 @@ namespace PalettePicker
 
         #endregion
 
-        #region Local Profile
+        #region Private (Local) Profile
 
         /// <summary>
         /// Reads a .local file from the specified path and parses it into a PrivateProfile object.
@@ -321,6 +323,22 @@ namespace PalettePicker
             // Return the formatted content string
             return content.Trim();
         }
+
+        #endregion
+
+        #region User Profile
+
+        public static void GetUserProfile(string path)
+        {
+
+        }
+
+        public static UserProfile? SaveUserProfileFromText(string input)
+        {
+
+        }
+
+        #endregion
 
         #endregion
     }

@@ -1,8 +1,8 @@
 ﻿namespace PalettePicker
 {
-    // <summary>
-    // This is a class for public profile of the palette
-    // </summary>
+    /// <summary>
+    /// This is a class for public profile of the palette
+    /// </summary>
 
     internal class PublicProfile
     {
@@ -64,9 +64,9 @@
         public List<string>? Tags { get; set; }
     }
 
-    // <summary>
-    // This is a class for the private profile of the palette
-    // </summary>
+    /// <summary>
+    /// This is a class for the private profile of the palette
+    /// </summary>
 
     internal class PrivateProfile
     {
@@ -88,9 +88,9 @@
         public List<string>? Collections { get; set; }
     }
 
-    // <summary>
-    // This is a class for user profiles
-    // </summary>
+    /// <summary>
+    /// This is a class for user profiles
+    /// </summary>
 
     internal class UserProfile
     {
