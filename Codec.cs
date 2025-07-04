@@ -23,7 +23,12 @@
             "tags",
             "path",
             "pinned",
-            "collections"
+            "collections",
+            "email",
+            "passwordHash",
+            "palettes",
+            "followers",
+            "following"
         };
 
         /// <summary>

@@ -356,11 +356,55 @@ namespace PalettePicker
 
         public static UserProfile? SaveUserProfileFromText(string input)
         {
-            //TODO implement logic
+            // Decode the input string and remove leading/ trailing whitespace
+            input = Codec.Decode(input).Trim();
+            // Split the decoded string into lines using ';' as the separator
+            string[] lines = input.Split(';');
+
+            // Check if the number of value pairs is correct (should be 9)
+            if (lines.Length != 9)
+            {
+                log = $"--- ERROR --- \n{DateTime.Now:HH} File does not contain correct amount (9) value pairs \n---";
+            }
+
+            // Dictionary to store key-value pairs from the file
+            Dictionary<string, string> values = new Dictionary<string, string>();
+
+            try
+            {
+                // Parse each line into key-value pairs and add to the dictionary
+                foreach (string line in lines)
+                {
+                    values.Add(line.Split(':')[0].Trim(), line.Split(':')[1].Trim());
+                }
+
+                // List to store collections, parsed from the 'collections' field
+                List<string> palettes = values["palettes"].Remove('[', ']').Split(';').ToList();
+
+                // Create and return a new PrivateProfile object with parsed values
+                return new UserProfile
+                {
+                    Id = values["id"],
+                    Name = values["name"],
+                    Description = values["description"],
+                    Email = values["email"],
+                    PasswordHash = values["passwordHash"],
+                    Palettes = palettes,
+                    Views = int.Parse(values["views"]),
+                    Followers = int.Parse(values["followers"]),
+                    Following = int.Parse(values["following"])
+                };
+            }
+            catch (Exception ex)
+            {
+                // Log any exception that occurs during parsing
+                log = $"--- EXCEPTION --- \n{DateTime.Now:HH} {ex.Message}\n---";
+            }
+
             return null;
         }
 
-        public static void SaveUserProfile(string path, PrivateProfile input)
+        public static void SaveUserProfile(string path, UserProfile input)
         {
             try
             {
@@ -375,10 +419,21 @@ namespace PalettePicker
             }
         }
 
-        public static string GetSaveUserProfileText(PrivateProfile input)
+        public static string GetSaveUserProfileText(UserProfile input)
         {
-            //TODO implement logic
-            return string.Empty;
+            // Build the content string by concatenating all profile fields in the required format
+            string content = string.Empty;
+            content += $"id:{input.Id};";
+            content += $"name:{input.Name};";
+            content += $"description:{input.Description};";
+            content += $"email:{input.Email};";
+            content += $"passwordHash:{input.PasswordHash};";
+            content += $"palettes:[{string.Join(";", input.Palettes ?? Enumerable.Empty<string>())}];";
+            content += $"views:{input.Views};";
+            content += $"followers:{input.Followers};";
+            content += $"following:{input.Following};";
+            // Return the formatted content string
+            return content.Trim();
         }
 
         #endregion

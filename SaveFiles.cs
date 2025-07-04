@@ -107,6 +107,14 @@
         /// </summary>
         public string? Description { get; set; }
         /// <summary>
+        /// The email address of the user.
+        /// </summary>
+        public string? Email { get; set; }
+        /// <summary>
+        /// The password hash of the user.
+        /// </summary>
+        public string? PasswordHash { get; set; }
+        /// <summary>
         /// List of palette IDs owned by the user.
         /// </summary>
         public List<string>? Palettes { get; set; }
