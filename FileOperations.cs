@@ -1,7 +1,4 @@
 ﻿using System.IO;
-using System.Security.Policy;
-using System.Windows.Input;
-using System.Windows.Markup;
 
 namespace PalettePicker
 {
@@ -334,6 +331,16 @@ namespace PalettePicker
         }
 
         public static UserProfile? SaveUserProfileFromText(string input)
+        {
+
+        }
+
+        public static void SaveUserProfile(string path, PrivateProfile input)
+        {
+
+        }
+
+        public static string GetSaveUserProfileText(PrivateProfile input)
         {
 
         }
