@@ -325,24 +325,60 @@ namespace PalettePicker
 
         #region User Profile
 
-        public static void GetUserProfile(string path)
+        public static UserProfile? GetUserProfile(string path)
         {
+            if (!File.Exists(path))
+            {
+                log = $"--- ERROR --- \n{DateTime.Now:HH} File does not exist";
+                return null;
+            }
 
+            string content = string.Empty;
+
+            try
+            {
+                if (Path.GetExtension(path) != ".user")
+                {
+                    log = $"--- ERROR --- \n{DateTime.Now:HH} File is not a \".profile\" file \n---";
+                    return null;
+                }
+
+                content = File.ReadAllText(path);
+            }
+            catch (Exception ex)
+            {
+                log = $"--- EXCEPTION --- \n{DateTime.Now:HH} {ex.Message}\n---";
+                return null;
+            }
+
+            return SaveUserProfileFromText(content) ?? null;
         }
 
         public static UserProfile? SaveUserProfileFromText(string input)
         {
-
+            //TODO implement logic
+            return null;
         }
 
         public static void SaveUserProfile(string path, PrivateProfile input)
         {
-
+            try
+            {
+                // Write the encoded profile text to the file
+                File.WriteAllText(path, Codec.Encode(GetSaveUserProfileText(input)));
+            }
+            catch (Exception ex)
+            {
+                // Log any exception that occurs during file writing
+                log = $"--- EXCEPTION --- \n{DateTime.Now:HH} {ex.Message}\n---";
+                return;
+            }
         }
 
         public static string GetSaveUserProfileText(PrivateProfile input)
         {
-
+            //TODO implement logic
+            return string.Empty;
         }
 
         #endregion
