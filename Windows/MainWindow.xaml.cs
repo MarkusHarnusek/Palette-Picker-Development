@@ -43,7 +43,7 @@ namespace PalettePicker
 
             if (Config.isFirstRun)
             {
-                MessageBox.Show("Welcome to Palette Picker");
+                // Implement logic for first run, e.g., show welcome message or tutorial
                 Config.isFirstRun = false;
             }
         }
