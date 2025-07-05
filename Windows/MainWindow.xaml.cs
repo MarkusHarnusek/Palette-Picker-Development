@@ -39,6 +39,13 @@ namespace PalettePicker
             
             Config.AppInit();
             currentLanguage = Config.currentLanguage;
+            SetLanguage(currentLanguage, this);
+
+            if (Config.isFirstRun)
+            {
+                MessageBox.Show("Welcome to Palette Picker");
+                Config.isFirstRun = false;
+            }
         }
 
         private static void SetProgressSaved(bool saved, MainWindow instance)
@@ -346,6 +353,7 @@ namespace PalettePicker
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Config.SetConfig();
             Environment.Exit(0);
         }
     }

@@ -132,4 +132,8 @@
     <Resource Include="Fonts\Montserrat\Montserrat-VariableFont_wght.ttf" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>

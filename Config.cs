@@ -13,9 +13,10 @@ namespace PalettePicker
 
         public static void AppInit()
         {
+            GetConfig();
             if (string.IsNullOrEmpty(configFilePath))
             {
-                configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json");
+                configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini");
                 SetDefaultConfig();
             }
             else
@@ -34,11 +35,16 @@ namespace PalettePicker
 
         public static void SetConfig()
         {
-            // Implement logic to create the directory if it doesn't exist      
+            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker");
+
+            if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker")))
+            {
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker"));
+            }
 
             try
             {
-                File.WriteAllText(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json"), GetConfigText);
+                File.WriteAllText(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini"), GetConfigText);
             }
             catch (Exception) { }
         }
@@ -47,9 +53,9 @@ namespace PalettePicker
         {
             try
             {
-                if (File.Exists(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json")))
+                if (File.Exists(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini")))
                 {
-                    var configLines = File.ReadAllLines(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json"));
+                    var configLines = File.ReadAllLines(configFilePath ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini"));
                     foreach (var line in configLines)
                     {
                         var parts = line.Split('=');
@@ -85,7 +91,7 @@ namespace PalettePicker
 
         public static void SetDefaultConfig()
         {
-            configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.json");
+            configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini");
             isFirstRun = true;
             currentLanguage = 0;
             isDarkMode = false;
