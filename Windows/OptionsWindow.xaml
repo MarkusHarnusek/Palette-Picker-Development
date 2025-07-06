@@ -53,8 +53,8 @@
 
                     <Button
                         x:Name="Btn_Appearance"
-                        Visibility="Collapsed"
                         Click="Btn_Appearance_Click"
+                        Visibility="Collapsed"
                         Style="{StaticResource Heigth_Fade_Button_Style}"
                         Content="Appearance"
                         FontSize="20" 
@@ -63,6 +63,7 @@
                     <Button
                         x:Name="Btn_Preferences"
                         Click="Btn_Preferences_Click"
+                        Visibility="Collapsed"
                         Style="{StaticResource Heigth_Fade_Button_Style}"
                         Content="Preferences"
                         FontSize="20"
@@ -151,7 +152,8 @@
                         </Grid>
 
                         <Grid
-                            x:Name="Grd_Preferences">
+                            x:Name="Grd_Preferences"
+                            Visibility="Collapsed">
 
                             <TextBlock
                                 x:Name="Txt_Preferences_Title"

@@ -4,6 +4,7 @@ namespace PalettePicker
 {
     internal class Config
     {
+        public static string? paletteDirectory { get; set; }
         public static string? configFilePath { get; set;}
         public static bool isFirstRun { get; set; }
         public static int currentLanguage { get; set; }
@@ -14,18 +15,21 @@ namespace PalettePicker
         public static void AppInit()
         {
             GetConfig();
+            if (string.IsNullOrEmpty(paletteDirectory))
+            {
+                paletteDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "Palettes");
+                SetDefaultConfig();
+            }
+
             if (string.IsNullOrEmpty(configFilePath))
             {
                 configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini");
                 SetDefaultConfig();
             }
-            else
-            {
-                GetConfig();
-            }
         }
 
         public static string GetConfigText =>
+            $"LOCALDIRECTORY={paletteDirectory ?? string.Empty}\n" +
             $"PATH={configFilePath ?? string.Empty}\n" +
             $"FIRST_RUN={isFirstRun}\n" +
             $"LANGUAGE={currentLanguage}\n" +
@@ -40,6 +44,11 @@ namespace PalettePicker
             if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker")))
             {
                 Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker"));
+            }
+
+            if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "Palettes")))
+            {
+                Directory.CreateDirectory(paletteDirectory ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "Palettes"));
             }
 
             try
@@ -63,6 +72,9 @@ namespace PalettePicker
                         {
                             switch (parts[0])
                             {
+                                case "LOCALDIRECTORY":
+                                    paletteDirectory = parts[1];
+                                    break;
                                 case "PATH":
                                     configFilePath = parts[1];
                                     break;
@@ -91,6 +103,7 @@ namespace PalettePicker
 
         public static void SetDefaultConfig()
         {
+            paletteDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "Palettes");
             configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PalettePicker", "config.ini");
             isFirstRun = true;
             currentLanguage = 0;

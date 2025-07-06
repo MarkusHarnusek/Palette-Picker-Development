@@ -236,13 +236,12 @@ namespace PalettePicker
             };
 
             currentEditingName = publicProfile.Name;
-            string path = FileOperations.GetFolderPath() ?? string.Empty;
 
-            if (!string.IsNullOrEmpty(path))
-            {
-                FileOperations.SavePalette(path, publicProfile, privateProfile);
-                SetProgressSaved(true, this);
-            }
+            //if (!string.IsNullOrEmpty(Config.localDirectory))
+            //{
+                //FileOperations.SavePalette(Config.localDirectory, publicProfile, privateProfile);
+                //SetProgressSaved(true, this);
+            //}
         }
 
         #endregion

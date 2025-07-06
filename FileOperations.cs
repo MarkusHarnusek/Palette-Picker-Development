@@ -454,15 +454,7 @@ namespace PalettePicker
                     SavePublicProfile(Path.Combine(dir, (publicProfile.Name ?? "Unknown") + ".palette"), publicProfile);
                     SavePrivateProfile(Path.Combine(dir, (publicProfile.Name ?? "Unknown") + ".local"), privateProfile);
                 }
-                catch (Exception ex)
-                {
-                    // Implement error handling
-                    return;
-                }
-            }
-            else
-            {
-                // Implement error handling
+                catch (Exception) { }
             }
         }
 
