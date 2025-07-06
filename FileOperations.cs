@@ -161,11 +161,10 @@ namespace PalettePicker
         {
             try
             {
-                File.WriteAllText(Path.Combine(path, input.Name ?? "Default"), Codec.EncodeFile(GetSavePublicProfileText(input).Trim()));
+                File.WriteAllText(path, Codec.EncodeFile(GetSavePublicProfileText(input).Trim()));
             }
             catch (Exception ex)
             {
-                log = $"--- EXCEPTION --- \n{DateTime.Now:HH} {ex.Message}\n---";
                 MessageBox.Show(ex.Message); //REMOVE LATER
                 return;
             }
@@ -451,8 +450,9 @@ namespace PalettePicker
                 try
                 {
                     Directory.CreateDirectory(Path.Combine(path, publicProfile.Name ?? "Unknown"));
-                    SavePublicProfile(Path.Combine(path, publicProfile.Name ?? "Unknown.palette"), publicProfile);
-                    SavePrivateProfile(Path.Combine(path, publicProfile.Name ?? "Unknown.local"), privateProfile);
+                    string dir = Path.Combine(path, publicProfile.Name ?? "Unknown");
+                    SavePublicProfile(Path.Combine(dir, (publicProfile.Name ?? "Unknown") + ".palette"), publicProfile);
+                    SavePrivateProfile(Path.Combine(dir, (publicProfile.Name ?? "Unknown") + ".local"), privateProfile);
                 }
                 catch (Exception ex)
                 {

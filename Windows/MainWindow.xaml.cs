@@ -243,9 +243,6 @@ namespace PalettePicker
                 FileOperations.SavePalette(path, publicProfile, privateProfile);
                 SetProgressSaved(true, this);
             }
-
-            //string name = SaveLegacy.SaveFile(Primary1 ?? string.Empty, Primary2 ?? string.Empty, Secondary1 ?? string.Empty, Secondary2 ?? string.Empty, Text ?? string.Empty, false, true, true);
-            //currentEditingName = name;
         }
 
         #endregion
