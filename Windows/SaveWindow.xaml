@@ -1,0 +1,79 @@
+﻿<Window x:Class="PalettePicker.Windows.SaveWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PalettePicker.Windows"
+        mc:Ignorable="d"
+        Title="SaveWindow"
+        Height="450" 
+        Width="300"
+        Background="{DynamicResource P1}" SizeChanged="Window_SizeChanged">
+    
+    <Grid
+        Margin="25">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition 
+                Height="Auto"/>
+
+            <RowDefinition 
+                Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox
+            Stretch="Uniform"
+            MaxHeight="40"
+            MaxWidth="250"
+            Margin="25,5,25,5">
+            
+            <TextBlock
+                x:Name="Txt_WindowTitle"
+                Text="Save the current palette"
+                Foreground="{DynamicResource T}"
+                FontFamily="{StaticResource MontserratFontFamily}"
+                HorizontalAlignment="Center"/>
+        </Viewbox>
+
+        <Border
+            Grid.Row="1"
+            BorderBrush="{DynamicResource P2}"
+            BorderThickness="1"
+            CornerRadius="15">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition 
+                        Height="Auto"
+                        MinHeight="16"/>
+
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    Margin="75,0,75,0">
+
+                    <Viewbox
+                        Grid.Row="0"
+                        Stretch="Uniform"
+                        VerticalAlignment="Center"
+                        MaxHeight="25"
+                        Margin="25,5,25,5">
+
+                        <TextBlock
+                            x:Name="Txt_Txb_Name"
+                            Text="Name"
+                            Foreground="{DynamicResource T}"
+                            FontFamily="{StaticResource MontserratFontFamily}"
+                            FontWeight="Light"
+                            HorizontalAlignment="Center"/>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

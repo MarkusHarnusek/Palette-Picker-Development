@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using System.IO;
+using PalettePicker.Windows;
 
 namespace PalettePicker
 {
@@ -35,6 +36,11 @@ namespace PalettePicker
         {
             InitializeComponent();
             DataContext = this;
+
+            // REMOVE LATER
+
+            SaveWindow saveWindow = new SaveWindow();
+            saveWindow.Show();
 
             Config.AppInit();
             currentLanguage = Config.currentLanguage;
@@ -237,11 +243,11 @@ namespace PalettePicker
 
             currentEditingName = publicProfile.Name;
 
-            //if (!string.IsNullOrEmpty(Config.localDirectory))
-            //{
-                //FileOperations.SavePalette(Config.localDirectory, publicProfile, privateProfile);
-                //SetProgressSaved(true, this);
-            //}
+            if (!string.IsNullOrEmpty(Config.paletteDirectory))
+            {
+                FileOperations.SavePalette(Config.paletteDirectory, publicProfile, privateProfile);
+                SetProgressSaved(true, this);
+            }
         }
 
         #endregion
